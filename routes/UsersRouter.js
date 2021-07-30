@@ -45,11 +45,31 @@ const upload = multer({
 /**
  * USER ROUTING STARTS
  */
-router.post('/image/:id', upload.single('profile_pic'), [
+router.get('/byEmail/:email', [
+    UserControllerObj.getByEmail
+]);
+
+router.get('/byPhone/:phone', [
+    UserControllerObj.getByPhone
+]);
+
+router.get('/idExists/:userId', [
+    UserControllerObj.isIdExists
+]);
+
+router.get('/emailExists/:email', [
+    UserControllerObj.isEmailExists
+]);
+
+router.get('/phoneExists/:phone', [
+    UserControllerObj.isPhoneExists
+]);
+
+router.post('/:id/image', upload.single('image_file'), [
   UserControllerObj.changeImage
 ]);
 
-router.delete('/image/:id', [
+router.delete('/:id/image', [
     UserControllerObj.deleteImage
 ]);
 
