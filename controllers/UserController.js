@@ -9,6 +9,7 @@ const responseServiceObj = new ResponseService();
 const UserService = require('../services').UserService;
 const UserServiceObj = new UserService();
 
+var userImageUploadPath = require('../config/config').userImageUploadPath;
 var userImagePath = require('../config/config').userImageBasePath;
 var userImageActualPath = require('../config/config').userImageActualPath;
 
@@ -25,7 +26,7 @@ module.exports = class UserController {
                 first_name: 'required',
                 email: 'required|email',
                 password: 'required|min:6',
-                phone: 'required|numeric|min:10',
+                phone: 'required|numeric',
                 role: 'required|in:ADMIN,SUB_ADMIN,CUSTOMER',
             };
             let validation = new Validator(in_data, rules);
@@ -70,7 +71,7 @@ module.exports = class UserController {
                 first_name: 'required',
                 email: 'required|email',
                 password: 'required|min:6',
-                phone: 'required|numeric|min:10',
+                phone: 'required|numeric',
                 role: 'required|in:ADMIN,SUB_ADMIN,CUSTOMER',
                 status: 'required|in:PENDING,ACTIVE,BLOCK,DELETED',
             };
@@ -183,7 +184,7 @@ module.exports = class UserController {
                     msg : responseServiceObj.getFirstError( validation )
                 } );
             }
-            UserServiceObj.getUserByEmail( email )
+            UserServiceObj.getByEmail( email )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : 'Record found',
@@ -212,7 +213,7 @@ module.exports = class UserController {
             let in_data = req.params;
             let phone = req.params.phone;
             let rules = {
-                phone: 'required|numeric|min:10',
+                phone: 'required|numeric',
             };
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
@@ -311,54 +312,51 @@ module.exports = class UserController {
     }
 
     deleteImage( req, res, next ) {
+
         try {
-            let id = req.params.id;
-            let profilePic = req.body.profilePic;
-            let is_valid = ObjectId.isValid(id);
-            if( !is_valid ) {
-                throw 'User id not well formed.'
-            }
-            id = ObjectId( id );
-            profilePic = `${userImageActualPath}/${profilePic}`;
-            console.log('profilePic', profilePic);
 
-            let in_data = {
-                profilePic : '',
-                updatedAt : new Date()
-            };
-
-            fs.stat( profilePic, function(exists) { 
-                if (exists) {
-                    console.log('image exists');
-
-                    fs.unlink( profilePic, async (err) => {
-                        if (err) {
-                            return await responseServiceObj.sendException( res, {
-                                msg : err.toString()
-                            } );
-                        }
-        
-                        let result = await UserServiceObj.update( in_data, id );
-                        return await responseServiceObj.sendResponse( res, {
-                            msg : 'Profile pic deleted successfully',
-                            data : {
-                                user: await UserServiceObj.getById( id )
-                            }
-                        } );
-                    });
-                } else {
-                    return responseServiceObj.sendException( res, {
-                        msg : 'Image not exists'
-                    } );
+            let id = ObjectId( req.params.id );
+            let path = req.params.profilePic;
+            UserServiceObj.isIdExists( id )
+            .then( async (isExists) => {
+                if( !isExists ) {
+                    throw 'Invalid user id.'
                 }
-            }); 
+                return true;
+            } )
+            .then( async( inResult ) => {
+
+                let file = userImageUploadPath +'/'+ path;
+                if (!fs.existsSync(file)) {
+                    throw 'File not exists.';
+                }
+                fs.unlinkSync( file );
+            } )
+            .then( async (inResult) => {
+                let in_data = {
+                    profilePic: null
+                };
+                let result = await UserServiceObj.update( in_data, id );
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Image deleted successfully',
+                    data: {
+                        user: await UserServiceObj.getById(id),
+                        userImagePath: userImagePath
+                    }
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
         } catch(ex) {
-    
             return responseServiceObj.sendException( res, {
                 msg : ex.toString()
             } );
         }
     }
+
 
     isIdExists( req, res, next ) {
         try {
@@ -435,7 +433,7 @@ module.exports = class UserController {
             let id = req.params.id ? req.params.id : false;
             let in_data = req.params;
             let rules = {
-                phone: 'required|numeric|min:10',
+                phone: 'required|numeric',
             };
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {

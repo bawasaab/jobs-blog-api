@@ -53,7 +53,7 @@ router.get('/byPhone/:phone', [
     UserControllerObj.getByPhone
 ]);
 
-router.get('/idExists/:userId', [
+router.get('/:id/idExists', [
     UserControllerObj.isIdExists
 ]);
 
@@ -69,7 +69,7 @@ router.post('/:id/image', upload.single('image_file'), [
   UserControllerObj.changeImage
 ]);
 
-router.delete('/:id/image', [
+router.delete('/:id/image/:profilePic', [
     UserControllerObj.deleteImage
 ]);
 
