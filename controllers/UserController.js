@@ -9,9 +9,8 @@ const responseServiceObj = new ResponseService();
 const UserService = require('../services').UserService;
 const UserServiceObj = new UserService();
 
-var userImageUploadPath = require('../config/config').userImageUploadPath;
-var userImagePath = require('../config/config').userImageBasePath;
-var userImageActualPath = require('../config/config').userImageActualPath;
+var USER_IMAGE_UPLOAD_PATH = require('../config/config').USER_IMAGE_UPLOAD_PATH;
+var userImagePath = require('../config/config').USER_IMAGE_BASE_PATH;
 
 module.exports = class UserController {
 
@@ -326,7 +325,7 @@ module.exports = class UserController {
             } )
             .then( async( inResult ) => {
 
-                let file = userImageUploadPath +'/'+ path;
+                let file = USER_IMAGE_UPLOAD_PATH +'/'+ path;
                 if (!fs.existsSync(file)) {
                     throw 'File not exists.';
                 }

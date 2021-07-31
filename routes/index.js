@@ -3,6 +3,7 @@ var router = express.Router();
 
 // const authRouter = require('./AuthRouter');
 const userRouter = require('./UsersRouter');
+const contactUsRouter = require('./ContactUsRouter');
 
 const AuthController = require('../controllers/').AuthController;
 const AuthControllerObj = new AuthController();
@@ -23,5 +24,6 @@ router.get('/', function(req, res, next) {
  */
 
 router.use( '/users', userRouter );
+router.use('/contact-us', contactUsRouter);
 
 module.exports = router;

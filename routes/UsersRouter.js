@@ -4,7 +4,7 @@ const router = express.Router();
 const UsersController = require('../controllers').UserController;
 const UserControllerObj = new UsersController();
 
-var userImagePath = require('../config/config').userImageUploadPath;
+var userImagePath = require('../config/config').USER_IMAGE_UPLOAD_PATH;
 /**
  * IMAGE UPLOAD STARTS
  */
