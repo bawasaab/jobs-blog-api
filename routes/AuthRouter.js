@@ -7,8 +7,6 @@ const AuthControllerObj = new AuthController();
 const UserController = require('../controllers').UserController;
 const UserControllerObj = new UserController();
 
-var userImagePath = require('../config/config').userImageUploadPath;
-
 /**
  * IMAGE UPLOAD STARTS
  */
@@ -16,10 +14,10 @@ var userImagePath = require('../config/config').userImageUploadPath;
  const multer  = require('multer');
  
  const storage = multer.diskStorage({
-   destination: function (req, file, cb) {
-    cb(null, userImagePath)
-   },
-   filename: function (req, file, cb) {     
+   	destination: function (req, file, cb) {
+    	cb(null, userImagePath)
+   	},
+   filename: function (req, file, cb) {  
         let id = req.params.id;
         let originalname = file.originalname;
         let newFileName = id;
@@ -27,15 +25,15 @@ var userImagePath = require('../config/config').userImageUploadPath;
         let fullFileName = newFileName + extention;
         let fullFileNameWithPath = userImagePath +'/'+ fullFileName;
         req.params.imageDetails = {
-        fileOriginalname : originalname,
-        newFileName : newFileName,
-        fileExtention : extention,
-        fullFileName : fullFileName,
-        fullFileNameWithPath : fullFileNameWithPath
+			fileOriginalname : originalname,
+			newFileName : newFileName,
+			fileExtention : extention,
+			fullFileName : fullFileName,
+			fullFileNameWithPath : fullFileNameWithPath
         };
         cb(null , fullFileName );
     }
- });
+});
  
  const upload = multer({
    storage: storage,
@@ -55,7 +53,7 @@ router.post('/signIn', [
 
 router.post('/social-sign-in', [
     AuthControllerObj.socialSignIn
-  ]);
+]);
 
 // router.post('/signOut', [
 //   AuthControllerObj.signOut
