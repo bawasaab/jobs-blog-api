@@ -15,12 +15,12 @@ const cluster = `cluster0.mvpaj.mongodb.net`;
 // mongodb+srv://deepak:<password>@cluster0.mvpaj.mongodb.net/test
 const mongodbUrl = `mongodb+srv://${dbUsername}:${dbPassword}@${cluster}/${dbName}`;
 
-const basePath = 'http://localhost:3000/';
-// console.log('process.env', process.env);
+const basePath = process.env.BASE_URL;
+
 module.exports = {
     mongodbUrl: mongodbUrl,
 
-    MONGODB_CONNECTION_STRING: process.env.MONGODB_URL,
+    MONGODB_CONNECTION_STRING: process.env.MONGODB_CONNECTION_STRING,
 
     BASE_URL: process.env.BASE_URL,
 
