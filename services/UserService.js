@@ -1,6 +1,8 @@
 const UserModel = require('../models').UserModel;
 const { ObjectId } = require('mongodb');
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+var {userImageBasePath, JWT_SECRET} = require('../config/config');
 
 module.exports = class UserService {
 
@@ -146,6 +148,45 @@ module.exports = class UserService {
                 return isExists;
             }
         } catch(ex) {
+            throw ex;
+        }
+    }
+
+    async checkSocialUserExists(dataObj) {
+        try {
+            let result = await UserModel.countDocuments({token: dataObj.token, social_flag: dataObj.social_flag});
+            return result > 0 ? true : false;
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
+    async getUserByFeededData(data) {
+        try {
+            let result = await UserModel.findOne(data);
+            return result;
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
+    async createJwtToken(userData) {
+        try {
+            let tokenParamObj = {id: userData._id, email: userData.email, contact_number: userData.contact_number, role: userData.role, status: userData.status};
+            let result = await jwt.sign({tokenParamObj}, JWT_SECRET, {expiresIn: 60 * 60});
+            return result;
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
+    validateStatus(userObj) {
+        try {
+            if (['PENDING', 'BLOCK', 'DELETED'].includes(userObj.status)) {
+                throw 'Your account status is ' + userObj.status.toLowerCase() + '. Please contact administrator.';
+            }
+            return true;
+        } catch (ex) {
             throw ex;
         }
     }

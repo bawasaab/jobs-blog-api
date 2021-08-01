@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// const authRouter = require('./AuthRouter');
+const authRouter = require('./AuthRouter');
 const userRouter = require('./UsersRouter');
 const contactUsRouter = require('./ContactUsRouter');
 
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// router.use( '/auth', authRouter );
+router.use( '/auth', authRouter );
 
 /**
  * auth middleware starts

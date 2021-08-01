@@ -36,7 +36,7 @@ module.exports = class AuthController {
             let email = in_data.email;
             let password = in_data.password;
         
-            UserServiceObj.getUserByEmail( email )
+            UserServiceObj.getByEmail( email )
             .then((result) => {
 
                 if (result === null) {
@@ -92,6 +92,59 @@ module.exports = class AuthController {
             return responseServiceObj.sendException( res, {
                 msg : ex.toString()
             } );
+        }
+    }
+
+    socialSignIn(req, res, next) {
+        try {
+            let in_data = req.body;
+            let rules = {social_flag: 'required', token: 'required', social_user_detail: 'required'};
+            let validation = new Validator(in_data, rules);
+            if (validation.fails()) {
+                throw responseServiceObj.getFirstError(validation);
+            }
+            UserServiceObj.checkSocialUserExists(in_data)
+                    .then(async(result) => {
+                        let token = '';
+                        let userObj = '';
+                        let socialUserObj = JSON.parse(in_data.social_user_detail);
+                        if (result) {
+                            let userObj = await UserServiceObj.getUserByFeededData({token: in_data.token, social_flag: in_data.social_flag});
+                            UserServiceObj.validateStatus(userObj);
+                            UserServiceObj.update({social_user_detail: socialUserObj}, userObj._id);
+                            token = await UserServiceObj.createJwtToken(userObj);
+                            return  responseServiceObj.sendResponse(res, {
+                                msg: 'Logged In Successfully',
+                                data: {token: token, user: userObj, userImagePath: userImageBasePath}
+                            });
+                        } else {
+                            let insertObj = {
+                                first_name: socialUserObj.firstName,
+                                last_name: socialUserObj.lastName,
+                                token: socialUserObj.id,
+                                email: socialUserObj.email,
+                                social_user_detail: socialUserObj,
+                                social_flag: in_data.social_flag,
+                                password: '123456',
+                                status: 'ACTIVE'
+                            };
+                            let userObj = await UserServiceObj.insert(insertObj);
+                            token = await UserServiceObj.createJwtToken(userObj);
+                            return  responseServiceObj.sendResponse(res, {
+                                msg: 'User Created Successfully',
+                                data: {token: token, user: userObj, userImagePath: userImageBasePath}
+                            });
+                        }
+                    })
+                    .catch(async (ex) => {
+                        return await responseServiceObj.sendException(res, {
+                            msg: ex.toString()
+                        });
+                    });
+        } catch (ex) {
+            return responseServiceObj.sendException(res, {
+                msg: ex.toString()
+            });
         }
     }
 

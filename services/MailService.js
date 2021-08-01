@@ -17,8 +17,6 @@ module.exports = class MailService {
                 pass: process.env.MAIL_PASSWORD
             }
         });
-
-        console.log('$this.transporter', $this.transporter);
     }
 
     sendMail(mailOptionsObj) {

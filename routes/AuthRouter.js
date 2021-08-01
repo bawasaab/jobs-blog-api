@@ -46,15 +46,19 @@ var userImagePath = require('../config/config').userImageUploadPath;
   */
 
 router.post('/signUp', upload.single('profile_pic'), [
-    UserControllerObj.insertUser
+    UserControllerObj.insert
 ]);
 
-router.post('/signIn', upload.single('profile_pic'), [
+router.post('/signIn', [
   AuthControllerObj.signIn
 ]);
 
-router.post('/signOut', [
-  AuthControllerObj.signOut
-]);
+router.post('/social-sign-in', [
+    AuthControllerObj.socialSignIn
+  ]);
+
+// router.post('/signOut', [
+//   AuthControllerObj.signOut
+// ]);
 
 module.exports = router;
