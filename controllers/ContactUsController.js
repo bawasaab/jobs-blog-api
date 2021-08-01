@@ -32,6 +32,7 @@ module.exports = class ContactUsController {
             MailServiceObj.sendMail({to: ADMIN_EMAIL, html: admin_email_html, subject: 'New Query'}).then(async (result) => {
                 if (result.sent == false) {
                     console.log('Contact Us Admin Email Failed');
+                    // console.log('result', result);
                     await FailedMailServiceObj.insertFailedMail({email: result.data.to, data: result.data, type: 'CONTACT_US_ADMIN'});
                 }
             }).catch(async (ex) => {
@@ -43,6 +44,7 @@ module.exports = class ContactUsController {
             MailServiceObj.sendMail({to: data.email, html: customer_thankyou_html, subject: 'Thankyou For Writing To Us'}).then(async (result) => {
                 if (result.sent == false) {
                     console.log('Customer Thankyou Mail Failed');
+                    // console.log('result', result);
                     await FailedMailServiceObj.insertFailedMail({email: result.data.to, data: result.data, type: 'CONTACT_US_ENQUIRER'});
                 }
             }).catch(async (ex) => {
