@@ -66,14 +66,15 @@ module.exports = class UserController {
             let in_id = req.params.id;
             let id = ObjectId( in_id );
             let in_data = req.body;
-            let rules = {
-                first_name: 'required',
-                email: 'required|email',
-                password: 'required|min:6',
-                phone: 'required|numeric',
-                role: 'required|in:ADMIN,SUB_ADMIN,CUSTOMER',
-                status: 'required|in:PENDING,ACTIVE,BLOCK,DELETED',
-            };
+            let rules = {};
+
+            in_data.hasOwnProperty('first_name') ? rules.first_name = 'required' : '';
+            in_data.hasOwnProperty('email') ? rules.email = 'required|email' : '';
+            in_data.hasOwnProperty('password') ? rules.comment = 'required|min:6' : '';
+            in_data.hasOwnProperty('phone') ? rules.phone = 'required|numeric' : '';
+            in_data.hasOwnProperty('role') ? rules.role = 'required||in:ADMIN,SUB_ADMIN,CUSTOMER' : '';
+            in_data.hasOwnProperty('status') ? rules.status = 'required' : '';
+
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
 
