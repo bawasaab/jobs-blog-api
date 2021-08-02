@@ -5,6 +5,7 @@ const authRouter = require('./AuthRouter');
 const userRouter = require('./UsersRouter');
 const contactUsRouter = require('./ContactUsRouter');
 const commentsRouter = require('./CommentsRouter');
+const articleRouter = require('./ArticleRouter');
 
 const AuthController = require('../controllers/').AuthController;
 const AuthControllerObj = new AuthController();
@@ -27,5 +28,6 @@ router.use( AuthControllerObj.verifyToken );
 router.use( '/users', userRouter );
 router.use('/contact-us', contactUsRouter);
 router.use('/comments', commentsRouter);
+router.use('/articles', articleRouter);
 
 module.exports = router;
