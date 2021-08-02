@@ -198,6 +198,38 @@ module.exports = class ArticleController {
         }
     }
 
+    getAllByUser( req, res, next ) {
+
+        try {
+
+            let userId = req.params.userId;
+            let is_valid = ObjectId.isValid(userId);
+            if( !is_valid ) {
+                throw 'User id not well formed.'
+            }
+            userId = ObjectId( userId );
+
+            articleServiceObj.getAllByUser(userId)
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Record found',
+                    data : {
+                        article: result
+                    }
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+        } catch( ex ) {
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
     isIdExists( req, res, next ) {
         try {
             let id = req.params.id;

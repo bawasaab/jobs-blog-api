@@ -29,6 +29,9 @@ const meta = new Schema({
 const ArticleSchema = new Schema({
     
     user_id: { type: ObjectId, default: null },
+    department_id: { type: ObjectId, default: null },
+    category_id: { type: ObjectId, default: null },
+
     title: { type: String, default: null },
     slug: { type: String, unique: true },
 

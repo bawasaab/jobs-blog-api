@@ -15,10 +15,10 @@ module.exports = class ArticleService {
         }
     }
 
-    async getByArticleId( in_articleId ) {
+    async getAllByUser( userId ) {
         try {
 
-            let result = await articleModel.find( { article_id: in_articleId, status: { $ne: 'DELETED' } } );
+            let result = await articleModel.find( { user_id: userId, status: { $ne: 'DELETED' } } );
             return result;
         } catch(ex) {            
             throw ex;

@@ -45,6 +45,10 @@ const upload = multer({
  * USER ROUTING STARTS
  */
 
+router.get('/user/:userId', [
+    articleControllerObj.getAllByUser
+]);
+
 router.get('/:id/idExists', [
     articleControllerObj.isIdExists
 ]);
