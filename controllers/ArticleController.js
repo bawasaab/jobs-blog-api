@@ -64,7 +64,7 @@ module.exports = class ArticleController {
         try {
 
             let user_id = TokenServiceObj.getUserId( req );
-            let in_id = req.params.id;
+            let in_id = req.params.articleId;
             let is_valid = ObjectId.isValid(in_id);
             if( !is_valid ) {
                 throw 'Article id not well formed.'
@@ -113,12 +113,12 @@ module.exports = class ArticleController {
 
     delete( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.articleId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'Article id not well formed.'
             }
-            id = ObjectId( req.params.id );
+            id = ObjectId( req.params.articleId );
             let in_data = {
                 status: 'DELETED',
                 deletedAt: new Date()
@@ -144,7 +144,7 @@ module.exports = class ArticleController {
 
     getById( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.articleId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'Article id not well formed.'
@@ -232,7 +232,7 @@ module.exports = class ArticleController {
 
     isIdExists( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.articleId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'Article id not well formed.'

@@ -4,6 +4,8 @@ const router = express.Router();
 const ArticleController = require('../controllers').ArticleController;
 const articleControllerObj = new ArticleController();
 
+const commentsRouter = require('./CommentsRouter');
+
 /**
  * IMAGE UPLOAD STARTS
  */
@@ -49,19 +51,19 @@ router.get('/user/:userId', [
     articleControllerObj.getAllByUser
 ]);
 
-router.get('/:id/idExists', [
+router.get('/:articleId/idExists', [
     articleControllerObj.isIdExists
 ]);
 
-router.patch('/:id', upload.single('image_file'), [
+router.patch('/:articleId', upload.single('image_file'), [
   articleControllerObj.update
 ]);
 
-router.delete('/:id', [
+router.delete('/:articleId', [
   articleControllerObj.delete
 ]);
 
-router.get('/:id', [
+router.get('/:articleId', [
   articleControllerObj.getById
 ]);
 

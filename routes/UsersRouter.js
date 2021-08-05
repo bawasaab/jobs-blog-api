@@ -53,7 +53,7 @@ router.get('/byPhone/:phone', [
     UserControllerObj.getByPhone
 ]);
 
-router.get('/:id/idExists', [
+router.get('/:userId/idExists', [
     UserControllerObj.isIdExists
 ]);
 
@@ -65,23 +65,23 @@ router.get('/phoneExists/:phone', [
     UserControllerObj.isPhoneExists
 ]);
 
-router.post('/:id/image', upload.single('image_file'), [
+router.post('/:userId/image', upload.single('image_file'), [
   UserControllerObj.changeImage
 ]);
 
-router.delete('/:id/image/:profilePic', [
+router.delete('/:userId/image/:profilePic', [
     UserControllerObj.deleteImage
 ]);
 
-router.patch('/:id', [
+router.patch('/:userId', [
   UserControllerObj.update
 ]);
 
-router.delete('/:id', [
+router.delete('/:userId', [
   UserControllerObj.delete
 ]);
 
-router.get('/:id', [
+router.get('/:userId', [
   UserControllerObj.getById
 ]);
 

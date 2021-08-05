@@ -27,7 +27,9 @@ router.use( AuthControllerObj.verifyToken );
 
 router.use( '/users', userRouter );
 router.use('/contact-us', contactUsRouter);
-router.use('/comments', commentsRouter);
+
+router.use('/articles/:articleId/comments', commentsRouter);
 router.use('/articles', articleRouter);
+
 
 module.exports = router;

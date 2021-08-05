@@ -1,8 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({
+    mergeParams: true
+});
 
 const CommentController = require('../controllers').CommentController;
 const CommentControllerObj = new CommentController();
+
+const ValidateIdsMiddlewares = require('../middlewares').ValidateIdsMiddlewares;
+const validateIdsMiddlewaresObj = new ValidateIdsMiddlewares();
 
 /**
  * IMAGE UPLOAD STARTS
@@ -44,32 +49,35 @@ const upload = multer({
 /**
  * USER ROUTING STARTS
  */
-router.get('/byArticle/:articleId', [
-    CommentControllerObj.getByArticle
-]);
 
-router.get('/:id/idExists', [
+router.use( validateIdsMiddlewaresObj.articleId );
+
+router.get('/:commentId/idExists', [
+    validateIdsMiddlewaresObj.commentId,
     CommentControllerObj.isIdExists
 ]);
 
-router.patch('/:id', [
-  CommentControllerObj.update
+router.patch('/:commentId', [
+    validateIdsMiddlewaresObj.commentId,
+    CommentControllerObj.update
 ]);
 
-router.delete('/:id', [
-  CommentControllerObj.delete
+router.delete('/:commentId', [
+    validateIdsMiddlewaresObj.commentId,
+    CommentControllerObj.delete
 ]);
 
-router.get('/:id', [
-  CommentControllerObj.getById
+router.get('/:commentId', [
+    validateIdsMiddlewaresObj.commentId,
+    CommentControllerObj.getById
 ]);
 
 router.post('/', [
-  CommentControllerObj.insert
+    CommentControllerObj.insert
 ]);
 
 router.get('/', [
-  CommentControllerObj.getAll
+    CommentControllerObj.getAll
 ]);
 /**
  * USER ROUTING ENDS

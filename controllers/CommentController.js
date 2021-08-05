@@ -1,5 +1,4 @@
- Validator = require('validatorjs');
-const { ObjectId } = require('mongodb');
+Validator = require('validatorjs');
 const fs = require('fs');
 const path = require('path');
 
@@ -18,16 +17,14 @@ module.exports = class CommentController {
 
     insert( req, res, next ) {
 
-        try {
+        try {  
 
-            let user_id = TokenServiceObj.getUserId( req );
             let in_data = req.body;
             let rules = {
                 // parent_id: 'required',
-                article_id: 'required',
+                // article_id: 'required',
                 comment: 'required'
             };
-            in_data.user_id = user_id;
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
 
@@ -35,7 +32,9 @@ module.exports = class CommentController {
                     msg : responseServiceObj.getFirstError( validation )
                 } );
             }
-            console.log('in_data', in_data);
+
+            in_data.user_id = TokenServiceObj.getUserId( req );
+            in_data.article_id = req.params.articleId;
             CommentServiceObj.insert( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
@@ -62,17 +61,9 @@ module.exports = class CommentController {
 
         try {
 
-            let user_id = TokenServiceObj.getUserId( req );
-            let in_id = req.params.id;
-            let is_valid = ObjectId.isValid(in_id);
-            if( !is_valid ) {
-                throw 'Comment id not well formed.'
-            }
-            in_id = ObjectId( in_id );
+            let in_id = req.params.commentId;
             let in_data = req.body;
             let rules = {
-                // parent_id: 'required',
-                article_id: 'required',
                 comment: 'required',
                 status: 'required|in:OPEN,CLOSE'
             };
@@ -83,7 +74,8 @@ module.exports = class CommentController {
                     msg : responseServiceObj.getFirstError( validation )
                 } );
             }
-                        
+
+            in_data.article_id = req.params.articleId;
             CommentServiceObj.update( in_data, in_id )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
@@ -109,13 +101,9 @@ module.exports = class CommentController {
 
     delete( req, res, next ) {
         try {
-            let id = req.params.id;
-            let is_valid = ObjectId.isValid(id);
-            if( !is_valid ) {
-                throw 'Comment id not well formed.'
-            }
-            id = ObjectId( req.params.id );
+            let id = req.params.commentId;
             let in_data = {
+                article_id: req.params.articleId,
                 status: 'DELETED',
                 deletedAt: new Date()
             };
@@ -140,13 +128,13 @@ module.exports = class CommentController {
 
     getById( req, res, next ) {
         try {
-            let id = req.params.id;
-            let is_valid = ObjectId.isValid(id);
-            if( !is_valid ) {
-                throw 'Comment id not well formed.'
-            }
-            id = ObjectId( id );
-            CommentServiceObj.getById( id )
+            let id = req.params.commentId;
+            let article_id = req.params.articleId;
+            let in_data = {
+                comment_id: id,
+                article_id: article_id
+            };
+            CommentServiceObj.getById( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : 'Record found',
@@ -173,38 +161,8 @@ module.exports = class CommentController {
 
         try {
 
-            CommentServiceObj.getAll()
-            .then( async (result) => {
-                return await responseServiceObj.sendResponse( res, {
-                    msg : 'Record found',
-                    data : {
-                        comment: result
-                    }
-                } );
-            } )
-            .catch( async (ex) => {
-                return await responseServiceObj.sendException( res, {
-                    msg : ex.toString()
-                } );
-            } );
-        } catch( ex ) {
-            return responseServiceObj.sendException( res, {
-                msg : ex.toString()
-            } );
-        }
-    }
-
-    getByArticle( req, res, next ) {
-
-        try {
-
-            let in_articleId = req.params.articleId;
-            let is_valid = ObjectId.isValid(in_articleId);
-            if( !is_valid ) {
-                throw 'Article id not well formed.'
-            }
-            in_articleId = ObjectId( in_articleId );
-            CommentServiceObj.getByArticleId( in_articleId )
+            let article_id = req.params.articleId;
+            CommentServiceObj.getAll( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : 'Record found',
@@ -227,13 +185,13 @@ module.exports = class CommentController {
 
     isIdExists( req, res, next ) {
         try {
-            let id = req.params.id;
-            let is_valid = ObjectId.isValid(id);
-            if( !is_valid ) {
-                throw 'User id not well formed.'
-            }
-            id = ObjectId( id );
-            CommentServiceObj.isIdExists( id )
+            let comment_id = req.params.commentId;
+            let article_id = req.params.articleId;
+            let in_data = {
+                comment_id: comment_id,
+                article_id: article_id
+            };
+            CommentServiceObj.isIdExists( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : result ? 'Record found' : 'Not found',
