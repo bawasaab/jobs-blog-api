@@ -5,4 +5,5 @@ module.exports = {
     MailService : require('./MailService'),
     CommentService : require('./CommentService'),
     TokenService : require('./TokenService'),
+    ArticleService : require('./ArticleService'),
 };

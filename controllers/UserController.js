@@ -63,7 +63,7 @@ module.exports = class UserController {
 
         try {
 
-            let in_id = req.params.id;
+            let in_id = req.params.userId;
             let id = ObjectId( in_id );
             let in_data = req.body;
             let rules = {};
@@ -109,12 +109,12 @@ module.exports = class UserController {
 
     delete( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.userId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'User id not well formed.'
             }
-            id = ObjectId( req.params.id );
+            id = ObjectId( req.params.userId );
             let in_data = {
                 status: 'DELETED',
                 deletedAt: new Date()
@@ -140,7 +140,7 @@ module.exports = class UserController {
 
     getById( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.userId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'User id not well formed.'
@@ -274,7 +274,7 @@ module.exports = class UserController {
 
     changeImage( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.userId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'User id not well formed.'
@@ -315,7 +315,7 @@ module.exports = class UserController {
 
         try {
 
-            let id = ObjectId( req.params.id );
+            let id = ObjectId( req.params.userId );
             let path = req.params.profilePic;
             UserServiceObj.isIdExists( id )
             .then( async (isExists) => {
@@ -357,10 +357,9 @@ module.exports = class UserController {
         }
     }
 
-
     isIdExists( req, res, next ) {
         try {
-            let id = req.params.id;
+            let id = req.params.userId;
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
                 throw 'User id not well formed.'
@@ -392,7 +391,7 @@ module.exports = class UserController {
     isEmailExists( req, res, next ) {
         try {
             let email = req.params.email;
-            let id = req.params.id ? req.params.id : false;
+            let id = req.params.userId ? req.params.userId : false;
             let in_data = req.params;
             let rules = {
                 email: 'required|email'
@@ -430,7 +429,7 @@ module.exports = class UserController {
     isPhoneExists( req, res, next ) {
         try {
             let phone = req.params.phone;
-            let id = req.params.id ? req.params.id : false;
+            let id = req.params.userId ? req.params.userId : false;
             let in_data = req.params;
             let rules = {
                 phone: 'required|numeric',

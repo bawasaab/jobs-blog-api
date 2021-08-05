@@ -1,35 +1,33 @@
-const CommentModel = require('../models').CommentModel;
+// const CommentModel = require('../models').CommentModel;
+const articleModel = require('../models').ArticleModel;
 const { ObjectId } = require('mongodb');
 
-module.exports = class UserService {
+module.exports = class CommentService {
 
     constructor() {}
 
-    async getAll() {
+    async getAll( in_data ) {
         try {
 
-            let result = await CommentModel.find( { status: { $ne: 'DELETED' } } );
+            let result = await articleModel.find( { 
+                _id: ObjectId(in_data.article_id), 
+                status: { $ne: 'DELETED' } 
+            });
             return result;
         } catch(ex) {            
             throw ex;
         }
     }
 
-    async getByArticleId( in_articleId ) {
+    async getById( in_data ) {
         try {
 
-            let result = await CommentModel.find( { article_id: in_articleId, status: { $ne: 'DELETED' } } );
-            return result;
-        } catch(ex) {            
-            throw ex;
-        }
-    }
-
-    async getById( in_id ) {
-        try {
-
-            let id = ObjectId( in_id );
-            let result = await CommentModel.findOne( { _id: id, status: { $ne: 'DELETED' } } );    
+            let result = await articleModel.findOne( {
+                _id: ObjectId(in_data.article_id),
+                'comments._id': ObjectId(in_data.comment_id),
+                'comments.article_id': ObjectId(in_data.article_id),
+                'comments.status': { $ne: 'DELETED' } 
+            });    
             return result;
         } catch(ex) {
             
@@ -40,7 +38,23 @@ module.exports = class UserService {
     async insert( in_data ) {
         try {
 
-            let result = await CommentModel.create( in_data );
+            in_data._id = new ObjectId();
+            in_data.deletedAt = null;
+            in_data.createdAt = new Date();
+            in_data.updatedAt = null;
+            let result = await articleModel.findOneAndUpdate(
+                {
+                    _id: ObjectId(in_data.article_id)
+                }, 
+                {
+                    $push: {
+                        comments: in_data
+                    }
+                }, 
+                {
+                    new : true
+                }
+            );
             return result;
         } catch(ex) {
             throw ex;
@@ -50,29 +64,56 @@ module.exports = class UserService {
     async update( in_data, in_id ) {
         try {
             
+            in_data.updatedAt = new Date();
             let id = ObjectId( in_id );
-            let result = await CommentModel.updateOne({ _id: id }, in_data, { multi: false });
+            let result = await articleModel.findOneAndUpdate(
+                {
+                    _id: ObjectId(in_data.article_id),
+                    'comments._id': ObjectId(in_id)
+                }, 
+                {
+                    $set: {
+                        'comments.$.comment': in_data.comment,
+                        'comments.$.status': in_data.status,
+                        'comments.$.updatedAt': in_data.updatedAt
+                    }
+                }, 
+                {
+                    new : true
+                }
+            );
             return result;
         } catch(ex) {
             throw ex;
         }
     }
 
-    async delete( in_data, id ) {
+    async delete( in_data, comment_id ) {
         try {
             
-            let id = ObjectId( id );
-            let result = await CommentModel.updateOne({ _id: id }, in_data, { multi: false } );
+            let result = await articleModel.updateOne({
+                _id: ObjectId(in_data.article_id),
+                'comments._id': ObjectId(in_data.comment_id),
+                'comments.article_id': ObjectId(in_data.article_id),
+            },
+            in_data, 
+            { 
+                multi: false 
+            });
             return result;
         } catch(ex) {
             throw ex;
         }
     }
 
-    async isIdExists( user_id ) {
+    async isIdExists( in_data ) {
         try {
 
-            let result = await CommentModel.countDocuments( { _id: user_id } );
+            let result = await articleModel.countDocuments({
+                _id: ObjectId(in_data.article_id),
+                'comments._id': ObjectId(in_data.comment_id),
+                'comments.article_id': ObjectId(in_data.article_id),
+            });
             let isExists = result > 0 ? true : false;
             return isExists;
         } catch(ex) {

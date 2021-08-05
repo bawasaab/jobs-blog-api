@@ -3,4 +3,5 @@ module.exports = {
     UserController : require('./UserController'),
     ContactUsController : require('./ContactUsController'),
     CommentController : require('./CommentController'),
+    ArticleController : require('./ArticleController'),
 };

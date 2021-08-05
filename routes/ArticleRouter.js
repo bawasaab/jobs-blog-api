@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const UsersController = require('../controllers').UserController;
-const UserControllerObj = new UsersController();
+const ArticleController = require('../controllers').ArticleController;
+const articleControllerObj = new ArticleController();
 
-var userImagePath = require('../config/config').USER_IMAGE_UPLOAD_PATH;
+const commentsRouter = require('./CommentsRouter');
+
 /**
  * IMAGE UPLOAD STARTS
  */
@@ -45,52 +46,33 @@ const upload = multer({
 /**
  * USER ROUTING STARTS
  */
-router.get('/byEmail/:email', [
-    UserControllerObj.getByEmail
+
+router.get('/user/:userId', [
+    articleControllerObj.getAllByUser
 ]);
 
-router.get('/byPhone/:phone', [
-    UserControllerObj.getByPhone
+router.get('/:articleId/idExists', [
+    articleControllerObj.isIdExists
 ]);
 
-router.get('/:userId/idExists', [
-    UserControllerObj.isIdExists
+router.patch('/:articleId', upload.single('image_file'), [
+  articleControllerObj.update
 ]);
 
-router.get('/emailExists/:email', [
-    UserControllerObj.isEmailExists
+router.delete('/:articleId', [
+  articleControllerObj.delete
 ]);
 
-router.get('/phoneExists/:phone', [
-    UserControllerObj.isPhoneExists
+router.get('/:articleId', [
+  articleControllerObj.getById
 ]);
 
-router.post('/:userId/image', upload.single('image_file'), [
-  UserControllerObj.changeImage
-]);
-
-router.delete('/:userId/image/:profilePic', [
-    UserControllerObj.deleteImage
-]);
-
-router.patch('/:userId', [
-  UserControllerObj.update
-]);
-
-router.delete('/:userId', [
-  UserControllerObj.delete
-]);
-
-router.get('/:userId', [
-  UserControllerObj.getById
-]);
-
-router.post('/', [
-  UserControllerObj.insert
+router.post('/', upload.single('image_file'), [
+  articleControllerObj.insert
 ]);
 
 router.get('/', [
-  UserControllerObj.getAll
+  articleControllerObj.getAll
 ]);
 /**
  * USER ROUTING ENDS
