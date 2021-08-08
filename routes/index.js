@@ -6,6 +6,8 @@ const userRouter = require('./UsersRouter');
 const contactUsRouter = require('./ContactUsRouter');
 const commentsRouter = require('./CommentsRouter');
 const articleRouter = require('./ArticleRouter');
+const DepartmentRouter = require('./DepartmentRouter');
+const CategoryRouter = require('./CategoryRouter');
 
 const AuthController = require('../controllers/').AuthController;
 const AuthControllerObj = new AuthController();
@@ -31,5 +33,7 @@ router.use('/contact-us', contactUsRouter);
 router.use('/articles/:articleId/comments', commentsRouter);
 router.use('/articles', articleRouter);
 
+router.use('/departments/:departmentId/categories', CategoryRouter);
+router.use('/departments', DepartmentRouter);
 
 module.exports = router;

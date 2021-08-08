@@ -1,5 +1,10 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({
+    mergeParams: true
+});
+
+const ValidateIdsMiddlewares = require('../middlewares').ValidateIdsMiddlewares;
+const validateIdsMiddlewaresObj = new ValidateIdsMiddlewares();
 
 const UsersController = require('../controllers').UserController;
 const UserControllerObj = new UsersController();
@@ -17,7 +22,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     
-    let id = req.params.id;
+    let id = req.params.userId;
     let originalname = file.originalname;
     let newFileName = id;
     let extention = path.extname(originalname);
@@ -54,6 +59,7 @@ router.get('/byPhone/:phone', [
 ]);
 
 router.get('/:userId/idExists', [
+    validateIdsMiddlewaresObj.userId,
     UserControllerObj.isIdExists
 ]);
 
@@ -66,23 +72,28 @@ router.get('/phoneExists/:phone', [
 ]);
 
 router.post('/:userId/image', upload.single('image_file'), [
-  UserControllerObj.changeImage
+    validateIdsMiddlewaresObj.userId,
+    UserControllerObj.changeImage
 ]);
 
 router.delete('/:userId/image/:profilePic', [
+    validateIdsMiddlewaresObj.userId,
     UserControllerObj.deleteImage
 ]);
 
 router.patch('/:userId', [
-  UserControllerObj.update
+    validateIdsMiddlewaresObj.userId,
+    UserControllerObj.update
 ]);
 
 router.delete('/:userId', [
-  UserControllerObj.delete
+    validateIdsMiddlewaresObj.userId,
+    UserControllerObj.delete
 ]);
 
 router.get('/:userId', [
-  UserControllerObj.getById
+    validateIdsMiddlewaresObj.userId,
+    UserControllerObj.getById
 ]);
 
 router.post('/', [

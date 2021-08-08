@@ -3,11 +3,11 @@ const router = express.Router({
     mergeParams: true
 });
 
-const CommentController = require('../controllers').CommentController;
-const CommentControllerObj = new CommentController();
-
 const ValidateIdsMiddlewares = require('../middlewares').ValidateIdsMiddlewares;
 const validateIdsMiddlewaresObj = new ValidateIdsMiddlewares();
+
+const CommentController = require('../controllers').CommentController;
+const CommentControllerObj = new CommentController();
 
 /**
  * IMAGE UPLOAD STARTS
@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     
-    let id = req.params.id;
+    let id = req.params.commentId;
     let originalname = file.originalname;
     let newFileName = id;
     let extention = path.extname(originalname);

@@ -6,4 +6,6 @@ module.exports = {
     CommentService : require('./CommentService'),
     TokenService : require('./TokenService'),
     ArticleService : require('./ArticleService'),
+    DepartmentService : require('./DepartmentService'),
+    CategoryService : require('./CategoryService'),
 };
