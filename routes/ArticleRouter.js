@@ -1,10 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({
+    mergeParams: true
+});
+
+const ValidateIdsMiddlewares = require('../middlewares').ValidateIdsMiddlewares;
+const validateIdsMiddlewaresObj = new ValidateIdsMiddlewares();
 
 const ArticleController = require('../controllers').ArticleController;
 const articleControllerObj = new ArticleController();
-
-const commentsRouter = require('./CommentsRouter');
 
 /**
  * IMAGE UPLOAD STARTS
@@ -18,7 +21,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     
-    let id = req.params.id;
+    let id = req.params.articleId;
     let originalname = file.originalname;
     let newFileName = id;
     let extention = path.extname(originalname);
@@ -47,32 +50,47 @@ const upload = multer({
  * USER ROUTING STARTS
  */
 
-router.get('/user/:userId', [
+//  router.post('/:articleId/image', [
+//     validateIdsMiddlewaresObj.articleId,
+//     articleControllerObj.changeImage
+// ]);
+
+// router.delete('/:articleId/image/:profilePic', [
+//     validateIdsMiddlewaresObj.userId,
+//     articleControllerObj.deleteImage
+// ]);
+
+router.get('/ByUser/:userId', [
+    validateIdsMiddlewaresObj.userId,
     articleControllerObj.getAllByUser
 ]);
 
 router.get('/:articleId/idExists', [
+    validateIdsMiddlewaresObj.articleId,
     articleControllerObj.isIdExists
 ]);
 
-router.patch('/:articleId', upload.single('image_file'), [
-  articleControllerObj.update
+router.patch('/:articleId', [
+    validateIdsMiddlewaresObj.articleId,
+    articleControllerObj.update
 ]);
 
 router.delete('/:articleId', [
-  articleControllerObj.delete
+    validateIdsMiddlewaresObj.articleId,
+    articleControllerObj.delete
 ]);
 
 router.get('/:articleId', [
-  articleControllerObj.getById
+    validateIdsMiddlewaresObj.articleId,
+    articleControllerObj.getById
 ]);
 
-router.post('/', upload.single('image_file'), [
-  articleControllerObj.insert
+router.post('/', [
+    articleControllerObj.insert
 ]);
 
 router.get('/', [
-  articleControllerObj.getAll
+    articleControllerObj.getAll
 ]);
 /**
  * USER ROUTING ENDS

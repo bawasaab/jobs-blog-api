@@ -4,4 +4,6 @@ module.exports = {
     ContactUsController : require('./ContactUsController'),
     CommentController : require('./CommentController'),
     ArticleController : require('./ArticleController'),
+    CategoryController : require('./CategoryController'),
+    DepartmentController : require('./DepartmentController'),
 };

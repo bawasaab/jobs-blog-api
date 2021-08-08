@@ -1,6 +1,6 @@
 module.exports = {
     UserModel : require('./UserModel'),
     FailedMailModel : require('./FailedMailModel'),
-    CommentModel : require('./CommentModel'),
     ArticleModel : require('./ArticleModel'),
+    DepartmentModel : require('./DepartmentModel'),
 };

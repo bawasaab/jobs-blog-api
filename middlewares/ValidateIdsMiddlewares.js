@@ -2,7 +2,7 @@ const { ObjectId } = require('mongodb');
 const ResponseService = require('../services').ResponseService;
 const responseServiceObj = new ResponseService();
 
-module.exports = class CommentController {
+module.exports = class ValidateIdsMiddlewares {
     
     constructor() {}
 
