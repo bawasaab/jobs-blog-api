@@ -4,6 +4,18 @@ const ObjectId = Schema.ObjectId;
 const STATUSES = ['OPEN', 'CLOSE', 'DELETED'];
 const dated = new Date();
 
+const images = new Schema({
+    article_id: {type: ObjectId, default: null},
+    url: {type: String},
+    default: {type: Boolean, default: false},
+    
+    status: {type: String, enum: STATUSES, default: 'OPEN'},
+
+    deletedAt: {type: Date, default: null},
+    createdAt: {type: Date, default: dated},
+    updatedAt: {type: Date, default: dated},
+});
+
 const comments = new Schema({
     parent_id: { type: ObjectId, default: null },
     article_id: { type: ObjectId, default: null },
@@ -38,8 +50,9 @@ const ArticleSchema = new Schema({
     short_description: { type: String, default: null },
     description: { type: String, default: null },
 
-    meta: [],
+    meta: [meta],
 	comments: [comments],
+	images: [images],
 	tags: [],
 
 	status: { type: String, enum: STATUSES, default: 'OPEN' },

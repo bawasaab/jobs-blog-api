@@ -4,7 +4,11 @@ const router = express.Router();
 const ArticleController = require('../controllers').ArticleController;
 const articleControllerObj = new ArticleController();
 
+<<<<<<< Updated upstream
 const commentsRouter = require('./CommentsRouter');
+=======
+var articleImagePath = require('../config/config').ARTICLE_IMAGE_UPLOAD_PATH;
+>>>>>>> Stashed changes
 
 /**
  * IMAGE UPLOAD STARTS
@@ -14,7 +18,7 @@ const multer  = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, userImagePath)
+    cb(null, articleImagePath)
   },
   filename: function (req, file, cb) {
     
@@ -23,7 +27,7 @@ const storage = multer.diskStorage({
     let newFileName = id;
     let extention = path.extname(originalname);
     let fullFileName = newFileName + extention;
-    let fullFileNameWithPath = userImagePath +'/'+ fullFileName;
+    let fullFileNameWithPath = articleImagePath +'/'+ fullFileName;
     req.params.imageDetails = {
       fileOriginalname : originalname,
       newFileName : newFileName,
@@ -47,7 +51,22 @@ const upload = multer({
  * USER ROUTING STARTS
  */
 
+<<<<<<< Updated upstream
 router.get('/user/:userId', [
+=======
+ router.post('/:articleId/image', upload.single('image_file'), [
+    // validateIdsMiddlewaresObj.articleId,
+    articleControllerObj.changeImage
+]);
+
+// router.delete('/:articleId/image/:profilePic', [
+//     validateIdsMiddlewaresObj.userId,
+//     articleControllerObj.deleteImage
+// ]);
+
+router.get('/ByUser/:userId', [
+    validateIdsMiddlewaresObj.userId,
+>>>>>>> Stashed changes
     articleControllerObj.getAllByUser
 ]);
 

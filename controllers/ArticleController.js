@@ -12,6 +12,8 @@ const articleServiceObj = new ArticleService();
 const TokenService = require('../services').TokenService;
 const TokenServiceObj = new TokenService();
 
+var articleImagePath = require('../config/config').ARTICLE_IMAGE_PATH;
+
 module.exports = class ArticleController {
 
     constructor() {}
@@ -62,7 +64,7 @@ module.exports = class ArticleController {
     update( req, res, next ) {
 
         try {
-
+            
             let user_id = TokenServiceObj.getUserId( req );
             let in_id = req.params.articleId;
             let is_valid = ObjectId.isValid(in_id);
@@ -244,6 +246,47 @@ module.exports = class ArticleController {
                     msg : result ? 'Record found' : 'Not found',
                     data : {
                         exists: result
+                    }
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+
+        } catch(ex) {
+    
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
+    changeImage( req, res, next ) {
+        try {
+
+            let articleId = req.params.articleId;
+            let is_valid = ObjectId.isValid(id);
+            if( !is_valid ) {
+                throw 'Article id not well formed.'
+            }
+            articleId = ObjectId( articleId );
+
+            let imageDetails = req.params.imageDetails;
+            let in_data = {
+                article_id: articleId,
+                url : imageDetails.fullFileName,
+                updatedAt : new Date()
+            };
+            
+            articleServiceObj.insertImage( in_data, articleId )
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Profile pic uploaded successfully',
+                    data : {
+                        article: await articleServiceObj.getById( articleId ),
+                        articleImagePath: articleImagePath
                     }
                 } );
             } )

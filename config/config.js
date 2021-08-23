@@ -29,6 +29,9 @@ module.exports = {
     
     DEPARTMENT_IMAGE_UPLOAD_PATH: process.env.DEPARTMENT_IMAGE_UPLOAD_PATH,
     DEPARTMENT_IMAGE_PATH: process.env.BASE_URL + process.env.DEPARTMENT_IMAGE_PATH,
+
+    ARTICLE_IMAGE_UPLOAD_PATH: process.env.ARTICLE_IMAGE_UPLOAD_PATH,
+    ARTICLE_IMAGE_PATH: process.env.BASE_URL + process.env.ARTICLE_IMAGE_PATH,
     
     JWT_SECRET: process.env.JWT_SECRET_KEY,
     

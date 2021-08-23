@@ -49,7 +49,7 @@ module.exports = class ArticleService {
 
     async update( in_data, in_id ) {
         try {
-            
+            console.log('inside update service');
             let id = ObjectId( in_id );
             let result = await articleModel.updateOne({ _id: id }, in_data, { multi: false });
             return result;
@@ -76,6 +76,55 @@ module.exports = class ArticleService {
             let isExists = result > 0 ? true : false;
             return isExists;
         } catch(ex) {
+            throw ex;
+        }
+    }
+
+    async insertImage(in_articleId, in_data) {
+        try {
+
+            let articleId = in_articleId;
+            let result = await articleModel.findOneAndUpdate(
+                {
+                    _id: articleId
+                },
+                {
+                    $push: {
+                        images: in_data
+                    }
+                },
+                {
+                    new: true
+                }
+            );
+            return result;
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
+    async deleteImage(in_articleId, in_imageId) {
+        try {
+            
+            let imageId = ObjectId(in_imageId);
+            let articleId = ObjectId(in_articleId);
+            let result = await ProductModel.findOneAndUpdate(
+                {
+                    _id: articleId
+                },
+                {
+                    $pull: {
+                        images: {
+                            _id: imageId
+                        }
+                    }
+                },
+                {
+                    new: true
+                }
+            );
+            return result;
+        } catch (ex) {
             throw ex;
         }
     }
