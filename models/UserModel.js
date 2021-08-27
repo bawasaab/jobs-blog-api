@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
-const ROLES = ['ADMIN', 'SUB_ADMIN', 'CUSTOMER'];
+const ROLES = ['ADMIN','BLOGGER','VISITOR'];
 const GENDER = ['MALE', 'FEMALE'];
 const STATUSES = ['PENDING', 'ACTIVE', 'BLOCK', 'DELETED'];
 const DEVICE_TYPE = ['WEB', 'IPHONE', 'ANDROID'];
@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     refresh_token: { type: String, default: null },
     
     gender: { type: String, enum: GENDER, default: 'MALE' },
-    role: { type: String, enum: ROLES, default: 'CUSTOMER' },
+    role: { type: String, enum: ROLES, default: 'VISITOR' },
     status: { type: String, enum: STATUSES, default: 'PENDING' },
 
     gmail_token: { type: String, default: null },

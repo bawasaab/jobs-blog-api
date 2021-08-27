@@ -70,9 +70,9 @@ module.exports = class UserController {
 
             in_data.hasOwnProperty('first_name') ? rules.first_name = 'required' : '';
             in_data.hasOwnProperty('email') ? rules.email = 'required|email' : '';
-            in_data.hasOwnProperty('password') ? rules.comment = 'required|min:6' : '';
+            in_data.hasOwnProperty('password') ? rules.password = 'required|min:6' : '';
             in_data.hasOwnProperty('phone') ? rules.phone = 'required|numeric' : '';
-            in_data.hasOwnProperty('role') ? rules.role = 'required||in:ADMIN,SUB_ADMIN,CUSTOMER' : '';
+            in_data.hasOwnProperty('role') ? rules.role = 'required|in:ADMIN,BLOGGER,VISITOR' : '';
             in_data.hasOwnProperty('status') ? rules.status = 'required' : '';
 
             let validation = new Validator(in_data, rules);
@@ -82,7 +82,7 @@ module.exports = class UserController {
                     msg : responseServiceObj.getFirstError( validation )
                 } );
             }
-                        
+
             UserServiceObj.update( in_data, id )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
