@@ -26,7 +26,7 @@ module.exports = class ArticleController {
                 title: 'required',
                 slug: 'required',
                 short_description: 'required',
-                description: 'required'
+                // description: 'required'
             };
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
