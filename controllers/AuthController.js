@@ -64,7 +64,7 @@ module.exports = class AuthController {
                     "updatedAt": result.updatedAt
                 };
 
-                jwt.sign({userData}, JWT_SECRET, { expiresIn: 60 * 60 }, async (err, token) => {
+                jwt.sign({userData}, JWT_SECRET, { expiresIn: 60 * 60 * 24 * 365 }, async (err, token) => {
                     // res.status(200).send({ err: [], token: 'bearer '+ token, user: userData });
 
                     if( err ) {
