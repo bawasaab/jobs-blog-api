@@ -16,7 +16,7 @@ const comments = new Schema({
 });
 
 const meta = new Schema({
-    name: { type: String, default: null },
+    article_id: { type: ObjectId, default: null },
     name: { type: String, default: null },
     content: { type: String, default: null },
     status: { type: String, enum: STATUSES, default: 'OPEN' },

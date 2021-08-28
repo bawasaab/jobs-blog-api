@@ -71,14 +71,14 @@ module.exports = class ArticleController {
             }
             in_id = ObjectId( in_id );
             let in_data = req.body;
-            let rules = {
-                title: 'required',
-                slug: 'required',
-                short_description: 'required',
-                description: 'required',
-                // meta: 'required',
-                // tags: 'required'
-            };
+            let rules = {};
+            req.body.title ? rules.title = 'required' : '';
+            req.body.slug ? rules.slug = 'required' : '';
+            req.body.short_description ? rules.short_description = 'required' : '';
+            req.body.description ? rules.description = 'required' : '';
+            req.body.meta ? rules.meta = 'required' : '';
+            req.body.tags ? rules.tags = 'required' : '';
+
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
 
