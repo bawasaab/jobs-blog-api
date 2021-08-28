@@ -260,4 +260,44 @@ module.exports = class ArticleController {
             } );
         }
     }
+
+    isSlugExists( req, res, next ) {
+        try {
+            let slug = req.params.articleSlug;
+            let rules = {
+                slug: 'required'
+            };
+            let in_data = {
+                slug: slug
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+
+                return responseServiceObj.sendException( res, {
+                    msg : responseServiceObj.getFirstError( validation )
+                } );
+            }
+
+            articleServiceObj.isSlugExists( slug )
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : result ? 'Record found' : 'Not found',
+                    data : {
+                        exists: result
+                    }
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+
+        } catch(ex) {
+    
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
 }

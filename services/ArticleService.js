@@ -79,4 +79,15 @@ module.exports = class ArticleService {
             throw ex;
         }
     }
+
+    async isSlugExists( in_slug ) {
+        try {
+
+            let result = await articleModel.countDocuments( { slug: in_slug } );
+            let isExists = result > 0 ? true : false;
+            return isExists;
+        } catch(ex) {
+            throw ex;
+        }
+    }
 }

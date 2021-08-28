@@ -65,6 +65,10 @@ router.get('/ByUser/:userId', [
     articleControllerObj.getAllByUser
 ]);
 
+router.get('/slug/:articleSlug/exists', [
+    articleControllerObj.isSlugExists
+]);
+
 router.get('/:articleId/idExists', [
     validateIdsMiddlewaresObj.articleId,
     articleControllerObj.isIdExists
