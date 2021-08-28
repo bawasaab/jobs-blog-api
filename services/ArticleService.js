@@ -80,10 +80,15 @@ module.exports = class ArticleService {
         }
     }
 
-    async isSlugExists( in_slug ) {
+    async isSlugExists( in_slug, articleId ) {
         try {
 
-            let result = await articleModel.countDocuments( { slug: in_slug } );
+            let result;
+            if( articleId ) {
+                result = await articleModel.countDocuments( { slug: in_slug, _id: { $ne: articleId } } );
+            } else {
+                result = await articleModel.countDocuments( { slug: in_slug } );
+            }
             let isExists = result > 0 ? true : false;
             return isExists;
         } catch(ex) {

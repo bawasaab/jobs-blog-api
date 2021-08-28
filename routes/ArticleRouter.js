@@ -65,7 +65,7 @@ router.get('/ByUser/:userId', [
     articleControllerObj.getAllByUser
 ]);
 
-router.get('/slug/:articleSlug/exists', [
+router.get('/slug/:articleSlug/exists/:articleId?', [
     articleControllerObj.isSlugExists
 ]);
 

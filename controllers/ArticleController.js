@@ -264,6 +264,17 @@ module.exports = class ArticleController {
     isSlugExists( req, res, next ) {
         try {
             let slug = req.params.articleSlug;
+            let articleId = req.params?.articleId ? req.params.articleId : false;
+
+            if( articleId ) {
+
+                let is_valid = ObjectId.isValid(articleId);
+                if( !is_valid ) {
+                    throw 'Article id not well formed.'
+                }
+                articleId = ObjectId( articleId );
+            }
+
             let rules = {
                 slug: 'required'
             };
@@ -278,7 +289,7 @@ module.exports = class ArticleController {
                 } );
             }
 
-            articleServiceObj.isSlugExists( slug )
+            articleServiceObj.isSlugExists( slug, articleId )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : result ? 'Record found' : 'Not found',
