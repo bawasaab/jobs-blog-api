@@ -11,17 +11,17 @@ module.exports = class CategoryService {
         try {
             let department_id = ObjectId(in_department_id);
             if (!searchTxt) {
-                let result = await DepartmentModel.findOne({'categories.department_id': department_id, 'categories.status': {$ne: 'DELETED'}}, ['categories']);
+                let result = await DepartmentModel.findOne({'categories.department_id': department_id, 'categories.category_status': {$ne: 'DELETED'}}, ['categories']);
                 return (result) ? result.categories : [];
             } else {
                 let result = await DepartmentModel.findOne(
                         {$and: [{
                                     $or: [
-                                        {'categories.title': new RegExp(searchTxt, 'i')},
-                                        {'categories.slug': new RegExp(searchTxt, 'i')}
+                                        {'categories.category_title': new RegExp(searchTxt, 'i')},
+                                        {'categories.category_slug': new RegExp(searchTxt, 'i')}
                                     ],
                                     'categories.department_id': department_id,
-                                    'categories.status': {$ne: 'DELETED'}
+                                    'categories.category_status': {$ne: 'DELETED'}
                                 }]
                         },
                         ['categories']
@@ -37,7 +37,7 @@ module.exports = class CategoryService {
         try {
             data._id = new ObjectId();
             data.department_id = ObjectId(in_department_id);
-            data.title = data.title.toLowerCase();
+            data.category_title = data.category_title.toLowerCase();
             let result = await DepartmentModel.findOneAndUpdate({_id: data.department_id}, {$push: {categories: data}}, {new : true});
             return result.categories;
         } catch (ex) {
@@ -55,7 +55,7 @@ module.exports = class CategoryService {
                             $elemMatch: {
                                 ...(category_id) && {_id: {$ne: category_id}},
                                 department_id: department_id,
-                                title: data.title.toLowerCase(),
+                                title: data.category_title.toLowerCase(),
                                 status: {$ne: 'DELETED'}
                             }
                         }
@@ -74,7 +74,7 @@ module.exports = class CategoryService {
                 _id: department_id,
                 'categories._id': id,
                 'categories.department_id': department_id,
-                'categories.status': {$ne: 'DELETED'}
+                'categories.category_status': {$ne: 'DELETED'}
             }).select({
                 categories: {$elemMatch: {_id: id}}
             });
@@ -85,18 +85,20 @@ module.exports = class CategoryService {
     }
 
     async update(in_department_id, in_id, data) {
-        let department_id = ObjectId(in_department_id);
-        let id = ObjectId(in_id);
         try {
+            let department_id = ObjectId(in_department_id);
+            let id = ObjectId(in_id);
+
+            let set = {
+                'categories.$.updated_at': new Date()
+            };
+            data.category_title ? set['categories.$.category_title'] = data.category_title : '';
+            data.category_slug ? set['categories.$.category_slug'] = data.category_slug : '';
+            data.category_status ? set['categories.$.category_status'] = data.category_status : '';
+            
             let result = await DepartmentModel.findOneAndUpdate(
                     {_id: department_id, "categories._id": id},
-                    {$set: {
-                            'categories.$.title': data.title,
-                            'categories.$.slug': data.slug,
-                            'categories.$.status': data.status,
-                            'categories.$.updated_at': new Date()
-                        }
-                    },
+                    {$set: set},
                     {new : true}
             );
             return result;
@@ -123,7 +125,7 @@ module.exports = class CategoryService {
             let id = ObjectId(in_id);
             let result = await DepartmentModel.findOneAndUpdate(
                     {_id: department_id, 'categories._id': id},
-                    {$set: {'categories.$.status': 'DELETED', 'categories.$.deleted_at': new Date()}},
+                    {$set: {'categories.$.category_status': 'DELETED', 'categories.$.deleted_at': new Date()}},
                     {new : true}
             );
             return result.categories;

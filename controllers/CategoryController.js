@@ -43,7 +43,11 @@ module.exports = class CategoryController {
         try {
             let data = req.body;
             let department_id = ObjectId(req.params.departmentId);
-            let rules = {title: 'required'};
+            let rules = {
+                category_title: 'required',
+                category_slug: 'required',
+                category_status: 'required',
+            };
             let validation = new Validator(data, rules);
             if (validation.fails()) {
                 return responseServiceObj.sendException(res, {
@@ -159,8 +163,10 @@ module.exports = class CategoryController {
             let data = req.body;
 
             let rules = {};
-            data.title ? rules.title = 'required' : '';
-            data.status ? rules.status = 'required' : '';
+            data.category_title ? rules.category_title = 'required' : '';
+            data.category_slug ? rules.category_slug = 'required' : '';
+            data.category_status ? rules.category_status = 'required' : '';
+            
             let validation = new Validator(data, rules);
             if (validation.fails()) {
                 return responseServiceObj.sendException(res, {
