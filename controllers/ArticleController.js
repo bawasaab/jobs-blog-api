@@ -28,6 +28,7 @@ module.exports = class ArticleController {
                 title: 'required',
                 slug: 'required',
                 short_description: 'required',
+                scheduled_for: 'required|date'
                 // description: 'required'
             };
             let validation = new Validator(in_data, rules);

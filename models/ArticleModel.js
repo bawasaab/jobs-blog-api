@@ -47,6 +47,8 @@ const ArticleSchema = new Schema({
         gender: { type: String, enum: GENDER, default: 'MALE' }
     },
 
+    scheduled_for: { type: Date, default: null },
+
     meta: [meta],
 	comments: [comments],
 	tags: [],
