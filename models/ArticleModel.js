@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const STATUSES = ['OPEN', 'CLOSE', 'DELETED'];
+const GENDER = ['MALE', 'FEMALE'];
 const dated = new Date();
 
 const comments = new Schema({
@@ -38,7 +39,15 @@ const ArticleSchema = new Schema({
     short_description: { type: String, default: null },
     description: { type: String, default: null },
 
-    meta: [],
+    author_details: {
+        first_name: { type: String },
+        last_name: { type: String, default: null },
+        profilePic: { type: String, default: null },        
+        email: { type: String, default: null },
+        gender: { type: String, enum: GENDER, default: 'MALE' }
+    },
+
+    meta: [meta],
 	comments: [comments],
 	tags: [],
 

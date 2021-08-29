@@ -21,4 +21,36 @@ module.exports = class TokenService {
             throw 'Session not set.';
         }
     }
+
+    getUser( req ) {
+
+        if( 
+            req.hasOwnProperty('authData') && 
+            req.authData.hasOwnProperty('userData')
+        ) {
+            return req.authData.userData;
+
+        } else {
+            throw 'Session not set.';
+        }
+    }
+
+    getAuthor( req ) {
+        
+        if( 
+            req.hasOwnProperty('authData') && 
+            req.authData.hasOwnProperty('userData')
+        ) {
+            let author_details = req.authData.userData;
+            return {
+                first_name: author_details.first_name,
+                last_name: author_details.last_name,
+                profilePic: author_details.profilePic,
+                email: author_details.email,
+                gender: author_details.gender
+            }
+        } else {
+            throw 'Session not set.';
+        }
+    }
 }

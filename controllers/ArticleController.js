@@ -21,6 +21,8 @@ module.exports = class ArticleController {
         try {
 
             let user_id = TokenServiceObj.getUserId( req );
+            console.log('after user_id');
+            console.log('user_id', user_id);
             let in_data = req.body;
             let rules = {
                 title: 'required',
@@ -37,6 +39,8 @@ module.exports = class ArticleController {
             }
             
             in_data.user_id = user_id;
+            in_data.author_details = TokenServiceObj.getAuthor(req);
+            console.log('in_data', in_data);
             articleServiceObj.insert( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
