@@ -17,7 +17,8 @@ module.exports = class CategoryService {
                 let result = await DepartmentModel.findOne(
                         {$and: [{
                                     $or: [
-                                        {'categories.title': new RegExp(searchTxt, 'i')}
+                                        {'categories.title': new RegExp(searchTxt, 'i')},
+                                        {'categories.slug': new RegExp(searchTxt, 'i')}
                                     ],
                                     'categories.department_id': department_id,
                                     'categories.status': {$ne: 'DELETED'}
@@ -91,6 +92,7 @@ module.exports = class CategoryService {
                     {_id: department_id, "categories._id": id},
                     {$set: {
                             'categories.$.title': data.title,
+                            'categories.$.slug': data.slug,
                             'categories.$.status': data.status,
                             'categories.$.updated_at': new Date()
                         }

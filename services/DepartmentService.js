@@ -12,13 +12,13 @@ module.exports = class DepartmentService {
             if (!searchTxt) {
                 let result = await DepartmentModel.find(
                         {status: {$ne: 'DELETED'}},
-                        ['_id', 'title', 'categories', 'status', 'created_at', 'updated_at', 'deleted_at'],
+                        ['_id', 'title', 'slug', 'categories', 'status', 'created_at', 'updated_at', 'deleted_at'],
                         {sort: {created_at: -1}});
                 return result;
             } else {
                 let result = await DepartmentModel.find(
-                        {$and: [{$or: [{title: new RegExp(searchTxt, 'i')}], status: {$ne: 'DELETED'}}]},
-                        ['_id', 'title', 'categories', 'status', 'created_at', 'updated_at', 'deleted_at'],
+                        {$and: [{$or: [{title: new RegExp(searchTxt, 'i')}, {slug: new RegExp(searchTxt, 'i')}], status: {$ne: 'DELETED'}}]},
+                        ['_id', 'title', 'slug', 'categories', 'status', 'created_at', 'updated_at', 'deleted_at'],
                         {sort: {created_at: -1}
                         });
                 return result;
@@ -78,5 +78,4 @@ module.exports = class DepartmentService {
             throw ex;
         }
     }
-
 };
