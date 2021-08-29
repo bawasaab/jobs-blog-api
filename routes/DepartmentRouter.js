@@ -39,7 +39,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage: storage, limits: {fileSize: 1000000 * 10}});
-let cpUpload = upload.fields([{name: 'image', maxCount: 1}]);
+let cpUpload = upload.fields([{name: 'department_image', maxCount: 1}]);
 
 router.get('/exists/:title/:departmentId?', [
     DepartmentControllerObj.exists

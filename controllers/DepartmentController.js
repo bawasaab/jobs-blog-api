@@ -89,16 +89,19 @@ module.exports = class DepartmentController {
 
     insert(req, res, next) {
         try {
-            console.log('inside depat insert');
             let in_data = req.body;
-            let rules = {title: 'required'};
+            let rules = {
+                department_title: 'required',
+                department_slug: 'required',
+                department_status: 'required',
+            };
             let validation = new Validator(in_data, rules);
             if (validation.fails()) {
                 return responseServiceObj.sendException(res, {
                     msg: responseServiceObj.getFirstError(validation)
                 });
             }
-            DepartmentServiceObj.exists(in_data.title)
+            DepartmentServiceObj.exists(in_data.department_title)
                     .then((result) => {
                         if (result) {
                             throw 'Title Already exists';
@@ -126,15 +129,17 @@ module.exports = class DepartmentController {
             let in_data = req.body;
             let id = ObjectId(req.params.departmentId);
             let rules = {id: id};
-            in_data.title ? rules.title = 'required' : '';
+            in_data.department_title ? rules.department_title = 'required' : '';
+            in_data.department_slug ? rules.department_slug = 'required' : '';
             in_data.status ? rules.status = 'required' : '';
+            
             let validation = new Validator(in_data, rules);
             if (validation.fails()) {
                 return responseServiceObj.sendException(res, {
                     msg: responseServiceObj.getFirstError(validation)
                 });
             }
-            DepartmentServiceObj.exists(in_data.title, id)
+            DepartmentServiceObj.exists(in_data.department_title, id)
                     .then((result) => {
                         if (result) {
                             throw 'Title Already exists';
@@ -169,7 +174,7 @@ module.exports = class DepartmentController {
                     })
                     .then(async (inResult) => {
                         let in_data = {
-                            status: 'DELETED',
+                            department_status: 'DELETED',
                             deleted_at: new Date()
                         };
                         let result = await DepartmentServiceObj.update(in_data, id);

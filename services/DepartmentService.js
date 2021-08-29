@@ -4,7 +4,7 @@ const {ObjectId} = require('mongodb');
 module.exports = class DepartmentService {
 
     constructor() {
-
+        this.attributes = ['_id', 'department_title', 'department_slug', 'department_image', 'categories', 'department_status', 'created_at', 'updated_at', 'deleted_at'];
     }
 
     async get(searchTxt) {
@@ -12,13 +12,13 @@ module.exports = class DepartmentService {
             if (!searchTxt) {
                 let result = await DepartmentModel.find(
                         {status: {$ne: 'DELETED'}},
-                        ['_id', 'title', 'slug', 'categories', 'status', 'created_at', 'updated_at', 'deleted_at'],
+                        this.attributes,
                         {sort: {created_at: -1}});
                 return result;
             } else {
                 let result = await DepartmentModel.find(
                         {$and: [{$or: [{title: new RegExp(searchTxt, 'i')}, {slug: new RegExp(searchTxt, 'i')}], status: {$ne: 'DELETED'}}]},
-                        ['_id', 'title', 'slug', 'categories', 'status', 'created_at', 'updated_at', 'deleted_at'],
+                        this.attributes,
                         {sort: {created_at: -1}
                         });
                 return result;
@@ -30,7 +30,7 @@ module.exports = class DepartmentService {
 
     async insert(in_data) {
         try {
-            in_data.title = in_data.title.toLowerCase();
+            in_data.department_title = in_data.department_title.toLowerCase();
             let result = await DepartmentModel.create(in_data);
             return result;
         } catch (ex) {
