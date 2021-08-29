@@ -131,7 +131,7 @@ module.exports = class DepartmentController {
             let rules = {id: id};
             in_data.department_title ? rules.department_title = 'required' : '';
             in_data.department_slug ? rules.department_slug = 'required' : '';
-            in_data.status ? rules.status = 'required' : '';
+            in_data.department_status ? rules.department_status = 'required' : '';
             
             let validation = new Validator(in_data, rules);
             if (validation.fails()) {

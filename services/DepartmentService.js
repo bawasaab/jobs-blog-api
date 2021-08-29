@@ -11,13 +11,13 @@ module.exports = class DepartmentService {
         try {
             if (!searchTxt) {
                 let result = await DepartmentModel.find(
-                        {status: {$ne: 'DELETED'}},
+                        {department_status: {$ne: 'DELETED'}},
                         this.attributes,
                         {sort: {created_at: -1}});
                 return result;
             } else {
                 let result = await DepartmentModel.find(
-                        {$and: [{$or: [{title: new RegExp(searchTxt, 'i')}, {slug: new RegExp(searchTxt, 'i')}], status: {$ne: 'DELETED'}}]},
+                        {$and: [{$or: [{title: new RegExp(searchTxt, 'i')}, {slug: new RegExp(searchTxt, 'i')}], department_status: {$ne: 'DELETED'}}]},
                         this.attributes,
                         {sort: {created_at: -1}
                         });
@@ -38,9 +38,9 @@ module.exports = class DepartmentService {
         }
     }
 
-    async exists(title, id = false) {
+    async exists(department_title, id = false) {
         try {
-            let condition = (id) ? {title: title.toLowerCase(), _id: {$ne: id}, status: {$ne: 'DELETED'}} : {title: title.toLowerCase(), status: {$ne: 'DELETED'}};
+            let condition = (id) ? {department_title: department_title.toLowerCase(), _id: {$ne: id}, department_status: {$ne: 'DELETED'}} : {department_title: department_title.toLowerCase(), department_status: {$ne: 'DELETED'}};
             let result = await DepartmentModel.countDocuments(condition);
             let isExists = result > 0 ? true : false;
             return isExists;
@@ -52,7 +52,7 @@ module.exports = class DepartmentService {
     async getById(in_id) {
         try {
             let id = ObjectId(in_id);
-            let result = await DepartmentModel.findOne({_id: id, status: {$ne: 'DELETED'}});
+            let result = await DepartmentModel.findOne({_id: id, department_status: {$ne: 'DELETED'}});
             return result;
         } catch (ex) {
             throw ex;
