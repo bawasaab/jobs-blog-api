@@ -12,9 +12,11 @@ const CategoryRouter = require('./api/CategoryRouter');
 const AuthController = require('../controllers').AuthController;
 const AuthControllerObj = new AuthController();
 
+var { basePath } = require('../config/config').WEB_ROOT_IMAGE_PATH;
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('api/index', { base_path: basePath });
 });
 
 router.use( '/auth', authRouter );
