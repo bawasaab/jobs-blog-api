@@ -3,10 +3,10 @@ const router = express.Router({
     mergeParams: true
 });
 
-const ValidateIdsMiddlewares = require('../middlewares').ValidateIdsMiddlewares;
+const ValidateIdsMiddlewares = require('../../middlewares').ValidateIdsMiddlewares;
 const validateIdsMiddlewaresObj = new ValidateIdsMiddlewares();
 
-const ArticleController = require('../controllers').ArticleController;
+const ArticleController = require('../../controllers').ArticleController;
 const articleControllerObj = new ArticleController();
 
 /**
