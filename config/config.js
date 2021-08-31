@@ -22,15 +22,32 @@ module.exports = {
 
     MONGODB_CONNECTION_STRING: process.env.MONGODB_CONNECTION_STRING,
 
-    BASE_URL: process.env.BASE_URL,
+    API_BASE_URL: process.env.API_BASE_URL,
 
-    USER_IMAGE_UPLOAD_PATH: process.env.USER_IMAGE_UPLOAD_PATH,
-    USER_IMAGE_BASE_PATH: process.env.BASE_URL + process.env.USER_IMAGE_BASE_PATH,
+    WEB_BASE_URL: process.env.WEB_BASE_URL,
     
-    DEPARTMENT_IMAGE_UPLOAD_PATH: process.env.DEPARTMENT_IMAGE_UPLOAD_PATH,
-    DEPARTMENT_IMAGE_PATH: process.env.BASE_URL + process.env.DEPARTMENT_IMAGE_PATH,
-    
+    // BASE_URL: process.env.BASE_URL,
     JWT_SECRET: process.env.JWT_SECRET_KEY,
+
+    PORT: process.env.PORT,
+
+    API_USER_IMAGE_UPLOAD_PATH: process.env.API_USER_IMAGE_UPLOAD_PATH,
+    API_USER_IMAGE_BASE_PATH: process.env.BASE_URL + process.env.API_USER_IMAGE_BASE_PATH,
+    
+    API_DEPARTMENT_IMAGE_UPLOAD_PATH: process.env.API_DEPARTMENT_IMAGE_UPLOAD_PATH,
+    API_DEPARTMENT_IMAGE_PATH: process.env.BASE_URL + process.env.API_DEPARTMENT_IMAGE_PATH,
+
+    API_ARTICLE_IMAGE_UPLOAD_PATH: process.env.API_ARTICLE_IMAGE_UPLOAD_PATH,
+    API_ARTICLE_IMAGE_PATH: process.env.API_ARTICLE_IMAGE_PATH,
+
+    WEB_ROOT_IMAGE_UPLOAD_PATH: process.env.WEB_ROOT_IMAGE_UPLOAD_PATH,
+    WEB_ROOT_IMAGE_PATH: process.env.WEB_ROOT_IMAGE_PATH,
+
+    MAIL_HOST: process.env.MAIL_HOST,
+    MAIL_PORT: process.env.MAIL_PORT,
+    MAIL_USERNAME: process.env.MAIL_USERNAME,
+    MAIL_PASSWORD: process.env.MAIL_PASSWORD,
+    MAIL_FROM: process.env.MAIL_FROM,
     
     VIEW_PATH: path.join(__dirname, '../views'),
     

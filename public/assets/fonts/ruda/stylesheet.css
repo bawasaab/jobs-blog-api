@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Ruda';
+    src: url('Ruda-Bold.woff2') format('woff2'),
+        url('Ruda-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: url('Ruda-Black.woff2') format('woff2'),
+        url('Ruda-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: url('Ruda-SemiBold.woff2') format('woff2'),
+        url('Ruda-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: url('Ruda-ExtraBold.woff2') format('woff2'),
+        url('Ruda-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: url('Ruda-Medium.woff2') format('woff2'),
+        url('Ruda-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ruda';
+    src: url('Ruda-Regular.woff2') format('woff2'),
+        url('Ruda-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

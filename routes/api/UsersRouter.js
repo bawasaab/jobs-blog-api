@@ -3,13 +3,13 @@ const router = express.Router({
     mergeParams: true
 });
 
-const ValidateIdsMiddlewares = require('../middlewares').ValidateIdsMiddlewares;
+const ValidateIdsMiddlewares = require('../../middlewares').ValidateIdsMiddlewares;
 const validateIdsMiddlewaresObj = new ValidateIdsMiddlewares();
 
-const UsersController = require('../controllers').UserController;
+const UsersController = require('../../controllers').UserController;
 const UserControllerObj = new UsersController();
 
-var userImagePath = require('../config/config').USER_IMAGE_UPLOAD_PATH;
+var userImagePath = require('../../config/config').USER_IMAGE_UPLOAD_PATH;
 /**
  * IMAGE UPLOAD STARTS
  */

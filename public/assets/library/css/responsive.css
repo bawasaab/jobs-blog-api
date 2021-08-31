@@ -1,0 +1,34 @@
+/* Max Width Css */
+@media only screen and (max-width: 1200px) {
+    .page-container {
+        width: 96% !important;
+        margin: 0 auto;
+        float: none;
+    }
+    .logo-header {
+        padding: 10px 0;
+    }
+    .logo-header .logo img {
+        width: 165px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .main-header .navbar-toggler {
+        color: var(--white-color);
+        display: flex;
+        align-items: center;
+    }
+    .main-header .navbar-toggler span {
+        font-size: 14px;
+    }
+    .main-header .navbar-nav {
+        border-top: 1px solid var(--border-color);
+        margin-top: 10px;
+    }
+    .main-header .navbar-nav li:not(:last-child):after {
+        display: none;
+    }
+    .main-header .navbar-nav li a {
+        line-height: 40px;
+    }
+}
