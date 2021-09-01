@@ -1,9 +1,23 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const moment = require('moment');
+const router = express.Router();
+
+const ArticleService = require('../services').ArticleService;
+const articleServiceObj = new ArticleService();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('web/index', { title: 'Express' });
+    try {
+        articleServiceObj.getAll()
+        .then( async (result) => {
+            res.render('web/index', { articles: result });
+        } )
+        .catch( (ex) => {
+            console.log('ex', ex);
+        } )
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
 });
 
 router.get('/about-us', function(req, res, next) {
@@ -15,11 +29,33 @@ router.get('/contact-us', function(req, res, next) {
 });
 
 router.get('/all-jobs', (req, res, next) => {
-    res.render('web/all_jobs', { title: 'Express' });
+    try {
+        articleServiceObj.getAll()
+        .then( async (result) => {
+            res.render('web/all_jobs', { articles: result });
+        } )
+        .catch( (ex) => {
+            console.log('ex', ex);
+        } )
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
 });
 
-router.get('/job-details', (req, res, next) => {
-    res.render('web/job_details', { title: 'Express' });
+router.get('/job-details/:slug', (req, res, next) => {
+    try {
+        articleServiceObj.getBySlug( req.params.slug )
+        .then( async (result) => {
+            res.render('web/job_details', {
+                article: result, moment: moment 
+            });
+        } )
+        .catch( (ex) => {
+            console.log('ex', ex);
+        } )
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
 });
 
 module.exports = router;
