@@ -1,6 +1,16 @@
 <%- include includes/header.ejs %>
 <%- include includes/left-sidebar.ejs %>
 
+<style>
+    .post-body .post-des p {
+        text-align: justify;
+    }
+
+    .post-body .post-des img {
+        width: 100%;
+    }
+</style>
+
 <!-- Middle Content -->
 <div class="col-lg-6 order-lg-2 order-1">
     <div class="main-content">
@@ -11,17 +21,25 @@
                 <div class="post-details">
                     <!-- Post Head -->
                     <div class="post-head">
-                        <h1>Melancholy Middletons Yet Understood Decisively</h1>
+                        <!-- <h1>Melancholy Middletons Yet Understood Decisively</h1> -->
+                        <h1>
+                            <%= article.title ? article.title : '' %>
+                        </h1>
                     </div>
                     <!-- Post Meta -->
                     <div class="post-meta">
                         <span class="meta-inner">
                             <i class="fa fa-user"></i>
-                            <a href="javascript:void();">Admin</a>
+                            <!-- <a href="javascript:void();">Admin</a> -->
+                            <a href="javascript:void();">
+                                <%= article.author_details.first_name || article.author_details.last_name ? article.author_details.first_name +' '+ article.author_details.last_name : '' %>
+                            </a>
                         </span>
                         <span class="meta-inner">
                             <i class="fas fa-calendar-day"></i>
-                            <a href="javascript:void();">14/08/2021</a>
+                            <a href="javascript:void();">
+                                <%= article.scheduled_for ? moment( article.scheduled_for ).format('YYYY-MM-DD') : '' %>
+                            </a>
                         </span>
                         <span class="meta-inner">
                             <i class="fas fa-folder"></i>
@@ -38,7 +56,7 @@
                     </div>
                     <!-- Post Description -->
                     <article>
-                        <div class="post-body">
+                        <!-- <div class="post-body">
                             <div class="post-image mb-4">
                                 <img src="/assets/images/post-image.jpg" class="mw-100" alt="post-image">
                             </div>
@@ -47,7 +65,14 @@
                                 <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.</p>
                                 <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.</p>
                             </div>
+                        </div> -->
+
+                        <div class="post-body">
+                            <div class="post-des">
+                                <%- article.description ? article.description : '' %>
+                            </div>
                         </div>
+
                     </article>
                     <div class="post-footer">
                         <!-- Post Tags -->
@@ -56,10 +81,12 @@
                             <a href="javascript:void();"># Beauty</a>
                             <a href="javascript:void();"># Fashion</a>
                         </div>
+                        
                         <!-- Post Ad -->
                         <div class="post-ad mt-3">
                             <img src="/assets/images/ad/ad-490-90.jpg" class="w-100" alt="post-ad-image">
                         </div>
+                        
                         <!-- Post Share -->
                         <div class="share-box py-3">
                             <h4 class="share-title">Share This:</h4>
@@ -105,6 +132,7 @@
                                 </div>
                             </div>
                         </div>
+
 						<!-- Comments Form-->
 						<div class="comment-form mb-4">
 							<h4>Leave a Comment</h4>

@@ -37,6 +37,17 @@ module.exports = class ArticleService {
         }
     }
 
+    async getBySlug( in_slug ) {
+        try {
+
+            let result = await articleModel.findOne( { slug: in_slug, status: 'OPEN' } );
+            return result;
+        } catch(ex) {
+            
+            throw ex;
+        }
+    }
+
     async insert( in_data ) {
         try {
 
