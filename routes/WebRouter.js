@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
         articleServiceObj.getAll()
         .then( async (result) => {
             res.render('web/index', { 
-                title: 'Home Page',
+                title: 'PUNJAB POLICE RECRUITMENT 2021',
                 articles: result 
             });
         } )
