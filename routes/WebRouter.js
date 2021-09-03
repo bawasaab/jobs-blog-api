@@ -10,7 +10,10 @@ router.get('/', function(req, res, next) {
     try {
         articleServiceObj.getAll()
         .then( async (result) => {
-            res.render('web/index', { articles: result });
+            res.render('web/index', { 
+                title: 'Home Page',
+                articles: result 
+            });
         } )
         .catch( (ex) => {
             console.log('ex', ex);

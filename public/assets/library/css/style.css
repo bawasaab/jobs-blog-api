@@ -773,3 +773,9 @@ a, a:hover {
 .footer-bottom .social-link ul li a i {
     margin-right: 4px;
 }
+.margin-top-10 {
+    margin-top: 10px;
+}
+.text-justify {
+    text-align: justify;
+}

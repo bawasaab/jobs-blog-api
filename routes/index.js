@@ -9,7 +9,7 @@ const AuthControllerObj = new AuthController();
 
 /* GET home page. */
 
-// router.use('/api', ApiRouter);
+router.use('/api', ApiRouter);
 router.use('/', WebRouter);
 
 module.exports = router;
