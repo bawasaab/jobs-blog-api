@@ -81,12 +81,13 @@
                             <!-- <a href="javascript:void();"># Beauty</a>
                             <a href="javascript:void();"># Fashion</a> -->
                             <%
-                                article.tags.forEach(function(el, index) {
-                                    // el - current element, i - index
-                                    %>
-                                    <a href="javascript:void();"># <%- el %></a>
-                                    <%
-                                });
+                                if( typeof article.tags ) {
+                                    article.tags.forEach(function(el, index) {
+                                        %>
+                                        <a href="javascript:void();"># <%- el %></a>
+                                        <%
+                                    });
+                                }
                             %>
                         </div>
                         
