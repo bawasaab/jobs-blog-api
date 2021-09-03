@@ -78,8 +78,16 @@
                         <!-- Post Tags -->
                         <div class="label-head">
                             <span class="label-title">Tags</span>
-                            <a href="javascript:void();"># Beauty</a>
-                            <a href="javascript:void();"># Fashion</a>
+                            <!-- <a href="javascript:void();"># Beauty</a>
+                            <a href="javascript:void();"># Fashion</a> -->
+                            <%
+                                myArray.forEach(function(el, index) {
+                                    // el - current element, i - index
+                                    %>
+                                    <a href="javascript:void();"># <%- el %></a>
+                                    <%
+                                });
+                            %>
                         </div>
                         
                         <!-- Post Ad -->
