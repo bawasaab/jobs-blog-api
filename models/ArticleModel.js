@@ -8,6 +8,9 @@ const dated = new Date();
 const comments = new Schema({
     parent_id: { type: ObjectId, default: null },
     article_id: { type: ObjectId, default: null },
+    name: { type: String, default: null },
+    email: { type: String, default: null },
+    website: { type: String, default: null },
     comment: { type: String, default: null },
     status: { type: String, enum: STATUSES, default: 'OPEN' },
     

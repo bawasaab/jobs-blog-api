@@ -8,6 +8,7 @@ const commentsRouter = require('./api/CommentsRouter');
 const articleRouter = require('./api/ArticleRouter');
 const DepartmentRouter = require('./api/DepartmentRouter');
 const CategoryRouter = require('./api/CategoryRouter');
+const OpenRouter = require('./api/OpenRouter');
 
 const AuthController = require('../controllers').AuthController;
 const AuthControllerObj = new AuthController();
@@ -20,11 +21,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.use( '/auth', authRouter );
+router.use( '/open', OpenRouter );
 
 /**
  * auth middleware starts
  */
-router.use( AuthControllerObj.verifyToken );
+// router.use( AuthControllerObj.verifyToken );
 /**
  * auth middleware ends
  */

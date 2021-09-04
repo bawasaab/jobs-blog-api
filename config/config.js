@@ -14,6 +14,7 @@ const cluster = `cluster0.mvpaj.mongodb.net`;
 
 // mongodb+srv://deepak:<password>@cluster0.mvpaj.mongodb.net/test
 const mongodbUrl = `mongodb+srv://${dbUsername}:${dbPassword}@${cluster}/${dbName}`;
+// const mongodbUrl = `mongodb://127.0.0.1:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false`;
 
 const basePath = process.env.BASE_URL;
 

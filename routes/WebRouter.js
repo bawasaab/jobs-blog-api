@@ -49,6 +49,10 @@ router.get('/job-details/:slug', (req, res, next) => {
     try {
         articleServiceObj.getBySlug( req.params.slug )
         .then( async (result) => {
+            if( result.comments ) {
+                let tmp_comments = result.comments.reverse();
+                result.comments = tmp_comments;
+            }
             res.render('web/job_details', {
                 article: result, moment: moment 
             });

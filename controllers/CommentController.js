@@ -23,6 +23,8 @@ module.exports = class CommentController {
             let rules = {
                 // parent_id: 'required',
                 // article_id: 'required',
+                name: 'required|min:3',
+                email: 'required|email',
                 comment: 'required'
             };
             let validation = new Validator(in_data, rules);
@@ -33,12 +35,17 @@ module.exports = class CommentController {
                 } );
             }
 
-            in_data.user_id = TokenServiceObj.getUserId( req );
+            if( TokenServiceObj.isSessionSet(req) ) {
+
+                in_data.user_id = TokenServiceObj.getUserId( req );
+            } else {
+                in_data.user_id = null;
+            }
             in_data.article_id = req.params.articleId;
             CommentServiceObj.insert( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
-                    msg : 'Record inserted successfully',
+                    msg : 'Comment saved successfully',
                     data : {
                         comment: result
                     }

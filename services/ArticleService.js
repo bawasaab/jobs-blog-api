@@ -29,7 +29,7 @@ module.exports = class ArticleService {
         try {
 
             let id = ObjectId( in_id );
-            let result = await articleModel.findOne( { _id: id, status: { $ne: 'DELETED' } } );    
+            let result = await articleModel.findOne( { _id: id, status: { $ne: 'DELETED' } } );
             return result;
         } catch(ex) {
             

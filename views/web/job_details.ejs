@@ -145,26 +145,31 @@
 						<!-- Comments Form-->
 						<div class="comment-form mb-4">
 							<h4>Leave a Comment</h4>
-							<form>
+							<form id="frm-post-comment" name="frm-post-comment" method="post" action="">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Name">
+											<input type="text" class="form-control" placeholder="Name" required name="name" id="name">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<input type="email" class="form-control" placeholder="Email">
+											<input type="email" class="form-control" placeholder="Email" required name="email" id="email">
+										</div>
+									</div>
+                                    <div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Website" name="website" id="website">
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<textarea rows="5" class="form-control" placeholder="Write Comment"></textarea>
+											<textarea rows="5" class="form-control" placeholder="Write Comment" required name="comment" id="comment"></textarea>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="btn-submit mt-3">
-											<button type="button" class="btn btn-info">Post Comment</button>
+											<button type="submit" class="btn btn-info">Post Comment</button>
 										</div>
 									</div>
 								</div>
@@ -172,10 +177,31 @@
 						</div>
                         <!-- Post Comments-->
                         <div class="post-comments">
-                            <h4>4 comments:</h4>
+                            <h4><%- article.comments.length %> comments:</h4>
                             <div class="comments-content">
                                 <ul>
-                                    <li>
+                                    
+                                    <% if( typeof article.comments ) { %>
+                                        <% article.comments.forEach( (comment) => { %>
+                                            <li attr-comment-id="<%= comment._id ? comment._id : '' %>">
+                                                <div class="avatar">
+                                                    <img src="/assets/images/icons/avtar.jpg" alt="avatar">
+                                                </div>
+                                                <div class="comment-block">
+                                                    <div class="comment-header">
+                                                        <!-- <a href="javascript:void();">Sora Blogging Tips</a> -->
+                                                        <p><b><%= comment.name ? comment.name : '' %></b></p>
+                                                        <!-- <span>3 June 2020 at 23:47</span> -->
+                                                        <span><b><%= comment.createdAt ? moment( comment.createdAt ).format('Do MMM [at] h:mm:ss a') : '' %></b></span>
+                                                    </div>
+                                                    <p class="text-justify"><%= comment.comment ? comment.comment : '' %></p>
+                                                    <hr />
+                                                </div>
+                                            </li>
+                                        <% }); %>
+                                    <% } %>
+
+                                    <!-- <li>
                                         <div class="avatar">
                                             <img src="/assets/images/icons/avtar.jpg" alt="avatar">
                                         </div>
@@ -238,7 +264,7 @@
                                                 <a href="javascript:void();">Reply</a>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -251,3 +277,29 @@
 
 <%- include includes/right-sidebar.ejs %>
 <%- include includes/footer.ejs %>
+<script>
+    $(document).ready(function() {
+        $('#frm-post-comment').on('submit', function(e) {
+            e.preventDefault();
+            let articleId = '<%- article._id %>';
+            let url = api_base_url +'/open/'+articleId+'/comments';
+
+            $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $('#frm-post-comment').serialize(),
+                success: function( retdata ) {
+                    // console.log('retdata', retdata);
+                    if( retdata.success ) {
+                        $('#frm-post-comment').trigger("reset");
+                    }
+                    alert(retdata.msg);
+                },
+                error: function(e){
+                    console.log(e);
+                }
+            });
+        });
+    });
+</script>

@@ -8,6 +8,20 @@ module.exports = class TokenService {
 
     constructor() {}
 
+    isSessionSet( req ) {
+
+        if( 
+            req.hasOwnProperty('authData') && 
+            req.authData.hasOwnProperty('userData') && 
+            req.authData.userData.hasOwnProperty('id')
+        ) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
     getUserId( req ) {
 
         if( 
