@@ -45,7 +45,7 @@ module.exports = class CommentController {
             CommentServiceObj.insert( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
-                    msg : 'Comment saved successfully',
+                    msg : 'Comment saved successfully. it would be visible once its approved by the admin.',
                     data : {
                         comment: result
                     }

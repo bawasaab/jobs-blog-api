@@ -57,33 +57,37 @@
             <div class="widget-content">
                 <div class="category">
                     <ul class="cat-items">
-                        <li>
+                        <!-- <li>
                             <a href="/job-details">Beauty</a>
                             <span>(6)</span>
-                        </li>
-                        <li>
-                            <a href="/job-details">Culture</a>
-                            <span>(6)</span>
-                        </li>
-                        <li>
-                            <a href="/job-details">Fashion</a>
-                            <span>(6)</span>
-                        </li>
-                        <li>
-                            <a href="/job-details">Music</a>
-                            <span>(6)</span>
-                        </li>
-                        <li>
-                            <a href="/job-details">Sports</a>
-                            <span>(6)</span>
-                        </li>
-                        <li>
-                            <a href="/job-details">Technology</a>
-                            <span>(6)</span>
-                        </li>
+                        </li> -->
+                        <% Object.keys(left_side_tags).forEach(function(key) { %>
+                            <li>
+                                <a href="javascript:void();"><%- left_side_tags[key] %></a>
+                            </li>
+                        <% }); %>
                     </ul>
                 </div>
             </div>
         </div>
+
+        <!-- Category Lists -->
+        <div class="widget">
+            <div class="section-title">
+                <h2><span>Qualifications</span></h2>
+            </div>
+            <div class="widget-content">
+                <div class="category">
+                    <ul class="cat-items">
+                        <% Object.keys(left_side_qualification).forEach(function(key) { %>
+                            <li>
+                                <a href="javascript:void();"><%- left_side_qualification[key] %></a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- left_side_qualification -->
     </div>
 </div>

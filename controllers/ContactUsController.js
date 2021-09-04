@@ -19,7 +19,11 @@ module.exports = class ContactUsController {
     async contact(req, res, next) {
         try {
             let data = req.body;
-            let rules = {first_name: 'required', email: 'required|email', message: 'required'};
+            let rules = {
+                first_name: 'required', 
+                email: 'required|email', 
+                message: 'required'
+            };
             let validation = new Validator(data, rules);
             if (validation.fails()) {
                 return responseServiceObj.sendException(res, {
@@ -28,7 +32,7 @@ module.exports = class ContactUsController {
             }
 
             /* SEND MAIL TO ADMIN */
-            let admin_email_html = await view.renderFile(VIEW_PATH + '/emails/contact-us-admin-mail.ejs', data);
+            let admin_email_html = await view.renderFile(VIEW_PATH + '/api/emails/contact-us-admin-mail.ejs', data);
             MailServiceObj.sendMail({to: ADMIN_EMAIL, html: admin_email_html, subject: 'New Query'}).then(async (result) => {
                 if (result.sent == false) {
                     console.log('Contact Us Admin Email Failed');
@@ -40,7 +44,7 @@ module.exports = class ContactUsController {
             });
 
             /* THANKYOU MAIL TO ENQUIRER */
-            let customer_thankyou_html = await view.renderFile(VIEW_PATH + '/emails/customer-contact-thankyou-mail.ejs', data);
+            let customer_thankyou_html = await view.renderFile(VIEW_PATH + '/api/emails/customer-contact-thankyou-mail.ejs', data);
             MailServiceObj.sendMail({to: data.email, html: customer_thankyou_html, subject: 'Thankyou For Writing To Us'}).then(async (result) => {
                 if (result.sent == false) {
                     console.log('Customer Thankyou Mail Failed');

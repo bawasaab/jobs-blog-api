@@ -61,36 +61,50 @@
             </div>
         </div>
         <!-- Tags -->
+            <div class="widget">
+                <div class="section-title">
+                    <h2><span>Tags</span></h2>
+                </div>
+                <div class="widget-content text-justify">
+                    <div class="tags-widget">
+                        <span>
+                            <a href="javascript:void();">Culture</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void();">Fashion</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void();">Featured Posts</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void();">Food Genel</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void();">Magazine</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void();">Music</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void();">Sports</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        <!-- States -->
         <div class="widget">
             <div class="section-title">
-                <h2><span>Tags</span></h2>
+                <h2><span>States</span></h2>
             </div>
             <div class="widget-content text-justify">
                 <div class="tags-widget">
-                    <span>
-                        <a href="javascript:void();">Beauty</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Culture</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Fashion</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Featured Posts</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Food Genel</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Magazine</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Music</a>
-                    </span>
-                    <span>
-                        <a href="javascript:void();">Sports</a>
-                    </span>
+                    
+                    <% Object.keys(right_side_states).forEach(function(key) { %>
+                        <span>
+                            <a href="javascript:void();"><%- right_side_states[key] %></a>
+                        </span>
+                    <% }); %>
                 </div>
             </div>
         </div>
