@@ -282,6 +282,7 @@ a, a:hover {
     line-height: normal;
     margin: 0 5px 5px 0;
     opacity: 1;
+    width: 100%;
 }
 .tags-widget span a {
     background: #efefef;
