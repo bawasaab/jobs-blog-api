@@ -49,6 +49,27 @@
                 </div>
             </div>
         </div>
+        <!-- Pages Lists -->
+        <div class="widget">
+            <div class="section-title">
+                <h2><span>Pages</span></h2>
+            </div>
+            <div class="widget-content">
+                <div class="category">
+                    <ul class="cat-items">
+                        <!-- <li>
+                            <a href="/job-details/lorem-ipsum">Beauty</a>
+                            <span>(6)</span>
+                        </li> -->
+                        <% Object.keys(left_side_pages).forEach(function(key) { %>
+                            <li>
+                                <a href="/job-details/lorem-ipsum"><%- left_side_pages[key] %></a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!-- Category Lists -->
         <div class="widget">
             <div class="section-title">
@@ -63,7 +84,7 @@
                         </li> -->
                         <% Object.keys(left_side_categories).forEach(function(key) { %>
                             <li>
-                                <a href="javascript:void();"><%- left_side_categories[key] %></a>
+                                <a href="/job-details/lorem-ipsum"><%- left_side_categories[key] %></a>
                             </li>
                         <% }); %>
                     </ul>
@@ -81,7 +102,7 @@
                     <ul class="cat-items">
                         <% Object.keys(left_side_qualification).forEach(function(key) { %>
                             <li>
-                                <a href="javascript:void();"><%- left_side_qualification[key] %></a>
+                                <a href="/job-details/lorem-ipsum"><%- left_side_qualification[key] %></a>
                             </li>
                         <% }); %>
                     </ul>
