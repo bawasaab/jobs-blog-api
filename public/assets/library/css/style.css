@@ -779,3 +779,6 @@ a, a:hover {
 .text-justify {
     text-align: justify;
 }
+.g-signin2 > div {
+    margin: 0 auto;
+}

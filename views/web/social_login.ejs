@@ -17,6 +17,7 @@
                     </h1>
                     <hr />
 
+                    <!-- FACEBOOK LOGIN STARTS HERE -->
                     <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
 
                     <div 
@@ -31,7 +32,7 @@
                         data-use-continue-as="true">
                     </div>
         
-                    <div id="status"></div>
+                    <div id="status"></div><hr />
         
                     <!-- Load the JS SDK asynchronously -->
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
@@ -47,9 +48,35 @@
                             });
                         }
                     </script>
+                    <!-- FACEBOOK LOGIN ENDS HERE -->
+
+                    <!-- GOOGLE LOGIN STARTS HERE -->
+                    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+
+                    <script>
+                        function onSignIn(googleUser) {
+                            var profile = googleUser.getBasicProfile();
+                            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                            console.log('Name: ' + profile.getName());
+                            console.log('Image URL: ' + profile.getImageUrl());
+                            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                        }
+
+                        function signOut() {
+                            var auth2 = gapi.auth2.getAuthInstance();
+                            auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                            });
+                        }
+                    </script>
+                    <!-- GOOGLE LOGIN ENDS HERE -->
 
                 </div>
             </div>
+
 
 
         </div>
