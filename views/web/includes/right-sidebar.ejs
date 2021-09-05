@@ -67,27 +67,14 @@
                 </div>
                 <div class="widget-content text-justify">
                     <div class="tags-widget">
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Culture</a>
-                        </span>
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Fashion</a>
-                        </span>
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Featured Posts</a>
-                        </span>
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Food Genel</a>
-                        </span>
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Magazine</a>
-                        </span>
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Music</a>
-                        </span>
-                        <span>
-                            <a href="/job-details/lorem-ipsum">Sports</a>
-                        </span>
+
+                        <% Object.keys(right_side_tags).forEach(function(key) { %>
+                            <span>
+                                <a href="/job-details/lorem-ipsum">
+                                    <h3 style="font-size: 12px;"><%- right_side_tags[key] %></h3>
+                                </a>
+                            </span>
+                        <% }); %>
                     </div>
                 </div>
             </div>
@@ -101,7 +88,11 @@
                 <div class="states-widget">
                     
                     <% Object.keys(right_side_states).forEach(function(key) { %>
-                        <span><a href="/job-details/lorem-ipsum"><h3 style="font-size: 12px;"><%- right_side_states[key] %></h3></a></span>
+                        <span>
+                            <a href="/job-details/lorem-ipsum">
+                                <h3 style="font-size: 12px;"><%- right_side_states[key] %></h3>
+                            </a>
+                        </span>
                     <% }); %>
                 </div>
             </div>

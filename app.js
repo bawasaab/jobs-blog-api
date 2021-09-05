@@ -41,7 +41,17 @@ app.use('/', indexRouter);
 /**
  * GLOBALS STARTS HERE
  */
-app.locals.left_side_tags = {
+app.locals.left_side_categories = {
+    culture: 'Culture',
+    fashion: 'Fashion',
+    featured_posts: 'Featured Posts',
+    food_genel: 'Food Genel',
+    magzine: 'Magzine',
+    music: 'Music',
+    sports: 'Sports',
+};
+
+app.locals.right_side_tags = {
     culture: 'Culture',
     fashion: 'Fashion',
     featured_posts: 'Featured Posts',
