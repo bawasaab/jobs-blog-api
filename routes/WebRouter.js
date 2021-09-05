@@ -23,6 +23,14 @@ router.get('/', function(req, res, next) {
     }
 });
 
+router.get('/social-login', (req, res, next) => {
+    try {
+        res.render('web/social_login', {});
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
+});
+
 router.get('/about-us', function(req, res, next) {
     res.render('web/about_us', { title: 'Express' });
 });

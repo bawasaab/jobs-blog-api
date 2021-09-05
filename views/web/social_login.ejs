@@ -1,0 +1,59 @@
+<%- include includes/header.ejs %>
+<%- include includes/left-sidebar.ejs %>
+
+    <!-- Middle Content -->
+    <div class="col-lg-6 order-lg-2 order-1">
+        <div class="main-content">
+            <%- include includes/main-search.ejs %>
+
+
+            <div class="card bg-light">
+                <div class="card-body text-center">
+
+                    <h1>
+                        <u>
+                            Login
+                        </u>
+                    </h1>
+                    <hr />
+
+                    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+
+                    <div 
+                        class="fb-login-button" 
+                        data-width="" 
+                        data-size="large" 
+                        data-layout="rounded" 
+                        data-auto-logout-link="true" 
+                        data-scope="public_profile,email" 
+                        data-default-audience="everyone" 
+                        data-button-type="continue_with" 
+                        data-use-continue-as="true">
+                    </div>
+        
+                    <div id="status"></div>
+        
+                    <!-- Load the JS SDK asynchronously -->
+                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+                    <script>
+
+                        function statusChangeCallback( response ) {
+                            // console.log('response', response);
+                        }
+
+                        function checkLoginState() {
+                            FB.getLoginStatus(function(response) {
+                                statusChangeCallback(response);
+                            });
+                        }
+                    </script>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+<%- include includes/right-sidebar.ejs %>
+<%- include includes/footer.ejs %>
