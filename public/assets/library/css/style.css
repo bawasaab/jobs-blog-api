@@ -282,7 +282,6 @@ a, a:hover {
     line-height: normal;
     margin: 0 5px 5px 0;
     opacity: 1;
-    width: 100%;
 }
 .tags-widget span a {
     background: #efefef;
@@ -302,6 +301,31 @@ a, a:hover {
     color: var(--white-color);
 }
 
+/* States Css */
+.states-widget span {
+    display: inline-block;
+    font-size: 12px;
+    line-height: normal;
+    margin: 0 5px 5px 0;
+    opacity: 1;
+}
+.states-widget span a {
+    background: #efefef;
+    color: var(--primary-color);
+    float: left;
+    font-weight: 400;
+    line-height: 100%;
+    margin: 0;
+    padding: 8px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: var(--font-family-ruda);
+    transition: var(--transition-3s);
+}
+.states-widget span a:hover {
+    background: var(--secondary-color);
+    color: var(--white-color);
+}
 /* Search Box Css */
 .main-content .search-box{
     position: relative;
