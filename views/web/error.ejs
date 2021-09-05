@@ -1,3 +1,17 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<%- include includes/header.ejs %>
+<%- include includes/left-sidebar.ejs %>
+
+<!-- Middle Content -->
+<div class="col-lg-6 order-lg-2 order-1">
+    <div class="main-content">
+    <%- include includes/main-search.ejs %>
+
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+
+    </div>
+</div>
+
+<%- include includes/right-sidebar.ejs %>
+<%- include includes/footer.ejs %>
