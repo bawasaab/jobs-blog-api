@@ -189,6 +189,9 @@ a, a:hover {
     border-bottom: 1px solid #ececec;
     position: relative;
 }
+.category .cat-items li:hover {
+    background: var(--border-color);
+}
 .category .cat-items li a {
     flex: 1;
     color: var(--light-black-color);
@@ -773,6 +776,8 @@ a, a:hover {
 .footer-bottom .social-link ul li a i {
     margin-right: 4px;
 }
+
+/* Developer Css */
 .margin-top-10 {
     margin-top: 10px;
 }
@@ -781,4 +786,9 @@ a, a:hover {
 }
 .g-signin2 > div {
     margin: 0 auto;
+}
+.widget .widget-content.widget-content-scroll {
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
