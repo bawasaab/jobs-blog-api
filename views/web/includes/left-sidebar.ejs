@@ -7,16 +7,16 @@
                 <div class="sidebar-socialLink">
                     <ul>
                         <li>
-                            <a href="/job-details" class="social-btn-facebook">Follow on Twitter<i class="fab fa-facebook-f"></i></a>
+                            <a href="/job-details/lorem-ipsum" class="social-btn-facebook">Follow on Twitter<i class="fab fa-facebook-f"></i></a>
                         </li>
                         <li>
-                            <a href="/job-details" class="social-btn-twitter">Follow on Twitter<i class="fab fa-twitter"></i></a>
+                            <a href="/job-details/lorem-ipsum" class="social-btn-twitter">Follow on Twitter<i class="fab fa-twitter"></i></a>
                         </li>
                         <li>
-                            <a href="/job-details" class="social-btn-linkedin">Follow on Twitter<i class="fab fa-linkedin-in"></i></a>
+                            <a href="/job-details/lorem-ipsum" class="social-btn-linkedin">Follow on Twitter<i class="fab fa-linkedin-in"></i></a>
                         </li>
                         <li>
-                            <a href="/job-details" class="social-btn-instagram">Follow on Twitter<i class="fab fa-instagram"></i></a>
+                            <a href="/job-details/lorem-ipsum" class="social-btn-instagram">Follow on Twitter<i class="fab fa-instagram"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -32,19 +32,40 @@
                     <ul class="post-list-v1">
                         <li>
                             <div class="post-date">Dec 05 2015</div>
-                            <div class="post-title"><a href="/job-details">Celebrated am announcing delightful remarkably we</a></div>
+                            <div class="post-title"><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></div>
                             <div class="post-des">It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen.</div>
                         </li>
                         <li>
                             <div class="post-date">Dec 05 2015</div>
-                            <div class="post-title"><a href="/job-details">Celebrated am announcing delightful remarkably we</a></div>
+                            <div class="post-title"><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></div>
                             <div class="post-des">It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen.</div>
                         </li>
                         <li>
                             <div class="post-date">Dec 05 2015</div>
-                            <div class="post-title"><a href="/job-details">Celebrated am announcing delightful remarkably we</a></div>
+                            <div class="post-title"><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></div>
                             <div class="post-des">It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen.</div>
                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Pages Lists -->
+        <div class="widget">
+            <div class="section-title">
+                <h2><span>Pages</span></h2>
+            </div>
+            <div class="widget-content">
+                <div class="category">
+                    <ul class="cat-items">
+                        <!-- <li>
+                            <a href="/job-details/lorem-ipsum">Beauty</a>
+                            <span>(6)</span>
+                        </li> -->
+                        <% Object.keys(left_side_pages).forEach(function(key) { %>
+                            <li>
+                                <h3 style="font-size: 12px;"><a href="/job-details/lorem-ipsum"><%- left_side_pages[key] %></a></h3>
+                            </li>
+                        <% }); %>
                     </ul>
                 </div>
             </div>
@@ -52,18 +73,18 @@
         <!-- Category Lists -->
         <div class="widget">
             <div class="section-title">
-                <h2><span>Categorys</span></h2>
+                <h2><span>Categories</span></h2>
             </div>
             <div class="widget-content">
                 <div class="category">
                     <ul class="cat-items">
                         <!-- <li>
-                            <a href="/job-details">Beauty</a>
+                            <a href="/job-details/lorem-ipsum">Beauty</a>
                             <span>(6)</span>
                         </li> -->
-                        <% Object.keys(left_side_tags).forEach(function(key) { %>
+                        <% Object.keys(left_side_categories).forEach(function(key) { %>
                             <li>
-                                <a href="javascript:void();"><%- left_side_tags[key] %></a>
+                                <a href="/job-details/lorem-ipsum"><%- left_side_categories[key] %></a>
                             </li>
                         <% }); %>
                     </ul>
@@ -76,12 +97,12 @@
             <div class="section-title">
                 <h2><span>Qualifications</span></h2>
             </div>
-            <div class="widget-content">
+            <div class="widget-content widget-content-scroll">
                 <div class="category">
                     <ul class="cat-items">
                         <% Object.keys(left_side_qualification).forEach(function(key) { %>
                             <li>
-                                <a href="javascript:void();"><%- left_side_qualification[key] %></a>
+                                <h3 style="font-size: 12px;"><a href="/job-details/lorem-ipsum"><%- left_side_qualification[key] %></a></h3>
                             </li>
                         <% }); %>
                     </ul>

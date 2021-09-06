@@ -15,17 +15,17 @@
                     <ul class="post-list-v1">
                         <li>
                             <div class="post-date">Dec 05 2015</div>
-                            <div class="post-title"><a href="javascript:void();">Celebrated am announcing delightful remarkably we</a></div>
+                            <div class="post-title"><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></div>
                             <div class="post-des">It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen.</div>
                         </li>
                         <li>
                             <div class="post-date">Dec 05 2015</div>
-                            <div class="post-title"><a href="javascript:void();">Celebrated am announcing delightful remarkably we</a></div>
+                            <div class="post-title"><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></div>
                             <div class="post-des">It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen.</div>
                         </li>
                         <li>
                             <div class="post-date">Dec 05 2015</div>
-                            <div class="post-title"><a href="javascript:void();">Celebrated am announcing delightful remarkably we</a></div>
+                            <div class="post-title"><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></div>
                             <div class="post-des">It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen.</div>
                         </li>
                     </ul>
@@ -67,27 +67,14 @@
                 </div>
                 <div class="widget-content text-justify">
                     <div class="tags-widget">
-                        <span>
-                            <a href="javascript:void();">Culture</a>
-                        </span>
-                        <span>
-                            <a href="javascript:void();">Fashion</a>
-                        </span>
-                        <span>
-                            <a href="javascript:void();">Featured Posts</a>
-                        </span>
-                        <span>
-                            <a href="javascript:void();">Food Genel</a>
-                        </span>
-                        <span>
-                            <a href="javascript:void();">Magazine</a>
-                        </span>
-                        <span>
-                            <a href="javascript:void();">Music</a>
-                        </span>
-                        <span>
-                            <a href="javascript:void();">Sports</a>
-                        </span>
+
+                        <% Object.keys(right_side_tags).forEach(function(key) { %>
+                            <span>
+                                <a href="/job-details/lorem-ipsum">
+                                    <h3 style="font-size: 12px;"><%- right_side_tags[key] %></h3>
+                                </a>
+                            </span>
+                        <% }); %>
                     </div>
                 </div>
             </div>
@@ -97,12 +84,14 @@
             <div class="section-title">
                 <h2><span>States</span></h2>
             </div>
-            <div class="widget-content text-justify">
-                <div class="tags-widget">
+            <div class="widget-content text-justify widget-content-scroll">
+                <div class="states-widget">
                     
                     <% Object.keys(right_side_states).forEach(function(key) { %>
                         <span>
-                            <a href="javascript:void();"><%- right_side_states[key] %></a>
+                            <a href="/job-details/lorem-ipsum">
+                                <h3 style="font-size: 12px;"><%- right_side_states[key] %></h3>
+                            </a>
                         </span>
                     <% }); %>
                 </div>

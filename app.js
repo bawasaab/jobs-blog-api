@@ -41,7 +41,34 @@ app.use('/', indexRouter);
 /**
  * GLOBALS STARTS HERE
  */
-app.locals.left_side_tags = {
+app.locals.left_side_categories = {
+    culture: 'Culture',
+    fashion: 'Fashion',
+    featured_posts: 'Featured Posts',
+    food_genel: 'Food Genel',
+    magzine: 'Magzine',
+    music: 'Music',
+    sports: 'Sports',
+};
+
+app.locals.left_side_pages = {
+    latest_jobs: 'Latest Jobs',
+    jobs_closing_soon: 'Jobs Closing Soon',
+    upcoming_jobs: 'Upcoming Jobs',
+    join_us_on_whatsapp: 'Join Us On Whatsapp',
+    join_us_on_telegram: 'Join Us On Telegram',
+    join_us_on_facebook: 'Join Us On Facebook',
+    join_us_on_twitter: 'Join Us On Twitter',
+    join_us_on_linkedin: 'Join Us On LinkedIn',
+    download_android_app_from_google_play_store: 'Download Jobsnplacemnents Android App From Google Play Store',
+    home: 'Home',
+    about_us: 'About Us',
+    contact_us: 'Contact Us',
+    disclaimer: 'Disclaimer',
+    privacy_policy: 'Privacy Policy'
+};
+
+app.locals.right_side_tags = {
     culture: 'Culture',
     fashion: 'Fashion',
     featured_posts: 'Featured Posts',
