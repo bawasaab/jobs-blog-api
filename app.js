@@ -173,6 +173,8 @@ app.locals.left_side_qualification = {
     sports_quota:'Sports Quota',
     staff_nurse:'Staff Nurse',
 };
+
+app.locals.base_url = 'https://www.jobsnplacements.com';
 /**
  * GLOBALS ENDS HERE
  */

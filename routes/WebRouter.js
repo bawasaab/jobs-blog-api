@@ -73,4 +73,20 @@ router.get('/job-details/:slug', (req, res, next) => {
     }
 });
 
+router.get('/search/:slug?', (req, res, next) => {
+    try {
+        let str = !req.params.slug ? undefined : req.params.slug.split('-').join(' ').toLowerCase();
+
+        articleServiceObj.search( str )
+        .then( async (result) => {
+            res.render('web/all_jobs', { searchStr: !str ? '' : str, articles: result });
+        } )
+        .catch( (ex) => {
+            console.log('ex', ex);
+        } )
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
+});
+
 module.exports = router;

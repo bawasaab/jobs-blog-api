@@ -84,5 +84,12 @@
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/assets/library/js/custom.js"></script>
 
+<script>
+    function search() {
+        let txt = $('#search-box-txt').val();
+        window.location.replace('<%- base_url %>/search/'+ txt.split(' ').join('-'));
+    }
+</script>
+
 </body>
 </html>
