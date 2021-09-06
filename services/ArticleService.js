@@ -106,4 +106,32 @@ module.exports = class ArticleService {
             throw ex;
         }
     }
+
+    async search( searchTxt ) {
+        try {
+
+            let result = [];
+            result = await articleModel.find( { 
+                $and: [{
+                    $or: [
+                        { 'title': new RegExp(searchTxt, 'i') },
+                        { 'short_description': new RegExp(searchTxt, 'i') },
+                        { 'tags': new RegExp(searchTxt, 'i') },
+                    ],
+                    'status': 'OPEN'
+                }]
+            } );
+
+            if( result.length < 1 ) {
+
+                result = await articleModel.find( { 
+                    'status': 'OPEN'
+                } );
+            }
+
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
 }
