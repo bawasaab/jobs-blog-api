@@ -60,7 +60,7 @@ app.locals.left_side_pages = {
     join_us_on_facebook: 'Join Us On Facebook',
     join_us_on_twitter: 'Join Us On Twitter',
     join_us_on_linkedin: 'Join Us On LinkedIn',
-    download_android_app_from_google_play_store: 'Download Jobsnplacemnents Android App From Google Play Store',
+    download_jobsnplacemnents_android_app_from_google_play_store: 'Download Jobsnplacemnents Android App From Google Play Store',
     home: 'Home',
     about_us: 'About Us',
     contact_us: 'Contact Us',
