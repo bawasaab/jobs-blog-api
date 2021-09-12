@@ -507,6 +507,7 @@ a, a:hover {
     padding: 3px 8px;
     font-size: 13px;
     background-color: var(--light-black-color);
+    display: inline-block;
 }
 .post-details .share-box {
     display: flex;
@@ -806,6 +807,9 @@ a, a:hover {
 /* Developer Css */
 .margin-top-10 {
     margin-top: 10px;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
 }
 .text-justify {
     text-align: justify;

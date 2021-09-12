@@ -74,9 +74,29 @@
                         </div>
 
                     </article>
+
+                    <!-- Post Ad -->
+                    <div class="post-ad mt-3">
+                        <img src="/assets/images/ad/ad-490-90.jpg" class="w-100" alt="post-ad-image">
+                    </div>
+
+                    <div class="post-footer margin-top-10">
+                        <%
+                            if( typeof article.externalLinks ) {
+                                article.externalLinks.forEach(function(el, index) {
+                                    %>
+                                    <p class="text-center margin-top-10">
+                                        <a href="<%- el.link %>" target="_blank" class="btn btn-outline-primary"><%- el.text %></a>
+                                    </p>
+                                    <%
+                                });
+                            }
+                        %>
+                    </div>
+
                     <div class="post-footer margin-top-10">
                         <!-- Post Tags -->
-                        <div class="label-head">
+                        <div class="label-head ">
                             <span class="label-title">Tags</span>
                             <!-- <a href="javascript:void();"># Beauty</a>
                             <a href="javascript:void();"># Fashion</a> -->
@@ -84,16 +104,11 @@
                                 if( typeof article.tags ) {
                                     article.tags.forEach(function(el, index) {
                                         %>
-                                        <a href="javascript:void();"># <%- el %></a>
+                                        <a class="mb-2" href="/<%= article.slug %>/job-details"># <%- el %></a>
                                         <%
                                     });
                                 }
                             %>
-                        </div>
-                        
-                        <!-- Post Ad -->
-                        <div class="post-ad mt-3">
-                            <img src="/assets/images/ad/ad-490-90.jpg" class="w-100" alt="post-ad-image">
                         </div>
                         
                         <!-- Post Share -->

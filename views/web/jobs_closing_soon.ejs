@@ -14,7 +14,7 @@
                         <% articles.forEach( (article) => { %>
                             <li>
                                 <h2>
-                                    <a href="/job-details/<%= article.slug %>">
+                                    <a href="/<%= article.slug %>/job-details">
                                         <%= article.title %>
                                     </a>
                                 </h2>
@@ -22,16 +22,16 @@
                                     <%- article.short_description.substring(0, 300) %>...
                                 </p>
                                 <div class="btn-action">
-                                    <a href="<%= article.slug %>">Read More</a>
+                                    <a href="/<%= article.slug %>/job-details">Read More</a>
                                 </div>
                             </li>
                         <% }); %>
 
                         <li>
-                            <h2><a href="/job-details/lorem-ipsum">Celebrated am announcing delightful remarkably we</a></h2>
+                            <h2><a href="/<%= article.slug %>/job-details">Celebrated am announcing delightful remarkably we</a></h2>
                             <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had yo...</p>
                             <div class="btn-action">
-                                <a href="/job-details/lorem-ipsum">Read More</a>
+                                <a href="/<%= article.slug %>/job-details">Read More</a>
                             </div>
                         </li>
 
@@ -78,12 +78,12 @@
         <!-- Pagination -->
         <div class="post-pager text-center">
             <span class="current">
-                <a href="/job-details/lorem-ipsum">1</a>
+                <a href="/<%= article.slug %>/job-details">1</a>
             </span>
-            <span><a href="/job-details/lorem-ipsum">2</a></span>
-            <span><a href="/job-details/lorem-ipsum">3</a></span>
-            <span><a href="/job-details/lorem-ipsum">Next >></a></span>
-            <span><a href="/job-details/lorem-ipsum">Last</a></span>
+            <span><a href="/<%= article.slug %>/job-details">2</a></span>
+            <span><a href="/<%= article.slug %>/job-details">3</a></span>
+            <span><a href="/<%= article.slug %>/job-details">Next >></a></span>
+            <span><a href="/<%= article.slug %>/job-details">Last</a></span>
         </div>
     </div>
 </div>

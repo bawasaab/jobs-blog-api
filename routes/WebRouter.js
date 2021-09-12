@@ -216,11 +216,11 @@ router.get('/all-jobs', (req, res, next) => {
     }
 });
 
-router.get('/job-details/:slug', (req, res, next) => {
+router.get('/:slug/job-details', (req, res, next) => {
     try {
         articleServiceObj.getBySlug( req.params.slug )
         .then( async (result) => {
-            if( result.comments ) {
+            if( result && result.comments ) {
                 let tmp_comments = result.comments.reverse();
                 result.comments = tmp_comments;
             }
