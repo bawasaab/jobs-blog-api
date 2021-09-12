@@ -64,7 +64,7 @@
             <div class="col-sm-6">
                 <div class="social-link">
                     <ul class="d-flex justify-content-sm-end justify-content-center">
-                        <li><a href="https://www.facebook.com/jobsnplacementsofficialpage"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.facebook.com/jobsnplacementsofficialpage" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="javascript:void();"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="javascript:void();"><i class="fab fa-linkedin-in"></i></a></li>
                         <li><a href="javascript:void();"><i class="fab fa-instagram"></i></a></li>
