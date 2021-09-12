@@ -7,7 +7,7 @@
                 <div class="sidebar-socialLink">
                     <ul>
                         <li>
-                            <a href="javascript:void();" class="social-btn-facebook">Follow on Twitter<i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/jobsnplacementsofficialpage" class="social-btn-facebook">Follow on Twitter<i class="fab fa-facebook-f"></i></a>
                         </li>
                         <li>
                             <a href="javascript:void();" class="social-btn-twitter">Follow on Twitter<i class="fab fa-twitter"></i></a>
