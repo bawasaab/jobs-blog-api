@@ -25,11 +25,11 @@
 
     <!-- <link href="https://www.jobsnplacements.com/bsah-recruitment-2021/job-details" rel="canonical"/> -->
     
-    <meta property="og:locale" content="en_US" />    
-    <meta property="og:type" content="article" />    
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="<%- typeof meta_title !== 'undefined' ? meta_title : 'Jobsnplacements || Home' %>" />    
-    <meta property="og:description" content="<%- typeof meta_description !== 'undefined' ? meta_description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare.' %> Read More »" />    
-    <meta property="og:url" content="https://www.jobsnplacements.com/bsah-recruitment-2021/job-details" />    
+    <meta property="og:description" content="<%- typeof meta_description !== 'undefined' ? meta_description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare.' %> Read More »" />
+    <meta property="og:url" content="<%- typeof meta_slug !== 'undefined' ? meta_slug : 'https://www.jobsnplacements.com' %>" />
     <meta property="og:site_name" content="jobsnplacements.com" />
     <meta property="og:image" content="https://www.jobsnplacements.com/assets/images/ad/ad-728-90.png" />    
     <meta property="og:image:width" content="1280" />    
@@ -44,7 +44,7 @@
     <meta name="twitter:creator" content="@bawa_d" />    
     <meta name="twitter:site" content="@jobsnplacements" />    
     <meta name="twitter:label1" content="Written by" />    
-    <meta name="twitter:data1" content="John Doe" />    
+    <meta name="twitter:data1" content="<%- typeof author_details !== 'undefined' ? author_details : 'Deepak Bawa' %>" />
     <meta name="twitter:label2" content="Est. reading time" />
     <!-- <meta name="twitter:data2" content="12 minutes" /> -->
 

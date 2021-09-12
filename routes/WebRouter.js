@@ -225,7 +225,12 @@ router.get('/:slug/job-details', (req, res, next) => {
                 result.comments = tmp_comments;
             }
             res.render('web/job_details', {
-                article: result, moment: moment 
+                article: result, 
+                moment: moment, 
+                meta_title: result.title,
+                meta_description: result.short_description,
+                meta_slug: 'https://www.jobsnplacements.com/'+ result.slug +'/job-details',
+                author_details: result.author_details.first_name +' '+ result.author_details.last_name
             });
         } )
         .catch( (ex) => {
