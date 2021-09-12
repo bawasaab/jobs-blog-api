@@ -83,6 +83,7 @@ module.exports = class ArticleController {
             req.body.description ? rules.description = 'required' : '';
             req.body.meta ? rules.meta = 'required' : '';
             req.body.tags ? rules.tags = 'required' : '';
+            req.body.externalLinks ? rules.externalLinks = 'required' : '';
 
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
@@ -92,6 +93,20 @@ module.exports = class ArticleController {
                 } );
             }
             
+            if( req.body.externalLinks ) {
+                let arr = [];
+                req.body.externalLinks.forEach(element => {
+                    let obj = {
+                        article_id: in_id,
+                        link: element.link,
+                        text: element.text
+                    };
+
+                    arr.push(obj);
+                });
+                in_data.externalLinks = arr;
+            }
+
             in_data.user_id = user_id;
             articleServiceObj.update( in_data, in_id )
             .then( async (result) => {

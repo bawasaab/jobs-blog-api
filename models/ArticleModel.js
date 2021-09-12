@@ -5,6 +5,12 @@ const STATUSES = ['OPEN', 'CLOSE', 'DELETED'];
 const GENDER = ['MALE', 'FEMALE'];
 const dated = new Date();
 
+const externalLinks = new Schema({
+    article_id: { type: ObjectId, default: null },
+    link: { type: String, default: null },
+    text: { type: String, default: null }
+});
+
 const comments = new Schema({
     parent_id: { type: ObjectId, default: null },
     article_id: { type: ObjectId, default: null },
@@ -55,6 +61,8 @@ const ArticleSchema = new Schema({
     meta: [meta],
 	comments: [comments],
 	tags: [],
+
+    externalLinks: [externalLinks],
 
 	status: { type: String, enum: STATUSES, default: 'OPEN' },
 
