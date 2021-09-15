@@ -814,6 +814,9 @@ a, a:hover {
 .text-justify {
     text-align: justify;
 }
+.text-center {
+    text-align: center;
+}
 .g-signin2 > div {
     margin: 0 auto;
 }

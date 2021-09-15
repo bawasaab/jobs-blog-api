@@ -176,13 +176,7 @@ router.get('/contact-us', function(req, res, next) {
 
 router.get('/disclaimer', function(req, res, next) {
     try {
-        articleServiceObj.getAll()
-        .then( async (result) => {
-            res.render('web/all_jobs', { articles: result });
-        } )
-        .catch( (ex) => {
-            console.log('ex', ex);
-        } )
+        res.render('web/disclaimer', { title: 'Express' });
     } catch( ex ) {
         console.log('ex', ex);
     }
@@ -190,13 +184,7 @@ router.get('/disclaimer', function(req, res, next) {
 
 router.get('/privacy-policy', function(req, res, next) {
     try {
-        articleServiceObj.getAll()
-        .then( async (result) => {
-            res.render('web/all_jobs', { articles: result });
-        } )
-        .catch( (ex) => {
-            console.log('ex', ex);
-        } )
+        res.render('web/privacy_policy', { title: 'Express' });
     } catch( ex ) {
         console.log('ex', ex);
     }
