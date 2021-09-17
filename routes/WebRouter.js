@@ -10,6 +10,7 @@ router.get('/latest-jobs', function(req, res, next) {
     try {
         articleServiceObj.getAll()
         .then( async (result) => {
+            console.log('result', result);
             res.render('web/latest_jobs', { articles: result });
         } )
         .catch( (ex) => {
