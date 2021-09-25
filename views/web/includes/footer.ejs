@@ -36,22 +36,14 @@
                 <div class="foot-widget quick-links mb-md-0 mb-4">
                     <h5 class="mb-3">Quick Links</h5>
                     <ul>
-                        <li><a href="/latest-jobs"><i class="fas fa-arrow-right mr-1"></i> Latest Jobs</a></li>
-                        <li><a href="/jobs-closing-soon"><i class="fas fa-arrow-right mr-1"></i> Jobs Closing Soon</a></li>
-                        <li><a href="/upcoming-jobs"><i class="fas fa-arrow-right mr-1"></i> Upcoming Jobs</a></li>
-                        <li><a href="/join-us-on-whatsapp"><i class="fas fa-arrow-right mr-1"></i> Join Us On Whatsapp</a></li>
-                        <li><a href="/join-us-on-telegram"><i class="fas fa-arrow-right mr-1"></i> Join Us On Telegram</a></li>
-                        <li><a href="/join-us-on-facebook"><i class="fas fa-arrow-right mr-1"></i> Join Us On Facebook</a></li>
-                        <li><a href="/join-us-on-twitter"><i class="fas fa-arrow-right mr-1"></i> Join Us On Twitter</a></li>
-                        <li><a href="/join-us-on-linkedin"><i class="fas fa-arrow-right mr-1"></i> Join Us On LinkedIn</a></li>
-                        <li><a href="/download-jobsnplacemnents-android-app-from-google-play-store"><i class="fas fa-arrow-right mr-1"></i> Download Jobsnplacemnents Android App From Google Play Store</a></li>
-
-                        <li><a href="/"><i class="fas fa-arrow-right mr-1"></i> Home</a></li>
-                        <li><a href="/all-jobs"><i class="fas fa-arrow-right mr-1"></i> All Jobs</a></li>
-                        <li><a href="/about-us"><i class="fas fa-arrow-right mr-1"></i> About Us</a></li>
-                        <li><a href="/contact-us"><i class="fas fa-arrow-right mr-1"></i> Contact Us</a></li>
-                        <li><a href="/disclaimer"><i class="fas fa-arrow-right mr-1"></i> Disclaimer</a></li>
-                        <li><a href="/privacy-policy"><i class="fas fa-arrow-right mr-1"></i> Privacy Policy</a></li>
+                        <% Object.keys(left_side_pages).forEach(function(key) { %>
+                            <li>
+                                <a href="/<%- key.split('_').join('-').toLowerCase(); %>">
+                                    <i class="fas fa-arrow-right mr-1"></i>
+                                    <%- left_side_pages[key] %>
+                                </a>
+                            </li>
+                        <% }); %>
                     </ul>
                 </div>
             </div>
@@ -65,7 +57,7 @@
                         </li>
                         <li class="d-flex align-items-center text-white mb-3">
                             <i class="fas fa-envelope-open mr-2"></i>
-                            <p class="text-white"><a href="mailto:info@Jobs11.com">info@Jobs11.com</a></p>
+                            <p class="text-white"><a href="mailto:info@jobsnplacements.com">info@jobsnplacements.com</a></p>
                         </li>
                         <li class="d-flex align-items-center text-white">
                             <i class="fas fa-map mr-2"></i>
@@ -83,7 +75,7 @@
             <div class="col-sm-6">
                 <p class="copyright text-white text-sm-left text-center mb-sm-0 mb-1">
                     Copyright © 2021
-                    <span>Jobs11</span>
+                    <span>jobsnplacements</span>
                 </p>
             </div>
             <div class="col-sm-6">

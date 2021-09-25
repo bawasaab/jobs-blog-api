@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobs11 || Home</title>
+    <title>Jobsnplacements || Home</title>
     <!-- Includes Stylesheet -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fonts/open-sans/stylesheet.css">
@@ -29,7 +29,7 @@
 					<li>
 						<a href="javascript:void();">
 							<i class="fas fa-envelope-open"></i>
-							info@jobs11.com
+							info@jobsnplacements.com
 						</a>
 					</li>
 					<li>

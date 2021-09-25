@@ -40,7 +40,7 @@
                         </li>
                         <li class="d-flex align-items-center text-white mb-3">
                             <i class="fas fa-envelope-open mr-2"></i>
-                            <p class="text-white"><a href="mailto:info@Jobs11.com">info@Jobs11.com</a></p>
+                            <p class="text-white"><a href="mailto:info@jobsnplacements.com">info@jobsnplacements.com</a></p>
                         </li>
                         <li class="d-flex align-items-center text-white">
                             <i class="fas fa-map mr-2"></i>
@@ -58,7 +58,7 @@
             <div class="col-sm-6">
                 <p class="copyright text-white text-sm-left text-center mb-sm-0 mb-1">
                     Copyright © 2021
-                    <span>Jobs11</span>
+                    <span>Jobsnplacements</span>
                 </p>
             </div>
             <div class="col-sm-6">

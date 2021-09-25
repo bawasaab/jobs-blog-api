@@ -167,6 +167,16 @@ router.get('/', function(req, res, next) {
     }
 });
 
+router.get('/importance-of-government-jobs-in-india', function(req, res, next) {
+    res.render('web/importance_of_government_jobs_in_india', { title: 'Express' });
+});
+
+router.get('/how-to-choose-the-right-government-job-for-you-in-india', function(req, res, next) {
+    res.render('web/how_to_choose_the_right_government_job_for_you_in_india', { title: 'Express' });
+});
+
+// how_to_choose_the_right_government_job_for_you
+
 router.get('/about-us', function(req, res, next) {
     res.render('web/about_us', { title: 'Express' });
 });

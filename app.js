@@ -65,7 +65,9 @@ app.locals.left_side_pages = {
     about_us: 'About Us',
     contact_us: 'Contact Us',
     disclaimer: 'Disclaimer',
-    privacy_policy: 'Privacy Policy'
+    privacy_policy: 'Privacy Policy',
+    importance_of_government_jobs_in_india: 'Importance of Government Jobs in India',
+    how_to_choose_the_right_government_job_for_you_in_india: 'How to choose the right government job for you'
 };
 
 app.locals.right_side_tags = {
