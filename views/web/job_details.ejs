@@ -26,7 +26,9 @@
                             <!-- Post Head -->
                             <div class="post-head">
                                 <h1 class="text-white">
-                                    <%= article.title ? article.title : '' %>
+                                    <a class="text-white" href="<%= article.slug ? article.slug : '' %>/job-details">
+                                        <%= article.title ? article.title : '' %>
+                                    </a>
                                 </h1>
                             </div>
                             <!-- Post Meta -->
