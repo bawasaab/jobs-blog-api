@@ -185,6 +185,10 @@ router.get('/contact-us', function(req, res, next) {
     res.render('web/contact_us', { title: 'Express' });
 });
 
+router.get('/frequently-asked-questions-faqs', function(req, res, next) {
+    res.render('web/faqs', { title: 'Express' });
+});
+
 router.get('/disclaimer', function(req, res, next) {
     try {
         res.render('web/disclaimer', { title: 'Express' });
