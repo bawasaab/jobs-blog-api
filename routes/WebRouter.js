@@ -395,4 +395,9 @@ router.get('/robots.txt', function (req, res) {
     res.send("User-agent: *\nallow: /");
 });
 
+router.get('/Robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nallow: /");
+});
+
 module.exports = router;
