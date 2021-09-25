@@ -825,8 +825,3 @@ a, a:hover {
     overflow: hidden;
     overflow-y: scroll;
 }
-
-/* .faq.accordion>.card:not(:last-of-type) {
-    border: 1px!important;
-    margin-bottom: 10px;
-} */
