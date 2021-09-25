@@ -19,6 +19,8 @@ mongoose.connect( mongodbUrl, {
 .then(() => console.log('Mongodb Connected'))
 .catch(err => console.log('err', err));
 
+const webBaseUrl = require('./config/config').WEB_BASE_URL;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -41,6 +43,8 @@ app.use('/', indexRouter);
 /**
  * GLOBALS STARTS HERE
  */
+app.locals.webBaseUrl = webBaseUrl;
+
 app.locals.left_side_categories = {
     culture: 'Culture',
     fashion: 'Fashion',
