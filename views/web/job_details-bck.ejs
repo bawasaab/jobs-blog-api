@@ -1,0 +1,332 @@
+<%- include includes/header.ejs %>
+<%- include includes/left-sidebar.ejs %>
+
+<style>
+    .post-body .post-des p {
+        text-align: justify;
+    }
+
+    .post-body .post-des img {
+        width: 100%;
+    }
+</style>
+
+<!-- Middle Content -->
+<div class="col-lg-6 order-lg-2 order-1">
+    <div class="main-content">
+        <%- include includes/main-search.ejs %>
+        <!-- Jobs List -->
+        <div class="widget mt-4">
+            <div class="widget-content">
+                <div class="post-details">
+                    <!-- Post Head -->
+                    <div class="post-head">
+                        <!-- <h1>Melancholy Middletons Yet Understood Decisively</h1> -->
+                        <h1>
+                            <%= article.title ? article.title : '' %>
+                        </h1>
+                    </div>
+                    <!-- Post Meta -->
+                    <div class="post-meta">
+                        <span class="meta-inner">
+                            <i class="fa fa-user"></i>
+                            <!-- <a href="javascript:void();">Admin</a> -->
+                            <a href="javascript:void();">
+                                <%= article.author_details.first_name || article.author_details.last_name ? article.author_details.first_name +' '+ article.author_details.last_name : '' %>
+                            </a>
+                        </span>
+                        <span class="meta-inner">
+                            <i class="fas fa-calendar-day"></i>
+                            <a href="javascript:void();">
+                                <%= article.scheduled_for ? moment( article.scheduled_for ).format('YYYY-MM-DD') : '' %>
+                            </a>
+                        </span>
+                        <span class="meta-inner">
+                            <i class="fas fa-folder"></i>
+                            <a href="javascript:void();">Beauty, Fashion</a>
+                        </span>
+                        <span class="meta-inner">
+                            <i class="fas fa-eye"></i>
+                            <a href="javascript:void();">1200</a>
+                        </span>
+                    </div>
+                    <!-- Post Ad -->
+                    <div class="post-ad mt-3 mb-4">
+                        <img src="/assets/images/ad/ad-490-90.jpg" class="w-100" alt="post-ad-image">
+                    </div>
+                    <!-- Post Description -->
+                    <article>
+                        <!-- <div class="post-body">
+                            <div class="post-image mb-4">
+                                <img src="/assets/images/post-image.jpg" class="mw-100" alt="post-image">
+                            </div>
+                            <div class="post-des">
+                                <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.</p>
+                                <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.</p>
+                                <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.</p>
+                            </div>
+                        </div> -->
+
+                        <div class="post-body">
+                            <div class="post-des">
+                                <%- article.description ? article.description : '' %>
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <!-- Post Ad -->
+                    <div class="post-ad mt-3">
+                        <img src="/assets/images/ad/ad-490-90.jpg" class="w-100" alt="post-ad-image">
+                    </div>
+
+                    <div class="post-footer margin-top-10">
+                        <%
+                            if( typeof article.externalLinks ) {
+                                article.externalLinks.forEach(function(el, index) {
+                                    %>
+                                    <p class="text-center margin-top-10">
+                                        <a href="<%- el.link %>" target="_blank" class="btn btn-outline-primary"><%- el.text %></a>
+                                    </p>
+                                    <%
+                                });
+                            }
+                        %>
+                    </div>
+
+                    <div class="post-footer margin-top-10">
+                        <!-- Post Tags -->
+                        <div class="label-head ">
+                            <span class="label-title">Tags</span>
+                            <!-- <a href="javascript:void();"># Beauty</a>
+                            <a href="javascript:void();"># Fashion</a> -->
+                            <%
+                                if( typeof article.tags ) {
+                                    article.tags.forEach(function(el, index) {
+                                        %>
+                                        <a class="mb-2" href="/<%= article.slug %>/job-details"># <%- el %></a>
+                                        <%
+                                    });
+                                }
+                            %>
+                        </div>
+                        
+                        <!-- Post Share -->
+                        <div class="share-box py-3">
+                            <h4 class="share-title">Share This:</h4>
+                            <div class="share-art">
+                                <!-- <a 
+                                    class="fb-xfbml-parse-ignore" 
+                                    target="_blank" 
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjobsnplacements.com%2F&amp;src=sdkpreparse">
+                                <i class="fab fa-facebook-f"></i>
+                                </a> -->
+                                
+                                <div class="fb-share-button" data-href="https://jobsnplacements.com" data-layout="button" data-size="small">
+                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjobsnplacements.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                        Share
+                                    </a>
+                                </div>
+                                
+                                <a href="javascript:void();"><i class="fab fa-twitter"></i></a>
+                                <a href="javascript:void();"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="javascript:void();"><i class="fab fa-instagram"></i></a>
+                            </div>   
+                        </div>
+                        <!-- Related Post -->
+                        <div class="related-post mb-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="post-thumb">
+                                    <a href="javascript:void();">
+                                            <img src="/assets/images/post-image.jpg" class="mw-100" alt="post-thumb">
+                                        </a>
+                                    </div>
+                                    <h3 class="related-title">
+                                        <a href="javascript:void();">Melancholy Middletons Yet Understood Decisively</a>
+                                    </h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="post-thumb">
+                                        <a href="javascript:void();">
+                                            <img src="/assets/images/post-image.jpg" class="mw-100" alt="post-thumb">
+                                        </a>
+                                    </div>
+                                    <h3 class="related-title">
+                                        <a href="javascript:void();">Melancholy Middletons Yet Understood Decisively</a>
+                                    </h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="post-thumb">
+                                        <a href="javascript:void();">
+                                            <img src="/assets/images/post-image.jpg" class="mw-100" alt="post-thumb">
+                                        </a>
+                                    </div>
+                                    <h3 class="related-title">
+                                        <a href="javascript:void();">Melancholy Middletons Yet Understood Decisively</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+						<!-- Comments Form-->
+						<div class="comment-form mb-4">
+							<h4>Leave a Comment</h4>
+							<form id="frm-post-comment" name="frm-post-comment" method="post" action="">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Name" required name="name" id="name">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="email" class="form-control" placeholder="Email" required name="email" id="email">
+										</div>
+									</div>
+                                    <div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Website" name="website" id="website">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea rows="5" class="form-control" placeholder="Write Comment" required name="comment" id="comment"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="btn-submit mt-3">
+											<button type="submit" class="btn btn-info">Post Comment</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+                        <!-- Post Comments-->
+                        <div class="post-comments">
+                            <h4><%- article.comments.length %> comments:</h4>
+                            <div class="comments-content">
+                                <ul>
+                                    
+                                    <% if( typeof article.comments ) { %>
+                                        <% article.comments.forEach( (comment) => { %>
+                                            <li attr-comment-id="<%= comment._id ? comment._id : '' %>">
+                                                <div class="avatar">
+                                                    <img src="/assets/images/icons/avtar.jpg" alt="avatar">
+                                                </div>
+                                                <div class="comment-block">
+                                                    <div class="comment-header">
+                                                        <!-- <a href="javascript:void();">Sora Blogging Tips</a> -->
+                                                        <p><b><%= comment.name ? comment.name : '' %></b></p>
+                                                        <!-- <span>3 June 2020 at 23:47</span> -->
+                                                        <span><b><%= comment.createdAt ? moment( comment.createdAt ).format('Do MMM [at] h:mm:ss a') : '' %></b></span>
+                                                    </div>
+                                                    <p class="text-justify"><%= comment.comment ? comment.comment : '' %></p>
+                                                    <hr />
+                                                </div>
+                                            </li>
+                                        <% }); %>
+                                    <% } %>
+
+                                    <!-- <li>
+                                        <div class="avatar">
+                                            <img src="/assets/images/icons/avtar.jpg" alt="avatar">
+                                        </div>
+                                        <div class="comment-block">
+                                            <div class="comment-header">
+                                                <a href="javascript:void();">Sora Blogging Tips</a>
+                                                <span>3 June 2020 at 23:47</span>
+                                            </div>
+                                            <p>This Is First Testing Comment</p>
+                                            <div class="btn-reply mt-1">
+                                                <a href="javascript:void();">Reply</a>
+                                            </div>
+                                            <div class="comments-reply mt-3">
+                                                <ul>
+                                                    <li>
+                                                        <div class="avatar">
+                                                            <img src="/assets/images/icons/avtar.jpg" alt="avatar">
+                                                        </div>
+                                                        <div class="comment-block">
+                                                            <div class="comment-header">
+                                                                <a href="javascript:void();">Sora Blogging Tips</a>
+                                                                <span>3 June 2020 at 23:47</span>
+                                                            </div>
+                                                            <p>This Is First Testing Comment</p>
+                                                            <div class="btn-reply mt-1">
+                                                                <a href="javascript:void();">Reply</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="avatar">
+                                            <img src="/assets/images/icons/avtar.jpg" alt="avatar">
+                                        </div>
+                                        <div class="comment-block">
+                                            <div class="comment-header">
+                                                <a href="javascript:void();">Sora Blogging Tips</a>
+                                                <span>3 June 2020 at 23:47</span>
+                                            </div>
+                                            <p>This Is First Testing Comment</p>
+                                            <div class="btn-reply mt-1">
+                                                <a href="javascript:void();">Reply</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="avatar">
+                                            <img src="/assets/images/icons/avtar.jpg" alt="avatar">
+                                        </div>
+                                        <div class="comment-block">
+                                            <div class="comment-header">
+                                                <a href="javascript:void();">Sora Blogging Tips</a>
+                                                <span>3 June 2020 at 23:47</span>
+                                            </div>
+                                            <p>This Is First Testing Comment</p>
+                                            <div class="btn-reply mt-1">
+                                                <a href="javascript:void();">Reply</a>
+                                            </div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include includes/right-sidebar.ejs %>
+<%- include includes/footer.ejs %>
+<script>
+    $(document).ready(function() {
+        $('#frm-post-comment').on('submit', function(e) {
+            e.preventDefault();
+            let articleId = '<%- article._id %>';
+            let url = api_base_url +'/open/'+articleId+'/comments';
+
+            $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $('#frm-post-comment').serialize(),
+                success: function( retdata ) {
+                    // console.log('retdata', retdata);
+                    if( retdata.success ) {
+                        $('#frm-post-comment').trigger("reset");
+                    }
+                    alert(retdata.msg);
+                },
+                error: function(e){
+                    console.log(e);
+                }
+            });
+        });
+    });
+</script>
