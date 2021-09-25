@@ -390,4 +390,9 @@ router.get('/social-login', (req, res, next) => {
     }
 });
 
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
+});
+
 module.exports = router;
