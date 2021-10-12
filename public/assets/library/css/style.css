@@ -825,3 +825,24 @@ a, a:hover {
     overflow: hidden;
     overflow-y: scroll;
 }
+/**
+    sub menu css starts
+**/
+.main-header .navbar-nav li > .dropdown-menu {
+	padding: 0px;
+}
+.main-header .navbar-nav li > .dropdown-menu a {
+    color: var(--body-color);
+    line-height: unset;
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px !important;
+	font-size: 12px;
+    font-weight: 700;
+}
+.main-header .navbar-nav li > .dropdown-menu a:hover {
+	color: var(--secondary-color);
+}
+/**
+    sub menu css ends
+**/
