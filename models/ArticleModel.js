@@ -57,6 +57,8 @@ const ArticleSchema = new Schema({
     },
 
     scheduled_for: { type: Date, default: null },
+    opened_on: { type: Date, default: null },
+    closed_on: { type: Date, default: null },
 
     meta: [meta],
 	comments: [comments],
