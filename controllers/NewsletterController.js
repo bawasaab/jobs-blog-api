@@ -55,6 +55,7 @@ module.exports = class NewsletterController {
                                         }
                                     })
                                     .catch(async (ex) => {
+                                        console.log('exceptio occur:', ex);
                                         return await responseServiceObj.sendException(res, {msg: ex.toString()});
                                     });
 
