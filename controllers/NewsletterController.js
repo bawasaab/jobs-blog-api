@@ -52,6 +52,10 @@ module.exports = class NewsletterController {
                                                 data: result.data,
                                                 type: 'NEWSLETTER'
                                             });
+                                        } else {
+                                            return await responseServiceObj.sendResponse(res, {
+                                                msg: 'Verification Mail Sent Successfully'
+                                            });
                                         }
                                     })
                                     .catch(async (ex) => {
@@ -59,9 +63,9 @@ module.exports = class NewsletterController {
                                         // return await responseServiceObj.sendException(res, {msg: ex.toString()});
                                     });
 
-                            return await responseServiceObj.sendResponse(res, {
-                                msg: 'Verification Mail Sent Successfully'
-                            });
+                            // return await responseServiceObj.sendResponse(res, {
+                            //     msg: 'Verification Mail Sent Successfully'
+                            // });
                         }
                     })
                     .catch(async (ex) => {
