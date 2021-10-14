@@ -38,7 +38,7 @@ module.exports = class NewsletterSubscriptionService {
             dataObj.email = email;
             dataObj.encrypted_string = encrypted_string;
             dataObj.basePath = basePath;
-            let html = await view.renderFile(VIEW_PATH + '/emails/newsletter-verification.ejs', dataObj);
+            let html = await view.renderFile(VIEW_PATH + '/api/emails/newsletter-verification.ejs', dataObj);
             const mailData = {to: email, html: html, subject: 'Verify Supagrab Newsletter'};
             return await MailServiceObj.sendMail(mailData);
         } catch (ex) {
