@@ -1,1549 +1,1850 @@
 {
-    "info": {
-      "_postman_id": "63a1a07c-53d5-442c-9ad0-f089d354a94b",
-      "name": "Blog-mongo",
-      "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-    },
-    "item": [
-      {
-        "name": "00. others",
-        "item": [
-          {
-            "name": "01. links",
-            "id": "5635b94a-4134-470f-9b47-bdfeae042f6e",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": {
-                "raw": "?local=http://localhost:3000&prod=https://api.jobsnplacements.com&dev&blog=https://www.jobsnplacements.com&admin=https://admin.jobsnplacements.com",
-                "query": [
-                  {
-                    "key": "local",
-                    "value": "http://localhost:3000"
-                  },
-                  {
-                    "key": "prod",
-                    "value": "https://api.jobsnplacements.com"
-                  },
-                  {
-                    "key": "dev",
-                    "value": null
-                  },
-                  {
-                    "key": "blog",
-                    "value": "https://www.jobsnplacements.com"
-                  },
-                  {
-                    "key": "admin",
-                    "value": "https://admin.jobsnplacements.com"
-                  }
-                ]
-              }
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "cf5d7bad-fc0f-47f6-8080-a959a7f1e64a"
-      },
-      {
-        "name": "01. auth",
-        "item": [
-          {
-            "name": "101. signUp user",
-            "id": "dae4b10b-881c-4c26-a774-b856039121ff",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "first_name",
-                    "value": "Abhishek",
-                    "type": "text"
-                  },
-                  {
-                    "key": "last_name",
-                    "value": "Tyagi",
-                    "type": "text"
-                  },
-                  {
-                    "key": "email",
-                    "value": "deepak4bawa@yopmail.com",
-                    "type": "text"
-                  },
-                  {
-                    "key": "password",
-                    "value": "123456",
-                    "type": "text"
-                  },
-                  {
-                    "key": "role",
-                    "value": "ADMIN",
-                    "type": "text"
-                  },
-                  {
-                    "key": "phone",
-                    "value": "9646255041",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/auth/signUp"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "102. signIn user",
-            "id": "7b90a4c4-6277-48cc-abff-f761c778b51a",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "email",
-                    "value": "deepak4bawa@yopmail.com",
-                    "type": "text"
-                  },
-                  {
-                    "key": "password",
-                    "value": "123456",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/auth/signIn"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "103. Social Sign In",
-            "id": "3d69af0b-29e7-4443-8cd6-dcbcae838829",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "social_flag",
-                    "value": "gmail",
-                    "type": "text"
-                  },
-                  {
-                    "key": "token",
-                    "value": "107242046634094077153",
-                    "type": "text"
-                  },
-                  {
-                    "key": "social_user_detail",
-                    "value": "{\"id\":\"107242046634094077153\",\"name\":\"Deepak Bawa\",\"email\":\"deepak.b@whizkraft.net\",\"photoUrl\":\"https://lh3.googleusercontent.com/a/AATXAJwehyb_3hBVMT1Qgkq8HV09dECmBdk0mZXqzuRW=s96-c\",\"firstName\":\"Deepak\",\"lastName\":\"Bawa\",\"authToken\":\"ya29.a0ARrdaM_P7jOvHDdJb3tJZvriZW3yc4v9ti8ZSxegIpXoo88DjyzL0w69A_Y9Gl_5Az-L0V9vjFWxaBu3nDdht-2ejzdna-vj3m6HunJRgssbGt_YrfAUdzLQ2Uiay9HsbjZ8T4rDuC7bPh5kV0oJgDSmZ14T\",\"idToken\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZjhhODRkM2VjZDc3ZTlmMmFkNWYwNmZmZDI2MDcwMWRkMDZkOTAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjQyMDQ2NjM0MDk0MDc3MTUzIiwiaGQiOiJ3aGl6a3JhZnQubmV0IiwiZW1haWwiOiJkZWVwYWsuYkB3aGl6a3JhZnQubmV0IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIxR2dadlNuaWV5b1NtV0pSTTE0WTFnIiwibmFtZSI6IkRlZXBhayBCYXdhIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBVFhBSndlaHliXzNoQlZNVDFRZ2txOEhWMDlkRUNtQmRrMG1aWHF6dVJXPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkRlZXBhayIsImZhbWlseV9uYW1lIjoiQmF3YSIsImxvY2FsZSI6ImVuIiwiaWF0IjoxNjI2MTc4MjI2LCJleHAiOjE2MjYxODE4MjYsImp0aSI6IjdkZDY1Yzg2YzMwZDBmMTY0ODY3MGQ1ZDY5MWZkMDFkMzYwY2Y2MzMifQ.IYb-R1iPfVYh0hD9sQMdmgRVIJZM0Bq138LubkeDO949lzut57epYxl1_p3_eQ6p5paTcLMvtLxETqpNir0kCf57anOAh_F3iqlVs8OHKHLGrgDlyQusw7kBbXeTOyo-TQoLDRh-Q6aweYWOuddaHdZDKK62FQ4PsGC9nhe1oJuJbSYGcFeOXbv2dXdf3uED3VvvQNglY-R5tkfQy1-UV7AhXZj1U8s-jdNnhUK2Tzw5Yxn_4gY3XINVmBCdAyJwkh8G5fR_z7dDDR_l44zvDbMKnwmNh9wJ7ga3rKWlCVyiuYLK-647WZthS-7c74zXzLAa7mhpLcSD7psTm8ET0g\",\"response\":{\"token_type\":\"Bearer\",\"access_token\":\"ya29.a0ARrdaM_P7jOvHDdJb3tJZvriZW3yc4v9ti8ZSxegIpXoo88DjyzL0w69A_Y9Gl_5Az-L0V9vjFWxaBu3nDdht-2ejzdna-vj3m6HunJRgssbGt_YrfAUdzLQ2Uiay9HsbjZ8T4rDuC7bPh5kV0oJgDSmZ14T\",\"scope\":\"email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile\",\"login_hint\":\"AJDLj6JUa8yxXrhHdWRHIV0S13cAC3JspX5HV668g7_5eyn9yqAgB1ZPkre01ukL6faAhYux7kiI29BZs4rOjHq8uw97UDX5NQ\",\"expires_in\":3599,\"id_token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZjhhODRkM2VjZDc3ZTlmMmFkNWYwNmZmZDI2MDcwMWRkMDZkOTAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjQyMDQ2NjM0MDk0MDc3MTUzIiwiaGQiOiJ3aGl6a3JhZnQubmV0IiwiZW1haWwiOiJkZWVwYWsuYkB3aGl6a3JhZnQubmV0IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIxR2dadlNuaWV5b1NtV0pSTTE0WTFnIiwibmFtZSI6IkRlZXBhayBCYXdhIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBVFhBSndlaHliXzNoQlZNVDFRZ2txOEhWMDlkRUNtQmRrMG1aWHF6dVJXPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkRlZXBhayIsImZhbWlseV9uYW1lIjoiQmF3YSIsImxvY2FsZSI6ImVuIiwiaWF0IjoxNjI2MTc4MjI2LCJleHAiOjE2MjYxODE4MjYsImp0aSI6IjdkZDY1Yzg2YzMwZDBmMTY0ODY3MGQ1ZDY5MWZkMDFkMzYwY2Y2MzMifQ.IYb-R1iPfVYh0hD9sQMdmgRVIJZM0Bq138LubkeDO949lzut57epYxl1_p3_eQ6p5paTcLMvtLxETqpNir0kCf57anOAh_F3iqlVs8OHKHLGrgDlyQusw7kBbXeTOyo-TQoLDRh-Q6aweYWOuddaHdZDKK62FQ4PsGC9nhe1oJuJbSYGcFeOXbv2dXdf3uED3VvvQNglY-R5tkfQy1-UV7AhXZj1U8s-jdNnhUK2Tzw5Yxn_4gY3XINVmBCdAyJwkh8G5fR_z7dDDR_l44zvDbMKnwmNh9wJ7ga3rKWlCVyiuYLK-647WZthS-7c74zXzLAa7mhpLcSD7psTm8ET0g\",\"session_state\":{\"extraQueryParams\":{\"authuser\":\"0\"}},\"first_issued_at\":1626178227207,\"expires_at\":1626181826207,\"idpId\":\"google\"},\"provider\":\"GOOGLE\"}",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/auth/social-sign-in"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "104. forgot Password",
-            "id": "2bac9957-445a-47e2-a530-c71ca6c83124",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "email_id",
-                    "value": "",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/auth/forgot-password"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "105. Verify Forgot Password Token",
-            "id": "f007d3f0-9801-4d93-a595-5ba56f76d05b",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "url": "{{url}}/auth/reset-password/{{token}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "106. Change Password",
-            "id": "00562133-6bf1-4b13-84ae-acf780a16f90",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "user_id",
-                    "value": "",
-                    "type": "text"
-                  },
-                  {
-                    "key": "new_password",
-                    "value": "",
-                    "type": "text"
-                  },
-                  {
-                    "key": "confirm_password",
-                    "value": "",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/auth/change-password"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "107. Logged In Change Password",
-            "id": "9465f6e8-3ed1-457c-ab56-c0ed422efb81",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "old_password",
-                    "value": "",
-                    "type": "text"
-                  },
-                  {
-                    "key": "new_password",
-                    "value": "",
-                    "type": "text"
-                  },
-                  {
-                    "key": "confirm_password",
-                    "value": "",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/auth/logged-in-user-change-password"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "6411c5b9-cf60-4ef3-80fb-5da1308c6771"
-      },
-      {
-        "name": "02. users",
-        "item": [
-          {
-            "name": "201. insert user",
-            "id": "3a826521-8156-495c-b7b8-095628834fa0",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "first_name",
-                    "value": "deepak",
-                    "type": "text"
-                  },
-                  {
-                    "key": "email",
-                    "value": "bawa_d1@ymail.com",
-                    "type": "text"
-                  },
-                  {
-                    "key": "password",
-                    "value": "123456",
-                    "type": "text"
-                  },
-                  {
-                    "key": "phone",
-                    "value": "7508498587",
-                    "type": "text"
-                  },
-                  {
-                    "key": "role",
-                    "value": "CUSTOMER",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/users"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "202. get all user",
-            "id": "a2905787-a33e-4945-bd2d-b21e1ac8bd74",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "203. get user by id",
-            "id": "21e6cf94-d4c4-4260-95f6-9c14b7d6f763",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/{{userId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "204. patch user",
-            "id": "bf1ff479-5730-4208-80fa-dcbec52fe827",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "PATCH",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "first_name",
-                    "value": "deepaks",
-                    "type": "text"
-                  },
-                  {
-                    "key": "email",
-                    "value": "bawa_d@ymail.com",
-                    "type": "text"
-                  },
-                  {
-                    "key": "password",
-                    "value": "123456",
-                    "type": "text"
-                  },
-                  {
-                    "key": "phone",
-                    "value": "7508498585",
-                    "type": "text"
-                  },
-                  {
-                    "key": "role",
-                    "value": "ADMIN",
-                    "type": "text"
-                  },
-                  {
-                    "key": "status",
-                    "value": "ACTIVE",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/users/{{userId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "205. delete user",
-            "id": "e43d69d0-cb74-43f6-a29a-efcf67f86991",
-            "request": {
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/{{userId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "206. change profile pic",
-            "id": "8287b5df-c2c4-4865-8b73-651ac75d4fe8",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "image_file",
-                    "type": "file",
-                    "src": "/home/deepak/Pictures/linux.png"
-                  }
-                ]
-              },
-              "url": "{{url}}/users/{{userId}}/image"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "207. delete profile pic",
-            "id": "51dad9e0-c771-43ef-90ae-6ed4e695ff9c",
-            "request": {
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  
-                ]
-              },
-              "url": "{{url}}/users/{{userId}}/image/{{profilePic}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "208. isExists user id",
-            "id": "163ed731-560d-44df-a161-384f509368d4",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/{{userId}}/idExists"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "209. isExists phone",
-            "id": "6599f01b-742c-44b6-a5c5-78407b8fadc1",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/phoneExists/{{phone}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "210. isExists email",
-            "id": "89f4fd7d-33a8-479d-9fe9-f1198f19dbed",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/emailExists/{{email}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "211. get user by phone",
-            "id": "0630dcea-b69f-4fcd-8688-cd19c4d11c49",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/byPhone/{{phone}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "212. get user by email",
-            "id": "39506e0e-0afe-425e-bbaf-eacdb58ca671",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/users/byEmail/{{email}}"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "a93d1918-64f3-4850-b919-5a963dcba176"
-      },
-      {
-        "name": "03. departments",
-        "item": [
-          {
-            "name": "301. Insert Departments",
-            "id": "5abd55b0-b8c7-4341-910e-d34b42357171",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "department_title",
-                    "value": "Railway Jobs",
-                    "type": "text"
-                  },
-                  {
-                    "key": "department_slug",
-                    "value": "railway-jobs",
-                    "type": "text"
-                  },
-                  {
-                    "key": "department_status",
-                    "value": "OPEN",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/departments"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "302. Get Departments",
-            "id": "c115f239-d875-4cd3-83ad-2d39253350fe",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "303. Get Department By Id",
-            "id": "5a93c3e5-aabd-4024-8f2e-c805db4a2f7f",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments/{{departmentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "304. Update Department",
-            "id": "3785ea97-d7cb-4793-a75f-cbe6ff17532f",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "PATCH",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "department_title",
-                    "value": "Railway Jobs1",
-                    "type": "text"
-                  },
-                  {
-                    "key": "department_slug",
-                    "value": "railway-jobs1",
-                    "type": "text"
-                  },
-                  {
-                    "key": "department_status",
-                    "value": "OPEN",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/departments/{{departmentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "305. Delete Department",
-            "id": "51e0fa46-fc81-4806-8c49-be71a5c86159",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments/{{departmentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "306. Check Department Exists",
-            "id": "b42e23a4-247f-4684-aeca-3d7a735d94de",
-            "protocolProfileBehavior": {
-              "disableBodyPruning": true
-            },
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "",
-                    "type": "file",
-                    "src": [
-                      
-                    ]
-                  }
-                ]
-              },
-              "url": "{{url}}/departments/exists/shoes/{{departmentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "307. upload department image",
-            "id": "5f691d4f-9c85-4404-8ae5-b725d8b3056a",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "department_image",
-                    "type": "file",
-                    "src": "/home/deepak/Pictures/kitchen-orders.png"
-                  }
-                ]
-              },
-              "url": "{{url}}/departments/{{departmentId}}/image"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "308. delete department image",
-            "id": "41a30674-58f4-47f0-8fd3-2cbc78b67f72",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments/{{departmentId}}/delete-image/{{department_image}}"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "c090b6c8-05c9-4c11-a7b0-7c16a14ee63b"
-      },
-      {
-        "name": "04. categories",
-        "item": [
-          {
-            "name": "401. Insert Category",
-            "id": "1733fbd7-ae2b-4059-9dc9-63e12300c816",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "title",
-                    "value": "loco pilot",
-                    "type": "text"
-                  },
-                  {
-                    "key": "status",
-                    "value": "OPEN",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/departments/{{departmentId}}/categories"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "402. Get Categories",
-            "id": "d240ec92-5d07-4ceb-8c4c-c7a3edf91c71",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments/{{departmentId}}/categories"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "403. Get Category By Id",
-            "id": "89a8289f-4cd3-479f-9c00-8e5fc749be6c",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments/{{departmentId}}/categories/{{categoryId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "404. Update Category",
-            "id": "cd1cf63a-bdfb-4743-8d1f-3711af3e6bc0",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "PATCH",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "title",
-                    "value": "loco pilot1",
-                    "type": "text"
-                  },
-                  {
-                    "key": "status",
-                    "value": "OPEN",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/departments/{{departmentId}}/categories/{{categoryId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "405. Delete Category",
-            "id": "02e43259-bf87-4e82-83ad-a65ceed42be9",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": "{{url}}/departments/{{departmentId}}/categories/{{categoryId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "406. Check Category Exists",
-            "id": "f2176624-3f80-4236-b39c-cdfa4cb13f58",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": ""
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "407. upload categories image",
-            "id": "7f879d47-8222-4cf6-bece-7432130c6f7b",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": ""
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "409. delete department image",
-            "id": "c663327e-f9d8-4b80-819e-7aa5de17af0a",
-            "request": {
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": ""
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "35ba8cf5-f153-451f-9a2b-020dc21dd155"
-      },
-      {
-        "name": "05. articles",
-        "item": [
-          {
-            "name": "501. insert article",
-            "id": "2639abfa-666e-4f0e-b206-b1f2e44c8054",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "title",
-                    "value": "title",
-                    "type": "text"
-                  },
-                  {
-                    "key": "slug",
-                    "value": "slug10",
-                    "type": "text"
-                  },
-                  {
-                    "key": "short_description",
-                    "value": "short_description",
-                    "type": "text"
-                  },
-                  {
-                    "key": "description",
-                    "value": "description",
-                    "type": "text"
-                  },
-                  {
-                    "key": "meta[0][description]",
-                    "value": "hello hi",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "meta[1][author]",
-                    "value": "deepak bawa",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "tags[]",
-                    "value": "tag1",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "tags[]",
-                    "value": "tag2",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "scheduled_for",
-                    "value": "2020-09-01 23:24:00",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/articles"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "502. get all article",
-            "id": "f0ed87cf-18fc-4cab-b943-a732f709b60d",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "503. get article by id",
-            "id": "589574a3-8a75-4a97-941e-cd04e6a5f871",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/{{articleId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "504. update article",
-            "id": "ea162da8-b1ab-4dc4-84bf-ae4183ae6160",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "PATCH",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "title",
-                    "value": "title",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "slug",
-                    "value": "slug8",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "short_description",
-                    "value": "short_description",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "description",
-                    "value": "description",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "meta[0][description]",
-                    "value": "hello hi",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "meta[1][author]",
-                    "value": "deepak bawa",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "tags[]",
-                    "value": "tag1",
-                    "type": "text"
-                  },
-                  {
-                    "key": "tags[]",
-                    "value": "tag2",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/articles/{{articleId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "505. upload article image",
-            "id": "8424523c-5a4e-45d1-8c47-dd93f4fa0dc7",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "image_file",
-                    "type": "file",
-                    "src": "/home/deepak/Pictures/kitchen-orders.png"
-                  }
-                ]
-              },
-              "url": "{{url}}/articles/{{articleId}}/image"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "506. delete article image",
-            "id": "4e0bb2be-5051-4f9e-9f7b-5a2bc8dba2d4",
-            "request": {
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": null
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "507. check article exits",
-            "id": "6c02bc06-03e6-44a6-8dab-518cbd92e237",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/{{articleId}}/idExists"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "508. get article by user",
-            "id": "c4cee6bb-0c8e-411c-96ec-b21195615190",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/user/{{userId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "509. get article by department",
-            "id": "ccc57f95-5387-4a4e-9011-ef437aa9f327",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": null
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "510. get article by category",
-            "id": "26e8e9df-bac9-4f30-ad92-e198ce82b760",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": null
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "511. check slug exits",
-            "id": "d882ad8d-3bbb-424e-8da9-578f539c5604",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/slug/{{articleSlug}}/Exists/{{articleId}}"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "c6221863-f771-4bae-9795-8354436d3b6e"
-      },
-      {
-        "name": "06. comments",
-        "item": [
-          {
-            "name": "601. insert comment",
-            "id": "1b69a269-fc67-4127-ad4c-9ac8328c0d46",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "comment",
-                    "value": "my first comment",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/articles/{{articleId}}/comments"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "602. get all comments",
-            "id": "ad4f9890-db2a-47c1-b53b-aa14e68c59a6",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/{{articleId}}/comments"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "603. get comment by id",
-            "id": "da1ee1fb-b69b-40b4-9af1-ca95a82a08d4",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/{{articleId}}/comments/{{commentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "604. update comment",
-            "id": "d76854de-34bf-482a-b50f-ba606921eb59",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "PATCH",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "comment",
-                    "value": "my third comment",
-                    "type": "text"
-                  },
-                  {
-                    "key": "status",
-                    "value": "CLOSE",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/articles/{{articleId}}/comments/{{commentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "605. delete comment",
-            "id": "e2e80f08-2258-454d-90f9-44e4d8c7e405",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "DELETE",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/{{articleId}}/comments/{{commentId}}"
-            },
-            "response": [
-              
-            ]
-          },
-          {
-            "name": "606. idExists comment",
-            "id": "f39dd2b9-2e5b-464c-95e3-70887e306c7a",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": "{{url}}/articles/{{articleId}}/comments/{{commentId}}/idExists"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "5d3465eb-d6f7-4ce9-9660-183a87f4daa2"
-      },
-      {
-        "name": "07. email NewsLetter subscription",
-        "item": [
-          {
-            "name": "701. subscribe for newsletter subscripition by email",
-            "id": "c0466970-65ca-4632-a8de-684b41bc3b69",
-            "request": {
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "first_name",
-                    "value": "deepak",
-                    "type": "text"
-                  },
-                  {
-                    "key": "last_name",
-                    "value": "bawa",
-                    "type": "text"
-                  },
-                  {
-                    "key": "email",
-                    "value": "bawa_d@ymail.com",
-                    "type": "text"
-                  },
-                  {
-                    "key": "message",
-                    "value": "want to know about HUL openings",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/contact-us"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "ab5cbf75-de30-4a12-9c33-954c57f31843"
-      },
-      {
-        "name": "08. contact us",
-        "item": [
-          {
-            "name": "801. Contact us",
-            "id": "96c1312e-1211-4067-bbc3-701e7713092e",
-            "request": {
-              "auth": {
-                "type": "bearer",
-                "bearer": {
-                  "token": "{{token}}"
-                }
-              },
-              "method": "POST",
-              "header": [
-                
-              ],
-              "body": {
-                "mode": "urlencoded",
-                "urlencoded": [
-                  {
-                    "key": "first_name",
-                    "value": "Deepak",
-                    "type": "text"
-                  },
-                  {
-                    "key": "last_name",
-                    "value": "bawa",
-                    "type": "text"
-                  },
-                  {
-                    "key": "email",
-                    "value": "bawa_d@ymail.com",
-                    "type": "text"
-                  },
-                  {
-                    "key": "message",
-                    "value": "testing",
-                    "type": "text"
-                  }
-                ]
-              },
-              "url": "{{url}}/contact-us"
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "20abf55a-037f-4ff9-8588-649bc67123b8"
-      },
-      {
-        "name": "09. homepage",
-        "item": [
-          {
-            "name": "901. get homepage data",
-            "id": "f5142141-3e6a-490d-879d-dbcb75da487e",
-            "request": {
-              "method": "GET",
-              "header": [
-                
-              ],
-              "url": null
-            },
-            "response": [
-              
-            ]
-          }
-        ],
-        "id": "3e4b8b90-5c02-412a-a2b5-66c52104fde4"
-      }
-    ]
-  }
+	"info": {
+		"_postman_id": "63a1a07c-53d5-442c-9ad0-f089d354a94b",
+		"name": "Blog-mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "00. others",
+			"item": [
+				{
+					"name": "01. links",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "?local=http://localhost:3000&prod=https://api.jobsnplacements.com&dev&blog=https://www.jobsnplacements.com&admin=https://admin.jobsnplacements.com",
+							"query": [
+								{
+									"key": "local",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "prod",
+									"value": "https://api.jobsnplacements.com"
+								},
+								{
+									"key": "dev",
+									"value": null
+								},
+								{
+									"key": "blog",
+									"value": "https://www.jobsnplacements.com"
+								},
+								{
+									"key": "admin",
+									"value": "https://admin.jobsnplacements.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "01. auth",
+			"item": [
+				{
+					"name": "101. signUp user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "Abhishek",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Tyagi",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "deepak4bawa@yopmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "9646255041",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/signUp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "102. signIn user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "deepak4bawa@yopmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/signIn",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "103. Social Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "social_flag",
+									"value": "gmail",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "107242046634094077153",
+									"type": "text"
+								},
+								{
+									"key": "social_user_detail",
+									"value": "{\"id\":\"107242046634094077153\",\"name\":\"Deepak Bawa\",\"email\":\"deepak.b@whizkraft.net\",\"photoUrl\":\"https://lh3.googleusercontent.com/a/AATXAJwehyb_3hBVMT1Qgkq8HV09dECmBdk0mZXqzuRW=s96-c\",\"firstName\":\"Deepak\",\"lastName\":\"Bawa\",\"authToken\":\"ya29.a0ARrdaM_P7jOvHDdJb3tJZvriZW3yc4v9ti8ZSxegIpXoo88DjyzL0w69A_Y9Gl_5Az-L0V9vjFWxaBu3nDdht-2ejzdna-vj3m6HunJRgssbGt_YrfAUdzLQ2Uiay9HsbjZ8T4rDuC7bPh5kV0oJgDSmZ14T\",\"idToken\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZjhhODRkM2VjZDc3ZTlmMmFkNWYwNmZmZDI2MDcwMWRkMDZkOTAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjQyMDQ2NjM0MDk0MDc3MTUzIiwiaGQiOiJ3aGl6a3JhZnQubmV0IiwiZW1haWwiOiJkZWVwYWsuYkB3aGl6a3JhZnQubmV0IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIxR2dadlNuaWV5b1NtV0pSTTE0WTFnIiwibmFtZSI6IkRlZXBhayBCYXdhIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBVFhBSndlaHliXzNoQlZNVDFRZ2txOEhWMDlkRUNtQmRrMG1aWHF6dVJXPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkRlZXBhayIsImZhbWlseV9uYW1lIjoiQmF3YSIsImxvY2FsZSI6ImVuIiwiaWF0IjoxNjI2MTc4MjI2LCJleHAiOjE2MjYxODE4MjYsImp0aSI6IjdkZDY1Yzg2YzMwZDBmMTY0ODY3MGQ1ZDY5MWZkMDFkMzYwY2Y2MzMifQ.IYb-R1iPfVYh0hD9sQMdmgRVIJZM0Bq138LubkeDO949lzut57epYxl1_p3_eQ6p5paTcLMvtLxETqpNir0kCf57anOAh_F3iqlVs8OHKHLGrgDlyQusw7kBbXeTOyo-TQoLDRh-Q6aweYWOuddaHdZDKK62FQ4PsGC9nhe1oJuJbSYGcFeOXbv2dXdf3uED3VvvQNglY-R5tkfQy1-UV7AhXZj1U8s-jdNnhUK2Tzw5Yxn_4gY3XINVmBCdAyJwkh8G5fR_z7dDDR_l44zvDbMKnwmNh9wJ7ga3rKWlCVyiuYLK-647WZthS-7c74zXzLAa7mhpLcSD7psTm8ET0g\",\"response\":{\"token_type\":\"Bearer\",\"access_token\":\"ya29.a0ARrdaM_P7jOvHDdJb3tJZvriZW3yc4v9ti8ZSxegIpXoo88DjyzL0w69A_Y9Gl_5Az-L0V9vjFWxaBu3nDdht-2ejzdna-vj3m6HunJRgssbGt_YrfAUdzLQ2Uiay9HsbjZ8T4rDuC7bPh5kV0oJgDSmZ14T\",\"scope\":\"email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile\",\"login_hint\":\"AJDLj6JUa8yxXrhHdWRHIV0S13cAC3JspX5HV668g7_5eyn9yqAgB1ZPkre01ukL6faAhYux7kiI29BZs4rOjHq8uw97UDX5NQ\",\"expires_in\":3599,\"id_token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZjhhODRkM2VjZDc3ZTlmMmFkNWYwNmZmZDI2MDcwMWRkMDZkOTAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDM3MjE0MDg1NDg1LWoxaG8yOTRmMW05c2VkbHE2MjRvbWd1OG5sdDlyanRlLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjQyMDQ2NjM0MDk0MDc3MTUzIiwiaGQiOiJ3aGl6a3JhZnQubmV0IiwiZW1haWwiOiJkZWVwYWsuYkB3aGl6a3JhZnQubmV0IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIxR2dadlNuaWV5b1NtV0pSTTE0WTFnIiwibmFtZSI6IkRlZXBhayBCYXdhIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBVFhBSndlaHliXzNoQlZNVDFRZ2txOEhWMDlkRUNtQmRrMG1aWHF6dVJXPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkRlZXBhayIsImZhbWlseV9uYW1lIjoiQmF3YSIsImxvY2FsZSI6ImVuIiwiaWF0IjoxNjI2MTc4MjI2LCJleHAiOjE2MjYxODE4MjYsImp0aSI6IjdkZDY1Yzg2YzMwZDBmMTY0ODY3MGQ1ZDY5MWZkMDFkMzYwY2Y2MzMifQ.IYb-R1iPfVYh0hD9sQMdmgRVIJZM0Bq138LubkeDO949lzut57epYxl1_p3_eQ6p5paTcLMvtLxETqpNir0kCf57anOAh_F3iqlVs8OHKHLGrgDlyQusw7kBbXeTOyo-TQoLDRh-Q6aweYWOuddaHdZDKK62FQ4PsGC9nhe1oJuJbSYGcFeOXbv2dXdf3uED3VvvQNglY-R5tkfQy1-UV7AhXZj1U8s-jdNnhUK2Tzw5Yxn_4gY3XINVmBCdAyJwkh8G5fR_z7dDDR_l44zvDbMKnwmNh9wJ7ga3rKWlCVyiuYLK-647WZthS-7c74zXzLAa7mhpLcSD7psTm8ET0g\",\"session_state\":{\"extraQueryParams\":{\"authuser\":\"0\"}},\"first_issued_at\":1626178227207,\"expires_at\":1626181826207,\"idpId\":\"google\"},\"provider\":\"GOOGLE\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/social-sign-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"social-sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "104. forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/forgot-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "105. Verify Forgot Password Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/reset-password/{{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password",
+								"{{token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "106. Change Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "107. Logged In Change Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "old_password",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/logged-in-user-change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"logged-in-user-change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02. users",
+			"item": [
+				{
+					"name": "201. insert user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "deepak",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bawa_d1@ymail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "7508498587",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "CUSTOMER",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "202. get all user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "203. get user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "204. patch user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "deepaks",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bawa_d@ymail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "7508498585",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "205. delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "206. change profile pic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image_file",
+									"type": "file",
+									"src": "/home/deepak/Pictures/linux.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/{{userId}}/image",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "207. delete profile pic",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/users/{{userId}}/image/{{profilePic}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"image",
+								"{{profilePic}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "208. isExists user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/{{userId}}/idExists",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"idExists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "209. isExists phone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/phoneExists/{{phone}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"phoneExists",
+								"{{phone}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "210. isExists email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/emailExists/{{email}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"emailExists",
+								"{{email}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "211. get user by phone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/byPhone/{{phone}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"byPhone",
+								"{{phone}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "212. get user by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/byEmail/{{email}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"byEmail",
+								"{{email}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "03. departments",
+			"item": [
+				{
+					"name": "301. Insert Departments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "department_title",
+									"value": "Railway Jobs",
+									"type": "text"
+								},
+								{
+									"key": "department_slug",
+									"value": "railway-jobs",
+									"type": "text"
+								},
+								{
+									"key": "department_status",
+									"value": "OPEN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/departments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "302. Get Departments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "303. Get Department By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "304. Update Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "department_title",
+									"value": "Railway Jobs1",
+									"type": "text"
+								},
+								{
+									"key": "department_slug",
+									"value": "railway-jobs1",
+									"type": "text"
+								},
+								{
+									"key": "department_status",
+									"value": "OPEN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "305. Delete Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "306. Check Department Exists",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/departments/exists/shoes/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"exists",
+								"shoes",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "307. upload department image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "department_image",
+									"type": "file",
+									"src": "/home/deepak/Pictures/kitchen-orders.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/image",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "308. delete department image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/delete-image/{{department_image}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"delete-image",
+								"{{department_image}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "04. categories",
+			"item": [
+				{
+					"name": "401. Insert Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "loco pilot",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "OPEN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "402. Get Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "403. Get Category By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/categories/{{categoryId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "404. Update Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "loco pilot1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "OPEN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/categories/{{categoryId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "405. Delete Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departments/{{departmentId}}/categories/{{categoryId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"{{departmentId}}",
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "406. Check Category Exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "407. upload categories image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "409. delete department image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "05. articles",
+			"item": [
+				{
+					"name": "501. insert article",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "slug10",
+									"type": "text"
+								},
+								{
+									"key": "short_description",
+									"value": "short_description",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "meta[0][description]",
+									"value": "hello hi",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "meta[1][author]",
+									"value": "deepak bawa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "tags[]",
+									"value": "tag1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "tags[]",
+									"value": "tag2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "scheduled_for",
+									"value": "2020-09-01 23:24:00",
+									"type": "text"
+								},
+								{
+									"key": "opened_on",
+									"value": "2020-09-01 23:24:00",
+									"type": "text"
+								},
+								{
+									"key": "closed_on",
+									"value": "2020-09-01 23:24:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/articles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "502. get all article",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "503. get article by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "504. update article",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "slug",
+									"value": "slug8",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "short_description",
+									"value": "short_description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "meta[0][description]",
+									"value": "hello hi",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "meta[1][author]",
+									"value": "deepak bawa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "tags[]",
+									"value": "tag1",
+									"type": "text"
+								},
+								{
+									"key": "tags[]",
+									"value": "tag2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "505. upload article image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image_file",
+									"type": "file",
+									"src": "/home/deepak/Pictures/kitchen-orders.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/image",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "506. delete article image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "507. check article exits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/idExists",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"idExists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "508. get article by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "509. get article by department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "510. get article by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "511. check slug exits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/slug/{{articleSlug}}/Exists/{{articleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"slug",
+								"{{articleSlug}}",
+								"Exists",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "06. comments",
+			"item": [
+				{
+					"name": "601. insert comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "my first comment",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/comments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "602. get all comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/comments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "603. get comment by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/comments/{{commentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"comments",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "604. update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "my third comment",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "CLOSE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/comments/{{commentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"comments",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "605. delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/comments/{{commentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"comments",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "606. idExists comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/articles/{{articleId}}/comments/{{commentId}}/idExists",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles",
+								"{{articleId}}",
+								"comments",
+								"{{commentId}}",
+								"idExists"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "07. email NewsLetter subscription",
+			"item": [
+				{
+					"name": "701. subscribe for newsletter subscripition by email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "bawa_d@ymail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "deepak4bawa@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/newsletter/subscribe",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"newsletter",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "08. contact us",
+			"item": [
+				{
+					"name": "801. Contact us",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "Deepak",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "bawa",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bawa_d@ymail.com",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "testing",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/contact-us",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact-us"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "09. homepage",
+			"item": [
+				{
+					"name": "901. get homepage data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
