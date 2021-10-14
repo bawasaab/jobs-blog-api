@@ -52,6 +52,10 @@ module.exports = class NewsletterController {
                                                 data: result.data,
                                                 type: 'NEWSLETTER'
                                             });
+                                            return await responseServiceObj.sendResponse(res, {
+                                                msg: 'Newsletter Email Failed',
+                                                data: result
+                                            });
                                         } else {
                                             return await responseServiceObj.sendResponse(res, {
                                                 msg: 'Verification Mail Sent Successfully'
