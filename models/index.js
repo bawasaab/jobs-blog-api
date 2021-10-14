@@ -3,4 +3,5 @@ module.exports = {
     FailedMailModel : require('./FailedMailModel'),
     ArticleModel : require('./ArticleModel'),
     DepartmentModel : require('./DepartmentModel'),
+    NewsletterSubscriptionModel: require('./NewsletterSubscriptionModel'),
 };

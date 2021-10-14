@@ -6,4 +6,5 @@ module.exports = {
     ArticleController : require('./ArticleController'),
     CategoryController : require('./CategoryController'),
     DepartmentController : require('./DepartmentController'),
+    NewsletterController: require('./NewsletterController'),
 };
