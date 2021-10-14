@@ -9,6 +9,7 @@ const articleRouter = require('./api/ArticleRouter');
 const DepartmentRouter = require('./api/DepartmentRouter');
 const CategoryRouter = require('./api/CategoryRouter');
 const OpenRouter = require('./api/OpenRouter');
+const NewsletterRouter = require('./api/NewsletterRouter');
 
 const AuthController = require('../controllers').AuthController;
 const AuthControllerObj = new AuthController();
@@ -22,6 +23,7 @@ router.get('/', function(req, res, next) {
 
 router.use( '/auth', authRouter );
 router.use( '/open', OpenRouter );
+router.use('/newsletter', NewsletterRouter);
 
 /**
  * auth middleware starts

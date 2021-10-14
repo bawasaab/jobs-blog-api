@@ -8,4 +8,5 @@ module.exports = {
     ArticleService : require('./ArticleService'),
     DepartmentService : require('./DepartmentService'),
     CategoryService : require('./CategoryService'),
+    NewsLetterSubscriptionService: require('./NewsLetterSubscriptionService'),
 };
