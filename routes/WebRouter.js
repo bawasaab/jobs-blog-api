@@ -11,7 +11,7 @@ var webBaseUrl = require('../config/config').WEB_BASE_URL;
 /* GET home page. */
 router.get('/latest-jobs', function(req, res, next) {
     try {
-        articleServiceObj.getAll()
+        articleServiceObj.getLatestJobs()
         .then( async (result) => {
             console.log('result', result);
             res.render('web/latest_jobs', { 
@@ -32,7 +32,7 @@ router.get('/latest-jobs', function(req, res, next) {
 
 router.get('/jobs-closing-soon', function(req, res, next) {
     try {
-        articleServiceObj.getAll()
+        articleServiceObj.getJobsClosingSoon()
         .then( async (result) => {
             res.render('web/jobs_closing_soon', {
                 articles: result,
@@ -52,7 +52,7 @@ router.get('/jobs-closing-soon', function(req, res, next) {
 
 router.get('/upcoming-jobs', function(req, res, next) {
     try {
-        articleServiceObj.getAll()
+        articleServiceObj.getUpcomingJobs()
         .then( async (result) => {
             res.render('web/upcoming_jobs', {
                 articles: result,

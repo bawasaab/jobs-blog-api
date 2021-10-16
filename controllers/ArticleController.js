@@ -331,4 +331,82 @@ module.exports = class ArticleController {
             } );
         }
     }
+
+    getLatestJobs( req, res, next ) {
+
+        try {
+
+            articleServiceObj.getLatestJobs()
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Record found',
+                    data : {
+                        article: result,
+                    },
+                    cnt: await articleServiceObj.getLatestJobsCnt()
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+        } catch( ex ) {
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
+    getUpcomingJobs( req, res, next ) {
+
+        try {
+
+            articleServiceObj.getUpcomingJobs()
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Record found',
+                    data : {
+                        article: result,
+                    },
+                    cnt: await articleServiceObj.getUpcomingJobsCnt()
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+        } catch( ex ) {
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
+    getJobsClosingSoon( req, res, next ) {
+
+        try {
+
+            articleServiceObj.getJobsClosingSoon()
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Record found',
+                    data : {
+                        article: result,
+                    },
+                    cnt: await articleServiceObj.getJobsClosingSoonCnt()
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+        } catch( ex ) {
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
 }

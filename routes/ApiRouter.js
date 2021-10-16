@@ -11,10 +11,15 @@ const CategoryRouter = require('./api/CategoryRouter');
 const OpenRouter = require('./api/OpenRouter');
 const NewsletterRouter = require('./api/NewsletterRouter');
 
+const ArticleController = require('../controllers').ArticleController;
+const articleControllerObj = new ArticleController();
+
 const AuthController = require('../controllers').AuthController;
 const AuthControllerObj = new AuthController();
 
-var { basePath } = require('../config/config').WEB_ROOT_IMAGE_PATH;
+// var { basePath } = require('../config/config').WEB_ROOT_IMAGE_PATH;
+
+let basePath = 'http://localhost:3000/';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,6 +29,18 @@ router.get('/', function(req, res, next) {
 router.use( '/auth', authRouter );
 router.use( '/open', OpenRouter );
 router.use('/newsletter', NewsletterRouter);
+
+router.get('/latest-jobs', [
+  articleControllerObj.getLatestJobs
+]);
+
+router.get('/upcoming-jobs', [
+  articleControllerObj.getUpcomingJobs
+]);
+
+router.get('/jobs-closing-soon', [
+  articleControllerObj.getUpcomingJobs
+]);
 
 /**
  * auth middleware starts
