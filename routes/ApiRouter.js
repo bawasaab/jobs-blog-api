@@ -30,6 +30,10 @@ router.use( '/auth', authRouter );
 router.use( '/open', OpenRouter );
 router.use('/newsletter', NewsletterRouter);
 
+router.get('/articles/BySlug/:slug', [
+  articleControllerObj.getBySlug
+]);
+
 router.get('/latest-jobs', [
   articleControllerObj.getLatestJobs
 ]);

@@ -21,8 +21,6 @@ module.exports = class ArticleController {
         try {
 
             let user_id = TokenServiceObj.getUserId( req );
-            console.log('after user_id');
-            console.log('user_id', user_id);
             let in_data = req.body;
             let rules = {
                 title: 'required',
@@ -171,6 +169,44 @@ module.exports = class ArticleController {
             }
             id = ObjectId( id );
             articleServiceObj.getById( id )
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Record found',
+                    data : {
+                        article: result
+                    }
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+
+        } catch(ex) {
+    
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
+    getBySlug( req, res, next ) {
+        try {
+            let in_data = req.params;
+            let rules = {
+                slug: 'required'
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+
+                return responseServiceObj.sendException( res, {
+                    msg : responseServiceObj.getFirstError( validation )
+                } );
+            }
+
+            let slug = in_data.slug;
+            articleServiceObj.getBySlug( slug )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : 'Record found',
