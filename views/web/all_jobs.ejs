@@ -5,6 +5,13 @@
 <div class="col-lg-6 order-lg-2 order-1">
     <div class="main-content">
         <%- include includes/main-search.ejs %>
+
+        <h1 class="text-center">
+            <a href="/all-jobs" class="text-dark">
+                All Government Jobs - Jobsnplacements
+            </a>
+        </h1>
+
         <!-- Jobs List -->
         <div class="widget mt-4">
             <div class="widget-content">
@@ -12,7 +19,7 @@
                     <ul class="post-list">
                         
                         <% articles.forEach( (article) => { %>
-                            <li>
+                            <!-- <li>
                                 <h2>
                                     <a href="/<%= article.slug %>/job-details">
                                         <%= article.title %>
@@ -24,16 +31,34 @@
                                 <div class="btn-action">
                                     <a href="/<%= article.slug %>/job-details">Read More</a>
                                 </div>
-                            </li>
+                            </li> -->
+
+                            <div class="card margin-top-10">
+                                <div class="card-header bg-dark">
+                                    <h4 class="mb-2 text-center">
+                                        <a class="text-white" href="/<%= article.slug %>/job-details">
+                                            <%= article.title %>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <%- article.short_description.substring(0, 300) %>...
+                                </div>
+                                <div class="card-footer">
+                                    <div class="float-right">
+                                        <a class="btn btn-dark btn-sm text-white" href="/<%= article.slug %>/job-details">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
                         <% }); %>
 
-                        <li>
+                        <!-- <li>
                             <h2><a href="/<%= articles[0].slug %>/job-details">Celebrated am announcing delightful remarkably we</a></h2>
                             <p>It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had yo...</p>
                             <div class="btn-action">
                                 <a href="/<%= articles[0].slug %>/job-details">Read More</a>
                             </div>
-                        </li>
+                        </li> -->
 
                         <!-- <li>
                             <h2><a href="/job-details">Celebrated am announcing delightful remarkably we</a></h2>

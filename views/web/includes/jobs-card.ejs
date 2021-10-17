@@ -1,0 +1,17 @@
+<div class="card margin-top-10">
+    <div class="card-header bg-dark">
+        <h4 class="mb-2 text-center">
+            <a class="text-white" href="/<%= article.slug %>/job-details">
+                <%= article.title %>
+            </a>
+        </h4>
+    </div>
+    <div class="card-body">
+        <%- article.short_description.substring(0, 300) %>...
+    </div>
+    <div class="card-footer">
+        <div class="float-right">
+            <a class="btn btn-dark btn-sm text-white" href="/<%= article.slug %>/job-details">Read More</a>
+        </div>
+    </div>
+</div>
