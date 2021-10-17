@@ -219,22 +219,22 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Jobs by States</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Jobs by Qualifications</a>
                         <div class="dropdown-menu menu-content-scroll">
-                            <% Object.keys(right_side_states).forEach(function(key) { %>
+                            <% Object.keys(left_side_qualification).forEach(function(key) { %>
                                 <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">
-                                    <%- right_side_states[key] %>
+                                    <%- left_side_qualification[key] %>
                                 </a>
                             <% }); %>
                         </div>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Jobs by Qualifications</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Jobs by States</a>
                         <div class="dropdown-menu menu-content-scroll">
-                            <% Object.keys(left_side_qualification).forEach(function(key) { %>
+                            <% Object.keys(right_side_states).forEach(function(key) { %>
                                 <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">
-                                    <%- left_side_qualification[key] %>
+                                    <%- right_side_states[key] %>
                                 </a>
                             <% }); %>
                         </div>

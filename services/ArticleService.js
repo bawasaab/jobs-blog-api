@@ -15,6 +15,115 @@ module.exports = class ArticleService {
         }
     }
 
+    async getLatestJobsCnt() {
+        try {
+
+            let cutoff = new Date();
+            /**
+             * last 31 days articles
+             */
+            cutoff.setDate(cutoff.getDate()-31);
+
+            let result = await articleModel.count( { 
+                status: { $ne: 'DELETED' },
+                scheduled_for: {
+                    $gte: cutoff
+                }
+            } );
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
+
+    async getLatestJobs() {
+        try {
+
+            let cutoff = new Date();
+            /**
+             * last 31 days articles
+             */
+            cutoff.setDate(cutoff.getDate()-31);
+
+            let result = await articleModel.find( { 
+                status: { $ne: 'DELETED' },
+                scheduled_for: {
+                    $gte: cutoff
+                },
+                // sort: {
+                //     scheduled_for: 1
+                // }
+            } );
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
+
+    async getUpcomingJobsCnt() {
+        try {
+
+            let today = new Date();
+            let result = await articleModel.count( { 
+                status: { $ne: 'DELETED' },
+                scheduled_for: {
+                    $gt: today
+                }
+            } );
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
+
+    async getUpcomingJobs() {
+        try {
+
+            let today = new Date();
+            let result = await articleModel.find( { 
+                status: { $ne: 'DELETED' },
+                scheduled_for: {
+                    $gt: today
+                }
+            } );
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
+
+    async getJobsClosingSoonCnt() {
+        try {
+    
+            let today = new Date();
+            let result = await articleModel.count( { 
+                status: { $ne: 'DELETED' },
+                closed_on: {
+                    $gt: today
+                }
+            } );
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
+    
+    async getJobsClosingSoon() {
+        try {
+    
+            let today = new Date();
+            let result = await articleModel.find( { 
+                status: { $ne: 'DELETED' },
+                closed_on: {
+                    $gt: today
+                }
+            } );
+            return result;
+        } catch(ex) {            
+            throw ex;
+        }
+    }
+
     async getAllByUser( userId ) {
         try {
 
