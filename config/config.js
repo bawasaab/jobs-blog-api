@@ -54,5 +54,7 @@ module.exports = {
     
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
     
-    NEWSLETTER_LINK_EXPIRY_DAYS: process.env.NEWSLETTER_LINK_EXPIRY_DAYS // DAYS
+    NEWSLETTER_LINK_EXPIRY_DAYS: process.env.NEWSLETTER_LINK_EXPIRY_DAYS, // DAYS
+    
+    FCM_SERVER_KEY: process.env.FCM_SERVER_KEY
 };
