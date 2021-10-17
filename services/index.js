@@ -9,4 +9,5 @@ module.exports = {
     DepartmentService : require('./DepartmentService'),
     CategoryService : require('./CategoryService'),
     NewsLetterSubscriptionService: require('./NewsLetterSubscriptionService'),
+    FcmService: require('./FcmService'),    
 };
