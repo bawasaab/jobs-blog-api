@@ -1915,6 +1915,55 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "10. FCM",
+			"item": [
+				{
+					"name": "1001. save FCM token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fcm_token",
+									"value": "er30AquXTq-R9dy025pDXB:APA91bE8Y6NBc7jCdEvYFdFmNq3rKbam5X2uqm2ka_q461gL8i80y0T9bDheou9-82YryJnwnCPT64pRJeWIeKrb1y2GFsWnTN2J-Y2y9uQBeuhgmcphkaR4SoOUYH3d4cEM2eIq1uw0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/fcm",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fcm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1002. send FCM notification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/fcm",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fcm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
