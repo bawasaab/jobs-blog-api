@@ -14,6 +14,9 @@ const NewsletterRouter = require('./api/NewsletterRouter');
 const ArticleController = require('../controllers').ArticleController;
 const articleControllerObj = new ArticleController();
 
+const FcmController = require('../controllers').FcmController;
+const fcmControllerObj = new FcmController();
+
 const AuthController = require('../controllers').AuthController;
 const AuthControllerObj = new AuthController();
 
@@ -29,6 +32,14 @@ router.get('/', function(req, res, next) {
 router.use( '/auth', authRouter );
 router.use( '/open', OpenRouter );
 router.use('/newsletter', NewsletterRouter);
+
+router.post( '/fcm', [
+  fcmControllerObj.saveDeviceToken
+] );
+
+router.get( '/fcm', [
+  fcmControllerObj.sendNotification
+] );
 
 router.get('/articles/BySlug/:slug', [
   articleControllerObj.getBySlug
@@ -49,7 +60,7 @@ router.get('/jobs-closing-soon', [
 /**
  * auth middleware starts
  */
-router.use( AuthControllerObj.verifyToken );
+// router.use( AuthControllerObj.verifyToken );
 /**
  * auth middleware ends
  */

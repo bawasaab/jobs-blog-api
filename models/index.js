@@ -4,4 +4,5 @@ module.exports = {
     ArticleModel : require('./ArticleModel'),
     DepartmentModel : require('./DepartmentModel'),
     NewsletterSubscriptionModel: require('./NewsletterSubscriptionModel'),
+    FcmModel: require('./FcmModel'),
 };

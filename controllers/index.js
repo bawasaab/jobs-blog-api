@@ -7,4 +7,5 @@ module.exports = {
     CategoryController : require('./CategoryController'),
     DepartmentController : require('./DepartmentController'),
     NewsletterController: require('./NewsletterController'),
+    FcmController: require('./FcmController'),
 };
