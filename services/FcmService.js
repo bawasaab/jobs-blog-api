@@ -2,7 +2,7 @@ const FCM = require('fcm-node');
 const FcmModel = require('../models').FcmModel;
 const FCM_SERVER_KEY = require('../config/config').FCM_SERVER_KEY;
 
-const deviceToken = 'er30AquXTq-R9dy025pDXB:APA91bE8Y6NBc7jCdEvYFdFmNq3rKbam5X2uqm2ka_q461gL8i80y0T9bDheou9-82YryJnwnCPT64pRJeWIeKrb1y2GFsWnTN2J-Y2y9uQBeuhgmcphkaR4SoOUYH3d4cEM2eIq1uw0';
+// const deviceToken = 'er30AquXTq-R9dy025pDXB:APA91bE8Y6NBc7jCdEvYFdFmNq3rKbam5X2uqm2ka_q461gL8i80y0T9bDheou9-82YryJnwnCPT64pRJeWIeKrb1y2GFsWnTN2J-Y2y9uQBeuhgmcphkaR4SoOUYH3d4cEM2eIq1uw0';
 
 module.exports = class FcmService {
 
@@ -23,20 +23,22 @@ module.exports = class FcmService {
         }
     }
 
-    async sendNotification() {
+    async sendNotification( deviceToken, in_notification ) {
 
         try {
 
             let message = {
-                to: deviceToken,
+                to: in_notification.deviceToken,
+
                 notification: {
-                    title: 'NotifcatioTestAPP',
-                    body: 'Message from node js app',
+                    title: in_notification.title,
+                    body: in_notification.body,
                 },
         
                 data: { //you can send only notification or only data(or include both)
-                    title: 'ok cdfsdsdfsd',
-                    body: '{"name" : "okg ooggle ogrlrl","product_id" : "123","final_price" : "0.00035"}'
+                    title: in_notification.title,
+                    // body: '{"name" : "okg ooggle ogrlrl","product_id" : "123","final_price" : "0.00035"}'
+                    body: in_notification.body,
                 }
             };
             

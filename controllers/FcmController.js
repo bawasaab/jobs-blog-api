@@ -16,6 +16,17 @@ module.exports = class FcmController {
             FcmServiceObj.saveDeviceToken( in_data )
             .then( async ( result ) => {
 
+                // send welcome notification
+                let deviceToken = result.fcm_token;
+                let in_notification = {
+                    to: deviceToken,
+                    notification: {
+                        title: 'Welcome Abroad!',
+                        body: 'Thanks for choosing Jobsnplacements.com',
+                    }
+                };
+                sendNotification( deviceToken, in_notification );
+
                 return await responseServiceObj.sendResponse(res, {
                     msg: 'Token Saved',
                     data: {
