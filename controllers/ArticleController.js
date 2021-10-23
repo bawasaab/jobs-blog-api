@@ -20,7 +20,8 @@ module.exports = class ArticleController {
 
         try {
 
-            let user_id = TokenServiceObj.getUserId( req );
+            // let user_id = TokenServiceObj.getUserId( req );
+            let user_id = '6129359c73255433d6544126';
             let in_data = req.body;
             let rules = {
                 title: 'required',
