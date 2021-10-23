@@ -74,7 +74,8 @@ module.exports = class ArticleController {
 
         try {
 
-            let user_id = TokenServiceObj.getUserId( req );
+            // let user_id = TokenServiceObj.getUserId( req );
+            let user_id = '6129359c73255433d6544126';
             let in_id = req.params.articleId;
             let is_valid = ObjectId.isValid(in_id);
             if( !is_valid ) {
