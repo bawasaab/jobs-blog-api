@@ -37,12 +37,13 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-}
+// var corsOptions = {
+//     origin: '*'
+// }
+// app.use(cors(corsOptions));
 
-app.use(cors(corsOptions));
+app.options('*', cors()) // include before other routes
+
 app.use('/', indexRouter);
 
 /**
