@@ -37,8 +37,16 @@ module.exports = class ArticleController {
                 } );
             }
             
-            in_data.user_id = user_id;
-            in_data.author_details = TokenServiceObj.getAuthor(req);
+            // in_data.user_id = user_id;
+            in_data.user_id = '6129359c73255433d6544126';
+            // in_data.author_details = TokenServiceObj.getAuthor(req);
+            in_data.author_details = {
+                last_name: "Tyagi",
+                profilePic: null,
+                email: "deepak4bawa@yopmail.com",
+                gender: "MALE",
+                first_name: "Abhishek"
+            };
             console.log('in_data', in_data);
             articleServiceObj.insert( in_data )
             .then( async (result) => {
