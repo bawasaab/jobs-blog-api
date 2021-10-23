@@ -60,7 +60,7 @@ router.get('/jobs-closing-soon', [
 /**
  * auth middleware starts
  */
-router.use( AuthControllerObj.verifyToken );
+// router.use( AuthControllerObj.verifyToken );
 /**
  * auth middleware ends
  */
