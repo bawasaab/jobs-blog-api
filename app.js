@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+const ArticleService = require('./services').ArticleService;
+const articleServiceObj = new ArticleService();
+
 var indexRouter = require('./routes/index');
 
 var app = express();
