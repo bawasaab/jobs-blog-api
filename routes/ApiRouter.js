@@ -65,6 +65,7 @@ router.get('/jobs-closing-soon', [
  * auth middleware ends
  */
 
+
 router.use( '/users', userRouter );
 router.use('/contact-us', contactUsRouter);
 
