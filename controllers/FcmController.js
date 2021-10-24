@@ -31,7 +31,7 @@ module.exports = class FcmController {
                 return await responseServiceObj.sendResponse(res, {
                     msg: 'Token Saved',
                     data: {
-                        result: result
+                        result: await FcmServiceObj.getByDeviceToken( in_data.device_token )
                     }
                 });
             } )

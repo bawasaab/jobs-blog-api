@@ -12,11 +12,41 @@ module.exports = class FcmService {
         this.fcm = new FCM( FCM_SERVER_KEY );
     }
 
+    async getByDeviceToken( device_token ) {
+
+        try {
+            return await FcmModel.findOne( { device_token: device_token, status: { $ne: 'DELETED' } } );
+
+        } catch( ex ) {
+            throw ex;
+        }
+    }
+
+    async isDeviceTokenExists( device_token ) {
+        try {
+
+            let result = await FcmModel.countDocuments( { device_token: device_token } );
+            let isExists = result > 0 ? true : false;
+            return isExists;
+        } catch(ex) {
+            throw ex;
+        }
+    }
+
     async saveDeviceToken( in_data ) {
 
         try {
 
-            let result = await FcmModel.create( in_data );
+            let isExists = await this.isDeviceTokenExists( in_data.device_token );
+            let result;
+
+            if( isExists ) {
+                result = await FcmModel.updateOne({ device_token: in_data.device_token }, in_data, { multi: false });
+
+            } else {
+                result = await FcmModel.create( in_data );
+                
+            }
             return result;
         } catch (ex) {
             throw ex;
