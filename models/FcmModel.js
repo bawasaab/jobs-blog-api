@@ -10,6 +10,8 @@ const FcmSchema = new Schema({
     fcm_token: { type: String, default: null },
 
     device_info: { type: Object, default: null },
+
+    device_token: { type: string, default: null },
     
     deletedAt: { type: Date, default: null },
     createdAt: { type: Date, default: dated },
