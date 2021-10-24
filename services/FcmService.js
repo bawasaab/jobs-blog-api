@@ -57,49 +57,6 @@ module.exports = class FcmService {
 
         try {
 
-            /*
-            let message = {
-                to: in_notification.to,
-
-                notification: {
-                    title: in_notification.notification.title,
-                    body: in_notification.notification.body,
-                    click_action:"FCM_PLUGIN_ACTIVITY",
-                    icon:"fcm_push_icon",
-                    sound:"default",
-
-                    "android": {
-                        "notification": {
-                          "icon":"fcm_push_icon",
-                          "click_action": "FCM_PLUGIN_ACTIVITY"
-                        }
-                    }
-                },
-        
-                data: { //you can send only notification or only data(or include both)
-                    // topic: 'subscriber-updates',
-                    title: in_notification.notification.title,
-                    body: in_notification.notification.body,
-                    click_action:"FCM_PLUGIN_ACTIVITY",
-                    icon:"fcm_push_icon",
-                    sound:"default",
-
-                    "android": {
-                        "notification": {
-                          "icon":"fcm_push_icon",
-                          "click_action": "FCM_PLUGIN_ACTIVITY"
-                        }
-                    }
-
-                    // body: '{"name" : "okg ooggle ogrlrl","product_id" : "123","final_price" : "0.00035"}'
-                },
-
-                priority: "high",
-                importance: "high",
-                
-            };
-            */
-
             let message = {
                 "notification":{
                     "title": in_notification.notification.title,
