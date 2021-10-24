@@ -37,7 +37,7 @@ router.post( '/fcm', [
   fcmControllerObj.saveDeviceToken
 ] );
 
-router.post( '/fcm', [
+router.post( '/fcm/send', [
   fcmControllerObj.sendNotification
 ] );
 
