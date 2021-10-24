@@ -57,22 +57,65 @@ module.exports = class FcmService {
 
         try {
 
+            /*
             let message = {
                 to: in_notification.to,
 
                 notification: {
                     title: in_notification.notification.title,
                     body: in_notification.notification.body,
+                    click_action:"FCM_PLUGIN_ACTIVITY",
+                    icon:"fcm_push_icon",
+                    sound:"default",
+
+                    "android": {
+                        "notification": {
+                          "icon":"fcm_push_icon",
+                          "click_action": "FCM_PLUGIN_ACTIVITY"
+                        }
+                    }
                 },
         
                 data: { //you can send only notification or only data(or include both)
+                    // topic: 'subscriber-updates',
                     title: in_notification.notification.title,
                     body: in_notification.notification.body,
-                    // body: '{"name" : "okg ooggle ogrlrl","product_id" : "123","final_price" : "0.00035"}'
-                }
-            };
+                    click_action:"FCM_PLUGIN_ACTIVITY",
+                    icon:"fcm_push_icon",
+                    sound:"default",
 
-            console.log('message', message);
+                    "android": {
+                        "notification": {
+                          "icon":"fcm_push_icon",
+                          "click_action": "FCM_PLUGIN_ACTIVITY"
+                        }
+                    }
+
+                    // body: '{"name" : "okg ooggle ogrlrl","product_id" : "123","final_price" : "0.00035"}'
+                },
+
+                priority: "high",
+                importance: "high",
+                
+            };
+            */
+
+            let message = {
+                "notification":{
+                    "title": in_notification.notification.title,
+                    "body": in_notification.notification.body,
+                    "sound":"default",
+                    "click_action":"FCM_PLUGIN_ACTIVITY",
+                    "icon":"fcm_push_icon"
+                },
+                "data":{
+                    "landing_page":"second",
+                    "price":"$3,000.00"
+                },
+                "to":in_notification.to,
+                "priority":"high",
+                "restricted_package_name":""
+            };
             
             this.fcm.send(message, function(err, response) {
                 if (err) {
