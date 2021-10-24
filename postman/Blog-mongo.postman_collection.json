@@ -1931,6 +1931,16 @@
 									"key": "fcm_token",
 									"value": "er30AquXTq-R9dy025pDXB:APA91bE8Y6NBc7jCdEvYFdFmNq3rKbam5X2uqm2ka_q461gL8i80y0T9bDheou9-82YryJnwnCPT64pRJeWIeKrb1y2GFsWnTN2J-Y2y9uQBeuhgmcphkaR4SoOUYH3d4cEM2eIq1uw0",
 									"type": "text"
+								},
+								{
+									"key": "device_token",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "device_info",
+									"value": "{hi: 'hello'}",
+									"type": "text"
 								}
 							]
 						},
@@ -1949,15 +1959,36 @@
 				{
 					"name": "1002. send FCM notification",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fcm_token",
+									"value": "dGrYlhCPTEKEnLAF0F8TNo:APA91bEjFCumLowtfY9TLuOE9MbEriDqcRndK77e_q9e3uZGczV9t3c5N_MP9F8P9i7d0X8sZYG4u-aCnNiDq4Zp1zZ5ExqVANcLVt6ioZaM_u1ynNsQ4ZoYEzUtac-pzslhfWwlsmZz",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Hello",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "ki haal",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "{{url}}/fcm",
+							"raw": "{{url}}/fcm/send",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fcm"
+								"fcm",
+								"send"
 							]
 						}
 					},
