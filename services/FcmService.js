@@ -53,36 +53,37 @@ module.exports = class FcmService {
         }
     }
 
-    async sendNotification( deviceToken, in_notification ) {
+    async sendNotification( deviceToken, in_notification, cb ) {
 
         try {
 
             let message = {
-                to: in_notification.deviceToken,
+                to: in_notification.to,
 
                 notification: {
-                    title: in_notification.title,
-                    body: in_notification.body,
+                    title: in_notification.notification.title,
+                    body: in_notification.notification.body,
                 },
         
                 data: { //you can send only notification or only data(or include both)
-                    title: in_notification.title,
+                    title: in_notification.notification.title,
+                    body: in_notification.notification.body,
                     // body: '{"name" : "okg ooggle ogrlrl","product_id" : "123","final_price" : "0.00035"}'
-                    body: in_notification.body,
                 }
             };
+
+            console.log('message', message);
             
             this.fcm.send(message, function(err, response) {
                 if (err) {
                     console.log("Something has gone wrong!"+err);
-                    console.log("Respponse:! "+response);
-                    throw err;
                 } else {
-                    // showToast("Successfully sent with response");
                     console.log("Successfully sent with response: ", response);
-                    return response;
+                    // return response;
                 }    
+                cb( err, response );
             });
+
         } catch (ex) {
             throw ex;
         }

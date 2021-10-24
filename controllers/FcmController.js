@@ -58,7 +58,9 @@ module.exports = class FcmController {
 
             let in_data = req.body;
             let rules = {
-                fcm_token: 'required'
+                fcm_token: 'required',
+                title: 'required',
+                body: 'required',
             };
             let validation = new Validator(in_data, rules);
             if (validation.fails()) {
@@ -71,26 +73,25 @@ module.exports = class FcmController {
             let in_notification = {
                 to: deviceToken,
                 notification: {
-                    title: 'Testing from Jobsnplacements.com!',
-                    body: 'Thanks for choosing Jobsnplacements.com',
+                    title: in_data.title,
+                    body: in_data.body,
                 }
             };
 
-            FcmServiceObj.sendNotification( in_data.fcm_token, in_notification )
-            .then( async ( result ) => {
+            FcmServiceObj.sendNotification( in_data.fcm_token, in_notification, async (err, result) => {
 
-                return await responseServiceObj.sendResponse(res, {
-                    msg: 'Notification Status',
-                    data: {
-                        result: result
-                    }
-                });
-            } )
-            .catch( async (ex) => {
-                
-                return responseServiceObj.sendException( res, {
-                    msg : ex.toString()
-                } );
+                if(err) {
+                    return responseServiceObj.sendException( res, {
+                        msg : err.toString()
+                    } );        
+                } else {
+                    return await responseServiceObj.sendResponse(res, {
+                        msg: 'Notification Status',
+                        data: {
+                            result: result
+                        }
+                    });
+                }
             } );
 
         } catch( ex ) {
