@@ -25,7 +25,7 @@ module.exports = class FcmController {
                         body: 'Thanks for choosing Jobsnplacements.com',
                     }
                 };
-                sendNotification( deviceToken, in_notification );
+                FcmServiceObj.sendNotification( deviceToken, in_notification );
 
                 return await responseServiceObj.sendResponse(res, {
                     msg: 'Token Saved',
