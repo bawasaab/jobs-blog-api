@@ -825,6 +825,9 @@ a, a:hover {
     overflow: hidden;
     overflow-y: scroll;
 }
+p.fcm-token-hide {
+    display: none;
+}
 /**
     sub menu css starts
 **/
