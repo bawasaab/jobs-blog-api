@@ -76,12 +76,13 @@ module.exports = class FcmService {
 
         try {
 
+            // click_action is a link to the page to be open when user clicks on it
             let message = {
                 "notification":{
                     "title": in_notification.notification.title,
                     "body": in_notification.notification.body,
                     "sound":"default",
-                    "click_action":"FCM_PLUGIN_ACTIVITY",
+                    "click_action":"home",
                     "icon":"fcm_push_icon"
                 },
                 "data":{
@@ -110,7 +111,7 @@ module.exports = class FcmService {
                     "title": in_notification.notification.title,
                     "body": in_notification.notification.body,
                     "sound":"default",
-                    "click_action":"FCM_PLUGIN_ACTIVITY",
+                    "click_action":"home",
                     "icon":"fcm_push_icon"
                 },
                 "data":{
