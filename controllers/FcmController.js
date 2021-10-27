@@ -101,4 +101,54 @@ module.exports = class FcmController {
             } );
         }
     }
+
+    sendNotificationToTopic( req, res, next ) {
+
+        try {
+
+            let in_data = req.body;
+            let rules = {
+                fcm_topic: 'required',
+                title: 'required',
+                body: 'required',
+            };
+            let validation = new Validator(in_data, rules);
+            if (validation.fails()) {
+                return responseServiceObj.sendException(res, {
+                    msg: responseServiceObj.getFirstError(validation)
+                });
+            }
+
+            let topic = in_data.fcm_topic;
+            let in_notification = {
+                topic: topic,
+                notification: {
+                    title: in_data.title,
+                    body: in_data.body,
+                }
+            };
+
+            FcmServiceObj.sendNotificationToTopic( in_data.fcm_topic, in_notification, async (err, result) => {
+
+                if(err) {
+                    return responseServiceObj.sendException( res, {
+                        msg : err.toString()
+                    } );        
+                } else {
+                    return await responseServiceObj.sendResponse(res, {
+                        msg: 'Topic Notification Status',
+                        data: {
+                            result: result
+                        }
+                    });
+                }
+            } );
+
+        } catch( ex ) {
+
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
 }
