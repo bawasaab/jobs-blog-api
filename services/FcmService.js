@@ -4,11 +4,13 @@ const FCM_SERVER_KEY = require('../config/config').FCM_SERVER_KEY;
 
 // const deviceToken = 'er30AquXTq-R9dy025pDXB:APA91bE8Y6NBc7jCdEvYFdFmNq3rKbam5X2uqm2ka_q461gL8i80y0T9bDheou9-82YryJnwnCPT64pRJeWIeKrb1y2GFsWnTN2J-Y2y9uQBeuhgmcphkaR4SoOUYH3d4cEM2eIq1uw0';
 
+let $this;
 module.exports = class FcmService {
 
     fcm;
     
     constructor() {
+        $this = this;
         this.fcm = new FCM( FCM_SERVER_KEY );
     }
 
@@ -53,7 +55,24 @@ module.exports = class FcmService {
         }
     }
 
-    async sendNotification( deviceToken, in_notification, cb ) {
+    customSendFCM( message ) {
+
+        return new Promise(function(resolve, reject) {
+
+            $this.fcm.send(message, function(err, response) {
+                if (err) {
+                    console.log("Something has gone wrong!"+err);
+                    reject(err);
+                } else {
+                    console.log("Successfully sent with response: ", response);
+                    // return response;
+                    resolve(response);
+                }
+            });
+        });
+    }
+
+    async sendNotification( deviceToken, in_notification ) {
 
         try {
 
@@ -73,16 +92,9 @@ module.exports = class FcmService {
                 "priority":"high",
                 "restricted_package_name":""
             };
-            
-            this.fcm.send(message, function(err, response) {
-                if (err) {
-                    console.log("Something has gone wrong!"+err);
-                } else {
-                    console.log("Successfully sent with response: ", response);
-                    // return response;
-                }    
-                cb( err, response );
-            });
+
+            let result = await this.customSendFCM( message );
+            return result;
 
         } catch (ex) {
             throw ex;
@@ -109,20 +121,9 @@ module.exports = class FcmService {
                 "priority":"high",
                 "restricted_package_name":""
             };
-            
-            this.fcm.send(message, function(err, response) {
 
-                console.log('err', err);
-                console.log('response', response);
-
-                if (err) {
-                    console.log("Something has gone wrong!"+err);
-                } else {
-                    console.log("Successfully sent with response: ", response);
-                    // return response;
-                }    
-                cb( err, response );
-            });
+            let result = await this.customSendFCM( message );
+            return result;
 
         } catch (ex) {
             throw ex;

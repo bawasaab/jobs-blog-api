@@ -19,11 +19,11 @@ module.exports = class FcmController {
             .then( async ( result ) => {
 
                 // send welcome notification
-                let deviceToken = result.fcm_token;
+                let deviceToken = in_data.fcm_token;
                 let in_notification = {
                     to: deviceToken,
                     notification: {
-                        title: 'Welcome Abroad!',
+                        title: 'Welcome To Jobsnplacements.com',
                         body: 'Thanks for choosing Jobsnplacements.com',
                     }
                 };
@@ -78,20 +78,20 @@ module.exports = class FcmController {
                 }
             };
 
-            FcmServiceObj.sendNotification( in_data.fcm_token, in_notification, async (err, result) => {
+            FcmServiceObj.sendNotification( in_data.fcm_token, in_notification)
+            .then( async (result) => {
 
-                if(err) {
-                    return responseServiceObj.sendException( res, {
-                        msg : err.toString()
-                    } );        
-                } else {
-                    return await responseServiceObj.sendResponse(res, {
-                        msg: 'Notification Status',
-                        data: {
-                            result: result
-                        }
-                    });
-                }
+                return await responseServiceObj.sendResponse(res, {
+                    msg: 'Notification Status',
+                    data: {
+                        result: result
+                    }
+                });
+            } )
+            .catch( (ex) => {
+                return responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );    
             } );
 
         } catch( ex ) {
@@ -128,20 +128,20 @@ module.exports = class FcmController {
                 }
             };
 
-            FcmServiceObj.sendNotificationToTopic( in_data.fcm_topic, in_notification, async (err, result) => {
+            FcmServiceObj.sendNotificationToTopic( topic, in_notification)
+            .then( async (result) => {
 
-                if(err) {
-                    return responseServiceObj.sendException( res, {
-                        msg : err.toString()
-                    } );        
-                } else {
-                    return await responseServiceObj.sendResponse(res, {
-                        msg: 'Topic Notification Status',
-                        data: {
-                            result: result
-                        }
-                    });
-                }
+                return await responseServiceObj.sendResponse(res, {
+                    msg: 'Notification Status',
+                    data: {
+                        result: result
+                    }
+                });
+            } )
+            .catch( (ex) => {
+                return responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );    
             } );
 
         } catch( ex ) {

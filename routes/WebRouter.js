@@ -8,6 +8,10 @@ const articleServiceObj = new ArticleService();
 // WEB_BASE_URL
 var webBaseUrl = require('../config/config').WEB_BASE_URL;
 
+router.get('/firebase-messaging-sw.js', function(req, res, next) {
+    res.sendFile(path.join(public, 'firebase-messaging-sw.js'));
+});
+
 /* GET home page. */
 router.get('/latest-jobs', function(req, res, next) {
     try {

@@ -102,10 +102,123 @@
 <script src="/assets/library/js/custom.js"></script>
 
 <script>
+
+    // Initialize the agent at application startup.
+    const fpPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.onload = resolve
+        script.onerror = () => reject('Failed to load the script')
+        script.async = true
+        script.src = 'https://cdn.jsdelivr.net/npm/'
+        + '@fingerprintjs/fingerprintjs@3/dist/fp.min.js'
+        document.head.appendChild(script)
+    })
+    .then(() => FingerprintJS.load());
+</script>
+
+<script>
+    let $this = this;
     function search() {
         let txt = $('#search-box-txt').val();
         window.location.replace('<%- base_url %>/search/'+ txt.split(' ').join('-'));
     }
+
+    function saveFcmToken( token ) {
+        console.log('api_base_url', api_base_url);
+
+        // Get the visitor identifier when you need it.
+        fpPromise
+        .then(fp => fp.get())
+        .then(result => {
+            // This is the visitor identifier:
+            const visitorId = result.visitorId
+            console.log('visitorId', visitorId)
+
+            $.ajax({
+                url: api_base_url+'/fcm',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    fcm_device_type: 'WEB',
+                    fcm_token: token,
+                    device_token: visitorId,
+                    device_info: {}
+                },
+                success: function( retdata ) {
+                    console.log('retdata', retdata);
+                },
+                error: function(e){
+                    console.log(e);
+                }
+            });
+        })
+        .catch(error => console.error(error));
+    }
+</script>
+
+
+<p id="token"></p>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCnt75fJxj5QGSCgESdXA6Frf4OGHLJnOU",
+        authDomain: "jobsnplacements-android-fcm.firebaseapp.com",
+        projectId: "jobsnplacements-android-fcm",
+        storageBucket: "jobsnplacements-android-fcm.appspot.com",
+        messagingSenderId: "1058558568445",
+        appId: "1:1058558568445:web:6f9016ea440b49a918db94",
+        measurementId: "G-YZZGM6NSK9"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging=firebase.messaging();
+
+    function IntitalizeFireBaseMessaging() {
+        messaging
+            .requestPermission()
+            .then(function () {
+                console.log("Notification Permission");
+                return messaging.getToken();
+            })
+            .then(function (token) {
+                console.log("Token : "+token);
+                document.getElementById("token").innerHTML=token;
+
+                $this.saveFcmToken( token );
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    messaging.onMessage(function (payload) {
+        console.log(payload);
+        const notificationOption={
+            body:payload.notification.body,
+            icon:payload.notification.icon
+        };
+
+        if(Notification.permission==="granted"){
+            var notification=new Notification(payload.notification.title,notificationOption);
+
+            notification.onclick=function (ev) {
+                ev.preventDefault();
+                window.open(payload.notification.click_action,'_blank');
+                notification.close();
+            }
+        }
+
+    });
+    messaging.onTokenRefresh(function () {
+        messaging.getToken()
+            .then(function (newtoken) {
+                console.log("New Token : "+ newtoken);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+    })
+    IntitalizeFireBaseMessaging();
 </script>
 
 </body>
