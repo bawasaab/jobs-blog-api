@@ -825,7 +825,7 @@ a, a:hover {
     overflow: hidden;
     overflow-y: scroll;
 }
-p.fcm-token-hide {
+.fcm-token-hide {
     display: none;
 }
 /**
