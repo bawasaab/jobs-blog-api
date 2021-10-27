@@ -88,4 +88,44 @@ module.exports = class FcmService {
             throw ex;
         }
     }
+
+    async sendNotificationToTopic( topic, in_notification, cb ) {
+
+        try {
+
+            let message = {
+                "notification":{
+                    "title": in_notification.notification.title,
+                    "body": in_notification.notification.body,
+                    "sound":"default",
+                    "click_action":"FCM_PLUGIN_ACTIVITY",
+                    "icon":"fcm_push_icon"
+                },
+                "data":{
+                    "landing_page":"second",
+                    "price":"$3,000.00"
+                },
+                "to": '/topics/'+ topic,
+                "priority":"high",
+                "restricted_package_name":""
+            };
+            
+            this.fcm.send(message, function(err, response) {
+
+                console.log('err', err);
+                console.log('response', response);
+
+                if (err) {
+                    console.log("Something has gone wrong!"+err);
+                } else {
+                    console.log("Successfully sent with response: ", response);
+                    // return response;
+                }    
+                cb( err, response );
+            });
+
+        } catch (ex) {
+            throw ex;
+        }
+    }
 }

@@ -41,6 +41,10 @@ router.post( '/fcm/send', [
   fcmControllerObj.sendNotification
 ] );
 
+router.post( '/fcm/send-to-topic', [
+  fcmControllerObj.sendNotificationToTopic
+] );
+
 router.get('/articles/BySlug/:slug', [
   articleControllerObj.getBySlug
 ]);
