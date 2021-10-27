@@ -12,6 +12,26 @@ router.get('/firebase-messaging-sw.js', function(req, res, next) {
     res.sendFile(path.join(public, 'firebase-messaging-sw.js'));
 });
 
+router.get('/FCM_PLUGIN_ACTIVITY', function(req, res, next) {
+    try {
+        articleServiceObj.getAll()
+        .then( async (result) => {
+            res.render('web/index', {
+                articles: result,
+                meta_slug: webBaseUrl + 'home',
+                meta_title: 'Jobsnplacements - Home Page | Home page of the Jobsnplacements',
+                meta_keywords: 'Jobsnplacements, All Government jobs, Free SMS Alert, Sarkari naukri, Latest govt Jobs, Sarkari results, Free job alert, Govt jobs Alert, Latest Notifications, Recruitment',
+                meta_description: 'Find you Latest Notifications for All Government jobs across India and First Govt jobs forum for all Examination Discussion. Get Free SMS Alert subscription to the New updates of Sarkari naukri, Results, Mock Test and all.',
+            });
+        } )
+        .catch( (ex) => {
+            console.log('ex', ex);
+        } )
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
+});
+
 /* GET home page. */
 router.get('/latest-jobs', function(req, res, next) {
     try {
