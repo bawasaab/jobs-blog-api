@@ -111,7 +111,7 @@ module.exports = class FcmService {
                     "title": in_notification.notification.title,
                     "body": in_notification.notification.body,
                     "sound":"default",
-                    "click_action":"home",
+                    "click_action":"FCM_PLUGIN_ACTIVITY",
                     "icon":"fcm_push_icon"
                 },
                 "data":{
