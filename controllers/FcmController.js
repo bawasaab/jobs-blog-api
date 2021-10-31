@@ -25,6 +25,10 @@ module.exports = class FcmController {
                     notification: {
                         title: 'Welcome To Jobsnplacements.com',
                         body: 'Thanks for choosing Jobsnplacements.com',
+                        data: {
+                            article_id: '',
+                            article_slug: ''
+                        }
                     }
                 };
                 
@@ -61,6 +65,8 @@ module.exports = class FcmController {
                 fcm_token: 'required',
                 title: 'required',
                 body: 'required',
+                article_id: 'required',
+                article_slug: 'required',
             };
             let validation = new Validator(in_data, rules);
             if (validation.fails()) {
@@ -75,6 +81,10 @@ module.exports = class FcmController {
                 notification: {
                     title: in_data.title,
                     body: in_data.body,
+                    data: {
+                        article_id: in_data.article_id,
+                        article_slug: in_data.article_slug
+                    }
                 }
             };
 
@@ -111,6 +121,8 @@ module.exports = class FcmController {
                 fcm_topic: 'required',
                 title: 'required',
                 body: 'required',
+                article_id: 'required',
+                article_slug: 'required',
             };
             let validation = new Validator(in_data, rules);
             if (validation.fails()) {
@@ -125,6 +137,10 @@ module.exports = class FcmController {
                 notification: {
                     title: in_data.title,
                     body: in_data.body,
+                    data: {
+                        article_id: in_data.article_id,
+                        article_slug: in_data.article_slug
+                    }
                 }
             };
 

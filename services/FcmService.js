@@ -86,8 +86,8 @@ module.exports = class FcmService {
                     "icon":"fcm_push_icon"
                 },
                 "data":{
-                    "landing_page":"second",
-                    "price":"$3,000.00"
+                    "article_id": in_notification.notification.data.article_id,
+                    "article_slug": in_notification.notification.data.article_slug
                 },
                 "to":in_notification.to,
                 "priority":"high",
@@ -115,8 +115,8 @@ module.exports = class FcmService {
                     "icon":"fcm_push_icon"
                 },
                 "data":{
-                    "landing_page":"second",
-                    "price":"$3,000.00"
+                    "article_id": in_notification.notification.data.article_id,
+                    "article_slug": in_notification.notification.data.article_slug
                 },
                 "to": '/topics/'+ topic,
                 "priority":"high",
