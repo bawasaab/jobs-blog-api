@@ -219,7 +219,7 @@
             })
     })
 
-    if( !localStorage.setItem('jobsnplacementsFcmToken') ) {
+    if( !localStorage.getItem('jobsnplacementsFcmToken') ) {
         IntitalizeFireBaseMessaging();
     }
 </script>
