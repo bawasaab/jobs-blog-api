@@ -87,17 +87,13 @@ module.exports = class ValidateIdsMiddlewares {
         try {
 
             let id = req.params.commentId;
-            console.log('comment id', id)
             let is_valid = ObjectId.isValid(id);
             if( !is_valid ) {
-                console.log('inside if');
                 throw 'Comment id not well formed.'
             } else {
-                console.log('inside next');
                 next();
             }
         } catch(ex) {
-            console.log('inside catch');
             return responseServiceObj.sendException( res, {
                 msg : ex.toString()
             } );

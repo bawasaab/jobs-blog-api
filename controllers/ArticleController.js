@@ -48,7 +48,6 @@ module.exports = class ArticleController {
                 gender: "MALE",
                 first_name: "Abhishek"
             };
-            console.log('in_data', in_data);
             articleServiceObj.insert( in_data )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
