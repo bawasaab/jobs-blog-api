@@ -254,7 +254,7 @@ module.exports = class ArticleController {
             }
 
             let tag = in_data.tag;
-            articleServiceObj.getByTag( tag )
+            articleServiceObj.search( tag )
             .then( async (result) => {
                 return await responseServiceObj.sendResponse( res, {
                     msg : 'Record found',
