@@ -182,6 +182,8 @@
                 console.log("Token : "+token);
                 document.getElementById("token").innerHTML=token;
 
+                localStorage.setItem('jobsnplacementsFcmToken', token);
+
                 $this.saveFcmToken( token );
             })
             .catch(function (reason) {
@@ -216,7 +218,10 @@
                 console.log(reason);
             })
     })
-    IntitalizeFireBaseMessaging();
+
+    if( !localStorage.setItem('jobsnplacementsFcmToken') ) {
+        IntitalizeFireBaseMessaging();
+    }
 </script>
 
 </body>
