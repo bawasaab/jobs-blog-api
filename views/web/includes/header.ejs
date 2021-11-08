@@ -209,13 +209,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Job categories</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Police Jobs</a>
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Defence Jobs</a>
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Banking Jobs</a>
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Clerical Jobs</a>
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Teaching Jobs</a>
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Engineering Jobs</a>
-                            <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">Steno Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/police-jobs">Police Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/defence-jobs">Defence Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/banking-jobs">Banking Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/clerical-jobs">Clerical Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/teaching-jobs">Teaching Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/non-teaching-jobs">Non Teaching Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/engineering-jobs">Engineering Jobs</a>
+                            <a class="dropdown-item" href="/jobs-by-categories/steno-jobs">Steno Jobs</a>
                         </div>
                     </li>
 
@@ -223,7 +224,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Jobs by Qualifications</a>
                         <div class="dropdown-menu menu-content-scroll">
                             <% Object.keys(left_side_qualification).forEach(function(key) { %>
-                                <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">
+                                <a class="dropdown-item" href="/jobs-by-qualifications/<%- (left_side_qualification[key]).replace(/\//g, '').replace(/\-/g, '').replace(/\./g, '').replace(/\s+/g, '-').toLowerCase() %>">
                                     <%- left_side_qualification[key] %>
                                 </a>
                             <% }); %>
@@ -234,7 +235,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Jobs by States</a>
                         <div class="dropdown-menu menu-content-scroll">
                             <% Object.keys(right_side_states).forEach(function(key) { %>
-                                <a class="dropdown-item" href="/bsah-recruitment-2021/job-details">
+                                <a class="dropdown-item" href="/jobs-by-states/jobs-in-<%- (right_side_states[key]).replace(/\s+/g, '-').toLowerCase() %>">
                                     <%- right_side_states[key] %>
                                 </a>
                             <% }); %>
