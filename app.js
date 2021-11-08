@@ -79,13 +79,13 @@ app.locals.left_side_pages = {
 };
 
 app.locals.right_side_tags = {
-    culture: 'Culture',
-    fashion: 'Fashion',
-    featured_posts: 'Featured Posts',
-    food_genel: 'Food Genel',
-    magzine: 'Magzine',
-    music: 'Music',
-    sports: 'Sports',
+    admit_card: 'Admit Card',
+    exam_results: 'Exam Results',
+    exam_date: 'Exam Date',
+    answer_key: 'Answer Key',
+    cutoff_marks: 'Cutoff Marks',
+    written_marks: 'Written Marks',
+    interview_results: 'Interview Results',
 };
 
 app.locals.right_side_states = {

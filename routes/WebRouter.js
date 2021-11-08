@@ -468,6 +468,29 @@ router.get('/jobs-by-qualifications/:slug', (req, res, next) => {
     }
 });
 
+router.get('/tags/:slug', (req, res, next) => {
+    try {
+        let str = !req.params.slug ? undefined : req.params.slug.split('-').join(' ').toLowerCase();
+
+        articleServiceObj.search( str )
+        .then( async (result) => {
+            res.render('web/all_jobs', { 
+                searchStr: !str ? '' : str, 
+                articles: result,
+                meta_slug: webBaseUrl + '/search/'+ req.params.slug,
+                meta_title: 'Jobsnplacements - Search Government Jobs Page | Search Government Jobs Page of the Jobsnplacements',
+                meta_keywords: 'Jobsnplacements, All Government jobs, Free SMS Alert, Sarkari naukri, Latest govt Jobs, Sarkari results, Free job alert, Govt jobs Alert, Latest Notifications, Recruitment',
+                meta_description: 'Find you Latest Notifications for All Government jobs across India and First Govt jobs forum for all Examination Discussion. Get Free SMS Alert subscription to the New updates of Sarkari naukri, Results, Mock Test and all.',
+            });
+        } )
+        .catch( (ex) => {
+            console.log('ex', ex);
+        } )
+    } catch( ex ) {
+        console.log('ex', ex);
+    }
+});
+
 router.get('/social-login', (req, res, next) => {
     try {
         res.render('web/social_login', {

@@ -74,7 +74,7 @@
 
                         <% Object.keys(right_side_tags).forEach(function(key) { %>
                             <span>
-                                <a href="/bsah-recruitment-2021/job-details">
+                                <a href="/tags/<%- (right_side_tags[key]).replace(/\s+/g, '-').toLowerCase() %>">
                                     <h3 style="font-size: 12px;"><%- right_side_tags[key] %></h3>
                                 </a>
                             </span>
