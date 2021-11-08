@@ -239,6 +239,44 @@ module.exports = class ArticleController {
         }
     }
 
+    getByTag( req, res, next ) {
+        try {
+            let in_data = req.params;
+            let rules = {
+                tag: 'required'
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+
+                return responseServiceObj.sendException( res, {
+                    msg : responseServiceObj.getFirstError( validation )
+                } );
+            }
+
+            let tag = in_data.tag;
+            articleServiceObj.getByTag( tag )
+            .then( async (result) => {
+                return await responseServiceObj.sendResponse( res, {
+                    msg : 'Record found',
+                    data : {
+                        article: result
+                    }
+                } );
+            } )
+            .catch( async (ex) => {
+                return await responseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+
+        } catch(ex) {
+    
+            return responseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
     getAll( req, res, next ) {
 
         try {

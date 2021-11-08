@@ -49,6 +49,10 @@ router.get('/articles/BySlug/:slug', [
   articleControllerObj.getBySlug
 ]);
 
+router.get('/articles/ByTag/:tag', [
+  articleControllerObj.getByTag
+]);
+
 router.get('/latest-jobs', [
   articleControllerObj.getLatestJobs
 ]);
