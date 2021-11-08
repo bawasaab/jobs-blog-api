@@ -402,7 +402,7 @@ router.get('/search/:slug?', (req, res, next) => {
 router.get('/jobs-by-states/:slug', (req, res, next) => {
     try {
         let str = !req.params.slug ? undefined : req.params.slug.split('-').join(' ').toLowerCase();
-console.log('str', str);
+
         articleServiceObj.search( str )
         .then( async (result) => {
             res.render('web/all_jobs', { 

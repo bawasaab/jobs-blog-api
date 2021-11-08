@@ -79,15 +79,20 @@
             <div class="widget-content">
                 <div class="category">
                     <ul class="cat-items">
-                        <!-- <li>
-                            <a href="/bsah-recruitment-2021/job-details">Beauty</a>
-                            <span>(6)</span>
-                        </li> -->
-                        <% Object.keys(left_side_categories).forEach(function(key) { %>
+                        <!-- <% Object.keys(left_side_categories).forEach(function(key) { %>
                             <li>
                                 <a href="/bsah-recruitment-2021/job-details"><%- left_side_categories[key] %></a>
                             </li>
-                        <% }); %>
+                        <% }); %> -->
+
+                        <li><a href="/jobs-by-categories/police-jobs">Police Jobs</a></li>
+                        <li><a href="/jobs-by-categories/defence-jobs">Defence Jobs</a></li>
+                        <li><a href="/jobs-by-categories/banking-jobs">Banking Jobs</a></li>
+                        <li><a href="/jobs-by-categories/clerical-jobs">Clerical Jobs</a></li>
+                        <li><a href="/jobs-by-categories/teaching-jobs">Teaching Jobs</a></li>
+                        <li><a href="/jobs-by-categories/non-teaching-jobs">Non Teaching Jobs</a></li>
+                        <li><a href="/jobs-by-categories/engineering-jobs">Engineering Jobs</a></li>
+                        <li><a href="/jobs-by-categories/steno-jobs">Steno Jobs</a></li>
                     </ul>
                 </div>
             </div>
@@ -103,7 +108,7 @@
                     <ul class="cat-items">
                         <% Object.keys(left_side_qualification).forEach(function(key) { %>
                             <li>
-                                <h3 style="font-size: 12px;"><a href="/bsah-recruitment-2021/job-details"><%- left_side_qualification[key] %></a></h3>
+                                <h3 style="font-size: 12px;"><a href="/jobs-by-qualifications/<%- (left_side_qualification[key]).replace(/\//g, '').replace(/\-/g, '').replace(/\./g, '').replace(/\s+/g, '-').toLowerCase() %>"><%- left_side_qualification[key] %></a></h3>
                             </li>
                         <% }); %>
                     </ul>

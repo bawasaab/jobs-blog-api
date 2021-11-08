@@ -93,7 +93,7 @@
                     
                     <% Object.keys(right_side_states).forEach(function(key) { %>
                         <span>
-                            <a href="/bsah-recruitment-2021/job-details">
+                            <a href="/jobs-by-states/jobs-in-<%- (right_side_states[key]).replace(/\s+/g, '-').toLowerCase() %>">
                                 <h3 style="font-size: 12px;"><%- right_side_states[key] %></h3>
                             </a>
                         </span>

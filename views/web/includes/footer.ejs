@@ -123,6 +123,12 @@
         window.location.replace('<%- base_url %>/search/'+ txt.split(' ').join('-'));
     }
 
+    $( "#search-box-txt" ).keyup(function(event) {
+        if (event.keyCode === 13) {
+            search();
+        }
+    });
+
     function saveFcmToken( token ) {
         console.log('api_base_url', api_base_url);
 
