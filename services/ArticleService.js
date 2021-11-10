@@ -220,16 +220,20 @@ module.exports = class ArticleService {
         try {
 
             let result = [];
-            result = await articleModel.find( { 
-                $and: [{
-                    $or: [
-                        { 'title': new RegExp(searchTxt, 'i') },
-                        { 'short_description': new RegExp(searchTxt, 'i') },
-                        { 'tags': new RegExp(searchTxt, 'i') },
-                    ],
-                    'status': 'OPEN'
-                }]
-            } );
+
+            if( !searchTxt ) {
+
+                result = await articleModel.find( { 
+                    $and: [{
+                        $or: [
+                            { 'title': new RegExp(searchTxt, 'i') },
+                            { 'short_description': new RegExp(searchTxt, 'i') },
+                            { 'tags': new RegExp(searchTxt, 'i') },
+                        ],
+                        'status': 'OPEN'
+                    }]
+                } );
+            }
 
             if( result.length < 1 ) {
 

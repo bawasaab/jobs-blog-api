@@ -279,17 +279,6 @@ module.exports = class ArticleController {
     search( req, res, next ) {
         try {
             let in_data = req.params;
-            let rules = {
-                str: 'required'
-            };
-            let validation = new Validator(in_data, rules);
-            if( validation.fails() ) {
-
-                return responseServiceObj.sendException( res, {
-                    msg : responseServiceObj.getFirstError( validation )
-                } );
-            }
-
             let str = in_data.str;
             articleServiceObj.search( str )
             .then( async (result) => {

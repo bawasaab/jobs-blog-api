@@ -65,7 +65,7 @@ router.get('/ByUser/:userId', [
     articleControllerObj.getAllByUser
 ]);
 
-router.get('/search/:str', [
+router.get('/search/:str?', [
   articleControllerObj.search
 ]);
 
