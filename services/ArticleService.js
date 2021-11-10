@@ -221,7 +221,7 @@ module.exports = class ArticleService {
 
             let result = [];
 
-            if( !searchTxt ) {
+            if( searchTxt ) {
 
                 result = await articleModel.find( { 
                     $and: [{
