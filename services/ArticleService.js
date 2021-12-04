@@ -43,13 +43,13 @@ module.exports = class ArticleService {
             /**
              * last 31 days articles
              */
-            cutoff.setDate(cutoff.getDate()-31);
+            // cutoff.setDate(cutoff.getDate()-31);
 
             let result = await articleModel.find( { 
                 status: { $ne: 'DELETED' },
-                scheduled_for: {
-                    $gte: cutoff
-                },
+                // scheduled_for: {
+                //     $gte: cutoff
+                // },
                 // sort: {
                 //     scheduled_for: 1
                 // }
